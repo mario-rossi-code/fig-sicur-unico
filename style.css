@@ -125,6 +125,7 @@ body:has(.update-notification.show) {
 }
 
 .no-results {
+    flex-shrink: 0;
     text-align: center;
     padding: 4rem 2rem;
     background: var(--card-bg);

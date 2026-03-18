@@ -23,7 +23,7 @@
  * @returns {boolean} `true` se almeno un elemento è stato renderizzato.
  */
 function renderCitiesHierarchy() {
-    if (!state.selectedCity)  return _renderCitiesGrid();
+    if (!state.selectedCity) return _renderCitiesGrid();
     if (!state.selectedGroup) return _renderCityGroups();
     return _renderGroupPeople();
 }
@@ -63,6 +63,7 @@ function _renderCitiesGrid() {
 function _createCityCard(city, index) {
     const card = document.createElement("div");
     card.className = "list-item-card card-enter";
+    card.dataset.search = city.nome.toLowerCase();
     card.style.animationDelay = `${index * CONFIG.ANIMATION.CARD_STAGGER}ms`;
 
     card.innerHTML = `
@@ -74,7 +75,7 @@ function _createCityCard(city, index) {
     `;
 
     card.onclick = () => {
-        state.selectedCity  = city;
+        state.selectedCity = city;
         state.selectedGroup = null;
         render();
     };
@@ -95,13 +96,19 @@ function _renderCityGroups() {
 
     updateBreadcrumb([
         {
-            text:   "Tutte le Città",
-            action: () => { state.selectedCity = null; render(); },
+            text: "Tutte le Città",
+            action: () => {
+                state.selectedCity = null;
+                resetSearch();
+                render();
+            },
         },
         { text: state.selectedCity.nome, active: true },
     ]);
 
-    const sorted = [...state.selectedCity.gruppi].sort((a, b) => a.nome.localeCompare(b.nome));
+    const sorted = [...state.selectedCity.gruppi].sort((a, b) =>
+        a.nome.localeCompare(b.nome),
+    );
     let hasResults = false;
 
     sorted.forEach((group) => {
@@ -153,12 +160,20 @@ function _renderGroupPeople() {
 
     updateBreadcrumb([
         {
-            text:   "Tutte le Città",
-            action: () => { state.selectedCity = null; state.selectedGroup = null; render(); },
+            text: "Tutte le Città",
+            action: () => {
+                state.selectedCity = null;
+                state.selectedGroup = null;
+                resetSearch();
+                render();
+            },
         },
         {
-            text:   state.selectedCity.nome,
-            action: () => { state.selectedGroup = null; render(); },
+            text: state.selectedCity.nome,
+            action: () => {
+                state.selectedGroup = null;
+                render();
+            },
         },
         { text: state.selectedGroup.nome, active: true },
     ]);
@@ -166,16 +181,23 @@ function _renderGroupPeople() {
     let hasResults = false;
 
     state.selectedGroup.incarichi.forEach((inc) => {
-        if (!matchesSearchObj(
-            inc.persona.nome,
-            inc.persona.cognome,
-            inc.nome,
-            inc.persona.grado,
-        )) return;
+        if (
+            !matchesSearchObj(
+                inc.persona.nome,
+                inc.persona.cognome,
+                inc.nome,
+                inc.persona.grado,
+            )
+        )
+            return;
 
         hasResults = true;
         DOM.content.appendChild(
-            createPersonCard(inc, state.selectedCity.nome, state.selectedGroup.nome)
+            createPersonCard(
+                inc,
+                state.selectedCity.nome,
+                state.selectedGroup.nome,
+            ),
         );
     });
 

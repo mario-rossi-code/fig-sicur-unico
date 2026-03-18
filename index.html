@@ -19,8 +19,16 @@
             Questo colora la gesture bar su Android e la status bar su iOS.
         -->
         <meta id="themeColorMeta" name="theme-color" content="#f3f5f3" />
-        <meta name="theme-color" content="#f3f5f3" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#04140d"  media="(prefers-color-scheme: dark)"  />
+        <meta
+            name="theme-color"
+            content="#f3f5f3"
+            media="(prefers-color-scheme: light)"
+        />
+        <meta
+            name="theme-color"
+            content="#04140d"
+            media="(prefers-color-scheme: dark)"
+        />
 
         <!-- PWA iOS -->
         <meta name="mobile-web-app-capable" content="yes" />
@@ -30,15 +38,30 @@
             contenuto scorre sotto di essa — il massimo ottenibile su Safari PWA.
             La gesture bar sul fondo non può essere nascosta su iOS.
         -->
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
         <meta name="apple-mobile-web-app-title" content="FIG. SICUR. UNICO" />
 
         <!-- Icone -->
-        <link rel="apple-touch-icon"              href="./assets/icons/icon-192.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="./assets/icons/icon-192.png" />
-        <link rel="apple-touch-icon" sizes="167x167" href="./assets/icons/icon-192.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/icon-192.png" />
-        <link rel="icon" type="image/png"          href="./assets/img/logo.png" />
+        <link rel="apple-touch-icon" href="./assets/icons/icon-192.png" />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/icons/icon-192.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="167x167"
+            href="./assets/icons/icon-192.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/icons/icon-192.png"
+        />
+        <link rel="icon" type="image/png" href="./assets/img/logo.png" />
 
         <!-- Font Awesome -->
         <link
@@ -58,11 +81,13 @@
         <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
-
         <!-- Banner connessione offline/online -->
         <div id="offlineBanner" class="offline-banner hidden">
             <i class="fa-solid fa-plug-circle-xmark"></i>
-            <span>Connessione non disponibile. I dati potrebbero non essere aggiornati.</span>
+            <span
+                >Connessione non disponibile. I dati potrebbero non essere
+                aggiornati.</span
+            >
         </div>
 
         <!-- Header -->
@@ -70,12 +95,20 @@
             <div class="header-inner">
                 <h1>
                     <div class="logo-wrapper">
-                        <img class="logo" src="./assets/img/logo.png" alt="Logo" />
+                        <img
+                            class="logo"
+                            src="./assets/img/logo.png"
+                            alt="Logo"
+                        />
                         <div class="version"></div>
                     </div>
                     FIG. SICUR. UNICO
                 </h1>
-                <button id="themeToggle" class="theme-toggle" aria-label="Cambia tema">
+                <button
+                    id="themeToggle"
+                    class="theme-toggle"
+                    aria-label="Cambia tema"
+                >
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
@@ -84,9 +117,11 @@
         <!-- Contenuto principale -->
         <main class="main container">
             <div class="main-content">
-
                 <!-- Breadcrumb di navigazione gerarchica -->
-                <div id="breadcrumbContainer" class="breadcrumb-container"></div>
+                <div
+                    id="breadcrumbContainer"
+                    class="breadcrumb-container"
+                ></div>
 
                 <!-- Barra di ricerca + filtri/città -->
                 <div id="searchWrapper" class="search-wrapper">
@@ -98,16 +133,20 @@
                             placeholder="Cerca per città, gruppo, incarico o nome"
                             autocomplete="off"
                         />
-                        <button id="clearBtn" class="hidden" aria-label="Cancella ricerca">
+                        <button
+                            id="clearBtn"
+                            class="hidden"
+                            aria-label="Cancella ricerca"
+                        >
                             <i class="fa-solid fa-times"></i>
                         </button>
                     </div>
                     <!-- Filtri contestuali: pill città (vista Gruppi) o pill filtri (Incarichi/Persone) -->
-                    <div id="cityFilterContainer" class="city-filter hidden"></div>
+                    <div
+                        id="cityFilterContainer"
+                        class="city-filter hidden"
+                    ></div>
                 </div>
-
-                <!-- Area di rendering delle viste -->
-                <div id="content" class="view-container"></div>
 
                 <!-- Messaggio nessun risultato -->
                 <div id="noResults" class="no-results hidden">
@@ -115,33 +154,65 @@
                     <p>Nessun risultato trovato</p>
                 </div>
 
+                <!-- Area di rendering delle viste -->
+                <div id="content" class="view-container"></div>
             </div>
         </main>
 
         <!-- Footer – Navigazione bottom bar -->
         <footer>
-            <nav class="bottom-nav" role="navigation" aria-label="Navigazione principale">
-                <div class="nav-item active" data-view="cities"  role="button" tabindex="0">
-                    <i class="fa-solid fa-city"        aria-hidden="true"></i>
+            <nav
+                class="bottom-nav"
+                role="navigation"
+                aria-label="Navigazione principale"
+            >
+                <div
+                    class="nav-item active"
+                    data-view="cities"
+                    role="button"
+                    tabindex="0"
+                >
+                    <i class="fa-solid fa-city" aria-hidden="true"></i>
                     <span>Città</span>
                 </div>
-                <div class="nav-item" data-view="groups"  role="button" tabindex="0">
+                <div
+                    class="nav-item"
+                    data-view="groups"
+                    role="button"
+                    tabindex="0"
+                >
                     <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
                     <span>Gruppi</span>
                 </div>
-                <div class="nav-item" data-view="roles"   role="button" tabindex="0">
-                    <i class="fa-solid fa-briefcase"   aria-hidden="true"></i>
+                <div
+                    class="nav-item"
+                    data-view="roles"
+                    role="button"
+                    tabindex="0"
+                >
+                    <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                     <span>Incarichi</span>
                 </div>
-                <div class="nav-item" data-view="people"  role="button" tabindex="0">
-                    <i class="fa-solid fa-user"        aria-hidden="true"></i>
+                <div
+                    class="nav-item"
+                    data-view="people"
+                    role="button"
+                    tabindex="0"
+                >
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
                     <span>Persone</span>
                 </div>
             </nav>
         </footer>
 
         <!-- Modale dettaglio persona -->
-        <div id="personModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Dettaglio persona">
+        <div
+            id="personModal"
+            class="modal-overlay hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Dettaglio persona"
+        >
             <div class="modal-content">
                 <button class="modal-close" id="modalClose" aria-label="Chiudi">
                     <i class="fa-solid fa-times"></i>

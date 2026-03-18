@@ -12,12 +12,11 @@
  * @namespace CONFIG
  */
 const CONFIG = {
-
     /** Versione dell'applicazione (visualizzata nell'header). */
     APP_VERSION: "1.0",
 
     /** Nome dell'applicazione. */
-    APP_NAME: "FIG. SICUR. UNICO",
+    APP_NAME: "APP SICUR. UNICO",
 
     // ─── Chiavi localStorage ──────────────────────────────────────────────────
 
@@ -34,7 +33,7 @@ const CONFIG = {
     /** Colori di background per le due modalità tema, usati per aggiornare il meta theme-color. */
     THEME_COLORS: {
         light: "#f3f5f3",
-        dark:  "#04140d",
+        dark: "#04140d",
     },
 
     // ─── Animazioni ───────────────────────────────────────────────────────────
@@ -66,9 +65,9 @@ const CONFIG = {
             /** Nessun filtro attivo. */
             OFF: 0,
             /** Mostra solo abilitati UniCo. */
-            SI:  1,
+            SI: 1,
             /** Mostra solo non abilitati UniCo. */
-            NO:  2,
+            NO: 2,
         },
     },
 
@@ -94,7 +93,7 @@ const CONFIG = {
         /** Valori predefiniti dei filtri all'avvio (o dopo un reset). */
         DEFAULTS: {
             /** Stato iniziale filtro UniCo (0 = OFF). */
-            unico:   0,
+            unico: 0,
             /** Stato iniziale filtro "In attesa di nomina". */
             pending: false,
         },

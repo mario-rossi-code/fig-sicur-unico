@@ -48,7 +48,8 @@ function applyTheme(theme) {
     if (_themeToggleBtn) {
         const icon = _themeToggleBtn.querySelector("i");
         if (icon) {
-            icon.className = theme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
+            icon.className =
+                theme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
         }
     }
 }

@@ -79,7 +79,6 @@ async function _loadData() {
 
         render();
         handleProtocolUrl();
-
     } catch (err) {
         console.error("[App] Errore nel caricamento dei dati:", err);
 

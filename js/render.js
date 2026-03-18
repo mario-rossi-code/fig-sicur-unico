@@ -30,13 +30,13 @@
  * }}
  */
 const DOM = {
-    content:             document.getElementById("content"),
+    content: document.getElementById("content"),
     breadcrumbContainer: document.getElementById("breadcrumbContainer"),
-    searchWrapper:       document.getElementById("searchWrapper"),
+    searchWrapper: document.getElementById("searchWrapper"),
     cityFilterContainer: document.getElementById("cityFilterContainer"),
-    searchInput:         document.getElementById("searchInput"),
-    clearBtn:            document.getElementById("clearBtn"),
-    noResults:           document.getElementById("noResults"),
+    searchInput: document.getElementById("searchInput"),
+    clearBtn: document.getElementById("clearBtn"),
+    noResults: document.getElementById("noResults"),
 };
 
 // ─── Render principale ────────────────────────────────────────────────────────
@@ -56,7 +56,7 @@ const DOM = {
  */
 function render() {
     // Reset contenuto e widget contestuali
-    DOM.content.innerHTML             = "";
+    DOM.content.innerHTML = "";
     DOM.breadcrumbContainer.innerHTML = "";
     DOM.cityFilterContainer.classList.add("hidden");
     DOM.noResults.classList.add("hidden");
@@ -69,7 +69,7 @@ function render() {
     const renderers = {
         cities: renderCitiesHierarchy,
         groups: renderGroupsList,
-        roles:  renderRolesList,
+        roles: renderRolesList,
         people: renderPeopleList,
     };
 
@@ -116,11 +116,11 @@ function createPersonCard(inc, cityName, groupName) {
                 </div>
             </div>
         `;
-        card.style.cursor  = "default";
+        card.style.cursor = "default";
         card.style.opacity = "0.8";
     } else {
-        const persona  = sanitizePersona(inc.persona);
-        const isUnico  = persona.abilitUniCo.toLowerCase() === "si";
+        const persona = sanitizePersona(inc.persona);
+        const isUnico = persona.abilitUniCo.toLowerCase() === "si";
         const initials = getInitials(persona.nome, persona.cognome);
 
         card.innerHTML = `
@@ -170,13 +170,17 @@ function createLetterHeader(letter) {
 function updateBreadcrumb(items) {
     DOM.breadcrumbContainer.innerHTML = `
         <div class="breadcrumb">
-            ${items.map((item, index) => `
+            ${items
+                .map(
+                    (item, index) => `
                 ${index > 0 ? '<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>' : ""}
                 <span class="${item.active ? "active" : ""}"
                       ${item.action ? 'style="cursor:pointer;" role="button" tabindex="0"' : ""}>
                     ${item.text}
                 </span>
-            `).join("")}
+            `,
+                )
+                .join("")}
         </div>
     `;
 

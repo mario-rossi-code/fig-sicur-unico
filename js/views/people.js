@@ -30,17 +30,20 @@ function renderPeopleList() {
 
     // Ordina per nome, poi cognome
     people.sort((a, b) => {
-        const nomeCompare = (a.persona.nome || "").localeCompare(b.persona.nome || "");
+        const nomeCompare = (a.persona.nome || "").localeCompare(
+            b.persona.nome || "",
+        );
         return nomeCompare !== 0
             ? nomeCompare
             : (a.persona.cognome || "").localeCompare(b.persona.cognome || "");
     });
 
     let currentLetter = "";
-    let hasResults    = false;
+    let hasResults = false;
 
     people.forEach((item) => {
-        if (!passesUnicoFilter(item.persona) || !_matchesPeopleSearch(item)) return;
+        if (!passesUnicoFilter(item.persona) || !_matchesPeopleSearch(item))
+            return;
 
         hasResults = true;
 
@@ -76,17 +79,21 @@ function _collectUniquePeople() {
                 if (!hasValidPersonData(p)) return;
 
                 const key = [
-                    p.nome, p.cognome, p.grado,
-                    p.telefono_ufficio, p.telefono_cell, p.abilitUniCo,
+                    p.nome,
+                    p.cognome,
+                    p.grado,
+                    p.telefono_ufficio,
+                    p.telefono_cell,
+                    p.abilitUniCo,
                 ].join("|");
 
                 if (!map.has(key)) {
                     map.set(key, {
-                        persona:  p,
+                        persona: p,
                         incarichi: [inc.nome],
-                        role:     inc.nome,
-                        city:     city.nome,
-                        group:    group.nome,
+                        role: inc.nome,
+                        city: city.nome,
+                        group: group.nome,
                     });
                 } else {
                     const existing = map.get(key);
@@ -110,11 +117,11 @@ function _collectUniquePeople() {
  */
 function _matchesPeopleSearch(item) {
     return matchesSearchObj(
-        item.city    || "",
-        item.group   || "",
-        item.role    || "",
-        item.persona?.grado   || "",
-        item.persona?.nome    || "",
+        item.city || "",
+        item.group || "",
+        item.role || "",
+        item.persona?.grado || "",
+        item.persona?.nome || "",
         item.persona?.cognome || "",
     );
 }
@@ -132,11 +139,21 @@ function _matchesPeopleSearch(item) {
 function _createPersonListItem(item) {
     const card = document.createElement("div");
     card.className = "person-compact-card card-enter";
+    card.dataset.search = [
+        item.persona.nome,
+        item.persona.cognome,
+        item.persona.grado,
+        item.group,
+        item.city,
+        ...(item.incarichi || []),
+    ]
+        .join(" ")
+        .toLowerCase();
 
-    const persona  = sanitizePersona(item.persona);
-    const isUnico  = persona.abilitUniCo.toLowerCase() === "si";
+    const persona = sanitizePersona(item.persona);
+    const isUnico = persona.abilitUniCo.toLowerCase() === "si";
     const initials = getInitials(persona.nome, persona.cognome);
-    const numIncarichi   = item.incarichi?.length || 0;
+    const numIncarichi = item.incarichi?.length || 0;
     const incarichiLabel = numIncarichi === 1 ? "incarico" : "incarichi";
 
     card.innerHTML = `
@@ -161,9 +178,9 @@ function _createPersonListItem(item) {
     card.onclick = () =>
         openModal(
             persona,
-            item.role    || "",
-            item.city    || "",
-            item.group   || "",
+            item.role || "",
+            item.city || "",
+            item.group || "",
             item.incarichi || [],
         );
 

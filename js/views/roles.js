@@ -29,7 +29,7 @@ function renderRolesList() {
     allRoles.sort((a, b) => a.role.localeCompare(b.role));
 
     let currentLetter = "";
-    let hasResults    = false;
+    let hasResults = false;
 
     allRoles.forEach((item) => {
         if (!passesAllFilters(item) || !_matchesRoleSearch(item)) return;
@@ -63,10 +63,10 @@ function _collectAllRoles() {
         city.gruppi.forEach((group) => {
             group.incarichi.forEach((inc) => {
                 roles.push({
-                    role:    inc.nome,
+                    role: inc.nome,
                     persona: inc.persona,
-                    city:    city.nome,
-                    group:   group.nome,
+                    city: city.nome,
+                    group: group.nome,
                 });
             });
         });
@@ -87,8 +87,8 @@ function _matchesRoleSearch(item) {
         item.city,
         item.group,
         item.role,
-        item.persona?.grado   || "",
-        item.persona?.nome    || "",
+        item.persona?.grado || "",
+        item.persona?.nome || "",
         item.persona?.cognome || "",
     );
 }
@@ -106,6 +106,16 @@ function _matchesRoleSearch(item) {
 function _createRoleCard(item) {
     const card = document.createElement("div");
     card.className = "person-compact-card card-enter";
+    card.dataset.search = [
+        item.role,
+        item.city,
+        item.group,
+        item.persona?.nome || "",
+        item.persona?.cognome || "",
+        item.persona?.grado || "",
+    ]
+        .join(" ")
+        .toLowerCase();
 
     const hasValidPerson = hasValidPersonData(item.persona);
 
@@ -126,11 +136,11 @@ function _createRoleCard(item) {
                 </div>
             </div>
         `;
-        card.style.cursor  = "default";
+        card.style.cursor = "default";
         card.style.opacity = "0.8";
     } else {
-        const persona  = sanitizePersona(item.persona);
-        const isUnico  = persona.abilitUniCo.toLowerCase() === "si";
+        const persona = sanitizePersona(item.persona);
+        const isUnico = persona.abilitUniCo.toLowerCase() === "si";
         const initials = getInitials(persona.nome, persona.cognome);
 
         card.innerHTML = `
@@ -151,7 +161,8 @@ function _createRoleCard(item) {
             </div>
         `;
 
-        card.onclick = () => openModal(persona, item.role, item.city, item.group);
+        card.onclick = () =>
+            openModal(persona, item.role, item.city, item.group);
     }
 
     return card;

@@ -60,7 +60,7 @@ function syncNavigationWithState() {
  * @returns {void}
  */
 function handleProtocolUrl() {
-    const params   = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
     const protocol = params.get("protocol");
     if (!protocol) return;
 
@@ -68,13 +68,13 @@ function handleProtocolUrl() {
     if (!match) return;
 
     const command = match[1];
-    const param   = match[2] ? decodeURIComponent(match[2]) : null;
+    const param = match[2] ? decodeURIComponent(match[2]) : null;
 
     const VIEW_MAP = {
-        citta:     "cities",
-        gruppi:    "groups",
+        citta: "cities",
+        gruppi: "groups",
         incarichi: "roles",
-        persone:   "people",
+        persone: "people",
     };
 
     if (VIEW_MAP[command]) {
@@ -82,7 +82,7 @@ function handleProtocolUrl() {
 
         if (command === "citta" && param) {
             const city = dbData.find(
-                (c) => c.nome.toLowerCase() === param.toLowerCase()
+                (c) => c.nome.toLowerCase() === param.toLowerCase(),
             );
             if (city) state.selectedCity = city;
         }
@@ -106,17 +106,17 @@ function handleProtocolUrl() {
  */
 function _switchView(view) {
     // Aggiorna classi active
-    document.querySelectorAll(".bottom-nav .nav-item").forEach((n) =>
-        n.classList.toggle("active", n.dataset.view === view)
-    );
+    document
+        .querySelectorAll(".bottom-nav .nav-item")
+        .forEach((n) => n.classList.toggle("active", n.dataset.view === view));
 
-    state.view          = view;
-    state.selectedCity  = null;
+    state.view = view;
+    state.selectedCity = null;
     state.selectedGroup = null;
 
     // Azzera la ricerca
     const searchInput = document.getElementById("searchInput");
-    const clearBtn    = document.getElementById("clearBtn");
+    const clearBtn = document.getElementById("clearBtn");
     if (searchInput) searchInput.value = "";
     state.searchText = "";
     clearBtn?.classList.add("hidden");

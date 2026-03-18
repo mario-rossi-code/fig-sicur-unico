@@ -19,7 +19,7 @@
  * @returns {void}
  */
 function initConnectivityCheck() {
-    window.addEventListener("online",  _updateBanner);
+    window.addEventListener("online", _updateBanner);
     window.addEventListener("offline", _updateBanner);
 
     // Controllo immediato all'avvio
@@ -48,11 +48,15 @@ function _updateBanner() {
     const icon = _banner.querySelector("i");
 
     if (navigator.onLine) {
-        if (_banner.classList.contains("show") && !_banner.classList.contains("success")) {
+        if (
+            _banner.classList.contains("show") &&
+            !_banner.classList.contains("success")
+        ) {
             // Tornati online: feedback positivo temporaneo
             _banner.classList.add("success");
             if (icon) icon.className = "fa-solid fa-check-circle";
-            if (span) span.textContent = "Connessione stabilita, dati aggiornati.";
+            if (span)
+                span.textContent = "Connessione stabilita, dati aggiornati.";
 
             setTimeout(() => {
                 _banner.classList.remove("show");
@@ -69,7 +73,9 @@ function _updateBanner() {
         // Offline
         _banner.classList.remove("success", "hidden");
         if (icon) icon.className = "fa-solid fa-plug-circle-xmark";
-        if (span) span.textContent = "Connessione non disponibile. I dati potrebbero non essere aggiornati.";
+        if (span)
+            span.textContent =
+                "Connessione non disponibile. I dati potrebbero non essere aggiornati.";
         setTimeout(() => _banner.classList.add("show"), 10);
     }
 }

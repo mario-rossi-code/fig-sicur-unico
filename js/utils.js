@@ -22,7 +22,12 @@
  * @returns {string} Stringa pulita.
  */
 function sanitizeValue(value) {
-    if (value === null || value === undefined || value === "null" || value === "undefined") {
+    if (
+        value === null ||
+        value === undefined ||
+        value === "null" ||
+        value === "undefined"
+    ) {
         return "";
     }
     return String(value);
@@ -42,11 +47,11 @@ function hasValidPersonData(persona) {
     if (!persona) return false;
 
     return (
-        (persona.nome             && persona.nome.trim()             !== "") ||
-        (persona.cognome          && persona.cognome.trim()          !== "") ||
-        (persona.grado            && persona.grado.trim()            !== "") ||
-        (persona.abilitUniCo      && persona.abilitUniCo.trim()      !== "") ||
-        (persona.telefono_cell    && persona.telefono_cell.trim()    !== "") ||
+        (persona.nome && persona.nome.trim() !== "") ||
+        (persona.cognome && persona.cognome.trim() !== "") ||
+        (persona.grado && persona.grado.trim() !== "") ||
+        (persona.abilitUniCo && persona.abilitUniCo.trim() !== "") ||
+        (persona.telefono_cell && persona.telefono_cell.trim() !== "") ||
         (persona.telefono_ufficio && persona.telefono_ufficio.trim() !== "")
     );
 }
@@ -60,11 +65,11 @@ function hasValidPersonData(persona) {
  */
 function sanitizePersona(persona) {
     return {
-        nome:             sanitizeValue(persona.nome),
-        cognome:          sanitizeValue(persona.cognome),
-        grado:            sanitizeValue(persona.grado),
-        abilitUniCo:      sanitizeValue(persona.abilitUniCo),
-        telefono_cell:    sanitizeValue(persona.telefono_cell),
+        nome: sanitizeValue(persona.nome),
+        cognome: sanitizeValue(persona.cognome),
+        grado: sanitizeValue(persona.grado),
+        abilitUniCo: sanitizeValue(persona.abilitUniCo),
+        telefono_cell: sanitizeValue(persona.telefono_cell),
         telefono_ufficio: sanitizeValue(persona.telefono_ufficio),
     };
 }
@@ -104,7 +109,7 @@ function matchesSearch(text, groupObj = null) {
                 inc.persona.cognome,
                 inc.nome,
                 inc.persona.grado,
-            )
+            ),
         );
     }
 
@@ -130,8 +135,8 @@ function matchesSearchObj(...fields) {
 
     return tokens.every((token) =>
         fields.some(
-            (field) => field && String(field).toLowerCase().includes(token)
-        )
+            (field) => field && String(field).toLowerCase().includes(token),
+        ),
     );
 }
 
@@ -146,7 +151,9 @@ function matchesSearchObj(...fields) {
  */
 function initLayoutFix() {
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => setTimeout(adjustMainHeight, 100));
+        document.addEventListener("DOMContentLoaded", () =>
+            setTimeout(adjustMainHeight, 100),
+        );
     } else {
         setTimeout(adjustMainHeight, 100);
     }
@@ -160,12 +167,12 @@ function initLayoutFix() {
  * @returns {void}
  */
 function adjustMainHeight() {
-    const header  = document.querySelector(".header");
-    const main    = document.querySelector(".main");
+    const header = document.querySelector(".header");
+    const main = document.querySelector(".main");
 
     if (!main) return;
 
-    const headerHeight    = header ? header.offsetHeight : 0;
+    const headerHeight = header ? header.offsetHeight : 0;
     const availableHeight = window.innerHeight - headerHeight;
 
     main.style.height = `${availableHeight}px`;

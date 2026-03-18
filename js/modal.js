@@ -12,7 +12,7 @@
 // ─── Riferimenti DOM (privati al modulo) ──────────────────────────────────────
 
 /** @type {HTMLElement|null} */
-const _modal     = document.getElementById("personModal");
+const _modal = document.getElementById("personModal");
 
 /** @type {HTMLElement|null} */
 const _modalBody = document.getElementById("modalBody");
@@ -39,7 +39,7 @@ const _modalClose = document.getElementById("modalClose");
  * @returns {void}
  */
 function openModal(persona, incarico, citta, gruppo, incarichiMultipli = null) {
-    const isUnico  = persona.abilitUniCo.toLowerCase() === "si";
+    const isUnico = persona.abilitUniCo.toLowerCase() === "si";
     const initials = getInitials(persona.nome, persona.cognome);
 
     _modalBody.innerHTML = `
@@ -136,12 +136,14 @@ function initModal() {
  */
 function _renderIncarichiList(incarichi) {
     return incarichi
-        .map((inc) => `
+        .map(
+            (inc) => `
             <div class="modal-incarico-item">
                 <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                 ${inc}
             </div>
-        `)
+        `,
+        )
         .join("");
 }
 
@@ -154,8 +156,10 @@ function _renderIncarichiList(incarichi) {
  * @returns {string} HTML dei contatti.
  */
 function _renderContacts(persona) {
-    const hasCellulare = persona.telefono_cell    && persona.telefono_cell.trim()    !== "";
-    const hasUfficio   = persona.telefono_ufficio && persona.telefono_ufficio.trim() !== "";
+    const hasCellulare =
+        persona.telefono_cell && persona.telefono_cell.trim() !== "";
+    const hasUfficio =
+        persona.telefono_ufficio && persona.telefono_ufficio.trim() !== "";
 
     if (!hasCellulare && !hasUfficio) {
         return `

@@ -56,16 +56,17 @@ function _initState() {
     const saved = loadState();
 
     const base = saved || {
-        view:          "cities",
-        selectedCity:  null,
+        view: "cities",
+        selectedCity: null,
         selectedGroup: null,
-        searchText:    "",
+        searchText: "",
     };
 
     // I filtri vengono ripristinati solo se la persistenza è attiva
-    base.filters = (CONFIG.FILTERS.PERSISTENT && saved?.filters)
-        ? saved.filters
-        : { ...CONFIG.FILTERS.DEFAULTS };
+    base.filters =
+        CONFIG.FILTERS.PERSISTENT && saved?.filters
+            ? saved.filters
+            : { ...CONFIG.FILTERS.DEFAULTS };
 
     return base;
 }
@@ -83,17 +84,20 @@ function _initState() {
 function saveState() {
     try {
         const payload = {
-            view:          state.view,
-            selectedCity:  null,
+            view: state.view,
+            selectedCity: null,
             selectedGroup: null,
-            searchText:    "",
+            searchText: "",
         };
 
         if (CONFIG.FILTERS.PERSISTENT) {
             payload.filters = state.filters;
         }
 
-        localStorage.setItem(CONFIG.STORAGE_KEYS.APP_STATE, JSON.stringify(payload));
+        localStorage.setItem(
+            CONFIG.STORAGE_KEYS.APP_STATE,
+            JSON.stringify(payload),
+        );
     } catch (err) {
         console.warn("[State] Impossibile salvare lo stato:", err);
     }

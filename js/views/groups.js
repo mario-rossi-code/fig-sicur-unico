@@ -23,16 +23,22 @@
 function renderGroupsList() {
     DOM.content.className = "view-container list-view";
 
-    const sortedCities = [...dbData].sort((a, b) => a.nome.localeCompare(b.nome));
+    const sortedCities = [...dbData].sort((a, b) =>
+        a.nome.localeCompare(b.nome),
+    );
 
     _renderCityFilterBar(sortedCities);
 
-    const citiesToShow = state.selectedCity ? [state.selectedCity] : sortedCities;
-    const wrapper      = document.createElement("div");
-    let hasResults     = false;
+    const citiesToShow = state.selectedCity
+        ? [state.selectedCity]
+        : sortedCities;
+    const wrapper = document.createElement("div");
+    let hasResults = false;
 
     citiesToShow.forEach((city) => {
-        const sortedGroups = [...city.gruppi].sort((a, b) => a.nome.localeCompare(b.nome));
+        const sortedGroups = [...city.gruppi].sort((a, b) =>
+            a.nome.localeCompare(b.nome),
+        );
         const matchedGroups = [];
 
         sortedGroups.forEach((group) => {
@@ -43,12 +49,12 @@ function renderGroupsList() {
                     inc.persona.grado,
                     inc.persona.nome,
                     inc.persona.cognome,
-                )
+                ),
             );
 
             if (matchedIncarichi.length > 0) {
                 matchedGroups.push(
-                    _createGroupExpandable(city, group, matchedIncarichi)
+                    _createGroupExpandable(city, group, matchedIncarichi),
                 );
             }
         });
@@ -86,11 +92,12 @@ function _renderCityFilterBar(cities) {
 
     /** @param {string} label @param {Object|null} cityObj @param {boolean} isActive */
     const addBtn = (label, cityObj, isActive) => {
-        const btn       = document.createElement("button");
-        btn.className   = `city-nav-btn ${isActive ? "active" : ""}`;
+        const btn = document.createElement("button");
+        btn.className = `city-nav-btn ${isActive ? "active" : ""}`;
         btn.textContent = label;
-        btn.onclick     = () => {
-            state.selectedCity = state.selectedCity?.nome === label ? null : cityObj;
+        btn.onclick = () => {
+            state.selectedCity =
+                state.selectedCity?.nome === label ? null : cityObj;
             render();
         };
         container.appendChild(btn);
@@ -109,8 +116,8 @@ function _renderCityFilterBar(cities) {
                         inc.persona.grado,
                         inc.persona.nome,
                         inc.persona.cognome,
-                    )
-                )
+                    ),
+                ),
             );
             if (!hasMatches) return;
         }
@@ -136,8 +143,8 @@ function _renderCityFilterBar(cities) {
 function _createGroupExpandable(city, group, matchedIncarichi) {
     const shouldExpand = state.searchText !== "";
 
-    const validPersonsCount = group.incarichi.filter(
-        (inc) => hasValidPersonData(inc.persona)
+    const validPersonsCount = group.incarichi.filter((inc) =>
+        hasValidPersonData(inc.persona),
     ).length;
     const pendingCount = group.incarichi.length - validPersonsCount;
 
@@ -160,24 +167,43 @@ function _createGroupExpandable(city, group, matchedIncarichi) {
         </div>
     `;
 
-    const header     = div.querySelector(".group-header");
+    const header = div.querySelector(".group-header");
     const contentDiv = div.querySelector(".group-content");
-    const innerDiv   = div.querySelector(".group-content-inner");
-    const chevron    = div.querySelector(".group-chevron");
+    const innerDiv = div.querySelector(".group-content-inner");
+    const chevron = div.querySelector(".group-chevron");
 
     // Inserisce le card persona nel corpo espandibile
-    matchedIncarichi.forEach((inc) =>
-        innerDiv.appendChild(createPersonCard(inc, city.nome, group.nome))
-    );
+    // CreatePersonCard ritorna la card, aggiungiamo data-search prima di inserirla
+    matchedIncarichi.forEach((inc) => {
+        const card = createPersonCard(inc, city.nome, group.nome);
+        card.dataset.search = [
+            inc.nome,
+            inc.persona?.nome || "",
+            inc.persona?.cognome || "",
+            inc.persona?.grado || "",
+            group.nome,
+            city.nome,
+        ]
+            .join(" ")
+            .toLowerCase();
+        innerDiv.appendChild(card);
+    });
 
-    _attachAccordionBehavior(div, header, contentDiv, innerDiv, chevron, shouldExpand);
+    _attachAccordionBehavior(
+        div,
+        header,
+        contentDiv,
+        innerDiv,
+        chevron,
+        shouldExpand,
+    );
 
     return div;
 }
 
 /**
- * Aggiunge il comportamento accordion (click + animazione max-height)
- * alla card gruppo e un ResizeObserver per mantenere l'altezza aggiornata.
+ * Aggiunge il comportamento accordion alla card gruppo.
+ * Un solo gruppo può essere aperto alla volta: aprirne uno chiude il precedente.
  *
  * @private
  * @param {HTMLElement} div         - Card gruppo radice.
@@ -188,46 +214,78 @@ function _createGroupExpandable(city, group, matchedIncarichi) {
  * @param {boolean}     startOpen   - Se `true`, la card parte aperta.
  * @returns {void}
  */
-function _attachAccordionBehavior(div, header, contentDiv, innerDiv, chevron, startOpen) {
+function _attachAccordionBehavior(
+    div,
+    header,
+    contentDiv,
+    innerDiv,
+    chevron,
+    startOpen,
+) {
     let isAnimating = false;
 
-    // Stato iniziale
-    chevron.style.transform = startOpen ? "rotate(180deg)" : "rotate(0deg)";
+    // Oggetto che rappresenta questo gruppo, usato da _openGroup
+    const self = { div, contentDiv, innerDiv, chevron };
 
+    // Funzione che chiude questo gruppo
+    const close = () => {
+        chevron.style.transform = "rotate(0deg)";
+        contentDiv.style.maxHeight = "0";
+        setTimeout(() => div.classList.remove("expanded"), 400);
+    };
+
+    // Funzione che apre questo gruppo
+    const open = () => {
+        div.classList.add("expanded");
+        chevron.style.transform = "rotate(180deg)";
+        setTimeout(() => {
+            contentDiv.style.maxHeight = `${innerDiv.offsetHeight}px`;
+            setTimeout(() => _scrollGroupToTop(div), 50);
+        }, 10);
+    };
+
+    // Stato iniziale
     if (startOpen) {
+        _openGroup = self;
+        chevron.style.transform = "rotate(180deg)";
         setTimeout(() => {
             contentDiv.style.maxHeight = `${innerDiv.offsetHeight}px`;
             setTimeout(() => _scrollGroupToTop(div), 100);
         }, 50);
+    } else {
+        chevron.style.transform = "rotate(0deg)";
     }
 
     header.onclick = () => {
         if (isAnimating) return;
         isAnimating = true;
+        setTimeout(() => {
+            isAnimating = false;
+        }, 400);
 
         const isExpanding = !div.classList.contains("expanded");
 
-        chevron.style.transform = isExpanding ? "rotate(180deg)" : "rotate(0deg)";
-
         if (isExpanding) {
-            div.classList.add("expanded");
-            setTimeout(() => {
-                contentDiv.style.maxHeight = `${innerDiv.offsetHeight}px`;
-                setTimeout(() => _scrollGroupToTop(div), 50);
-                setTimeout(() => { isAnimating = false; }, 400);
-            }, 10);
+            // Chiude il gruppo attualmente aperto (se diverso da questo)
+            if (_openGroup && _openGroup.div !== div) {
+                _openGroup.chevron.style.transform = "rotate(0deg)";
+                _openGroup.contentDiv.style.maxHeight = "0";
+                setTimeout(
+                    () => _openGroup.div.classList.remove("expanded"),
+                    400,
+                );
+            }
+            _openGroup = self;
+            open();
         } else {
-            contentDiv.style.maxHeight = "0";
-            setTimeout(() => {
-                div.classList.remove("expanded");
-                isAnimating = false;
-            }, 400);
+            _openGroup = null;
+            close();
         }
     };
 
-    // Mantiene l'altezza aggiornata se il contenuto cambia (es. resize)
+    // Mantiene l'altezza aggiornata al resize
     const observer = new ResizeObserver(() => {
-        if (div.classList.contains("expanded") && !isAnimating) {
+        if (div.classList.contains("expanded")) {
             contentDiv.style.maxHeight = `${innerDiv.offsetHeight}px`;
         }
     });
@@ -243,11 +301,11 @@ function _attachAccordionBehavior(div, header, contentDiv, innerDiv, chevron, st
  * @returns {void}
  */
 function _scrollGroupToTop(groupDiv) {
-    const container   = DOM.content;
-    const groupRect   = groupDiv.getBoundingClientRect();
+    const container = DOM.content;
+    const groupRect = groupDiv.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    const rem         = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const halfRem     = rem * 0.5;
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const halfRem = rem * 0.5;
 
     // Cerca l'ultimo letter-header sopra il gruppo
     const letterHeaders = container.querySelectorAll(".letter-header");
@@ -280,7 +338,7 @@ function _scrollGroupToTop(groupDiv) {
 function _createCityHeader(cityName) {
     const header = document.createElement("div");
     header.className = "letter-header";
-    header.id        = `city-${cityName.replace(/\s+/g, "-")}`;
+    header.id = `city-${cityName.replace(/\s+/g, "-")}`;
     header.textContent = cityName;
     return header;
 }

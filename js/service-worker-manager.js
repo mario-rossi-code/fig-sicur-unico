@@ -23,7 +23,8 @@ async function initServiceWorker() {
     if (!("serviceWorker" in navigator)) return;
 
     try {
-        const reg = await navigator.serviceWorker.register("/service-worker.js");
+        const reg =
+            await navigator.serviceWorker.register("/service-worker.js");
         console.log("[SW] Registrato con successo.");
 
         // Nuovo SW trovato durante la registrazione
@@ -56,7 +57,6 @@ async function initServiceWorker() {
                 window.location.reload();
             }
         });
-
     } catch (err) {
         console.error("[SW] Errore nella registrazione:", err);
     }
@@ -98,7 +98,7 @@ function _showUpdateModal(reg) {
     if (document.getElementById("updateNotification")) return;
 
     const modal = document.createElement("div");
-    modal.id        = "updateNotification";
+    modal.id = "updateNotification";
     modal.className = "update-notification";
 
     modal.innerHTML = `
@@ -126,9 +126,9 @@ function _showUpdateModal(reg) {
     `;
 
     document.body.appendChild(modal);
-    document.body.style.overflow       = "hidden";
-    document.body.style.pointerEvents  = "none";
-    modal.style.pointerEvents          = "auto";
+    document.body.style.overflow = "hidden";
+    document.body.style.pointerEvents = "none";
+    modal.style.pointerEvents = "auto";
 
     // Previeni click su overlay
     modal.querySelector(".update-overlay").addEventListener("click", (e) => {
@@ -137,9 +137,9 @@ function _showUpdateModal(reg) {
     });
 
     // Previeni propagazione dai click sul contenuto
-    modal.querySelector(".update-content").addEventListener("click", (e) =>
-        e.stopPropagation()
-    );
+    modal
+        .querySelector(".update-content")
+        .addEventListener("click", (e) => e.stopPropagation());
 
     setTimeout(() => modal.classList.add("show"), 100);
 
@@ -202,7 +202,7 @@ function _applyUpdate(modal, reg) {
  */
 function _dismissModal(modal) {
     modal.classList.remove("show");
-    document.body.style.overflow      = "";
+    document.body.style.overflow = "";
     document.body.style.pointerEvents = "";
 
     setTimeout(() => modal.remove(), 300);

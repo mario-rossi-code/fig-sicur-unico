@@ -30,10 +30,11 @@ function passesUnicoFilter(persona) {
     if (state.filters.unico === CONFIG.FILTER_STATES.UNICO.OFF) return true;
 
     const isUnico =
-        persona?.abilitUniCo &&
-        persona.abilitUniCo.toLowerCase() === "si";
+        persona?.abilitUniCo && persona.abilitUniCo.toLowerCase() === "si";
 
-    return state.filters.unico === CONFIG.FILTER_STATES.UNICO.SI ? isUnico : !isUnico;
+    return state.filters.unico === CONFIG.FILTER_STATES.UNICO.SI
+        ? isUnico
+        : !isUnico;
 }
 
 /**
@@ -111,8 +112,8 @@ function resetFilters() {
  */
 const _UNICO_ICONS = {
     [CONFIG.FILTER_STATES.UNICO.OFF]: "fa-id-card",
-    [CONFIG.FILTER_STATES.UNICO.SI]:  "fa-check-circle",
-    [CONFIG.FILTER_STATES.UNICO.NO]:  "fa-times-circle",
+    [CONFIG.FILTER_STATES.UNICO.SI]: "fa-check-circle",
+    [CONFIG.FILTER_STATES.UNICO.NO]: "fa-times-circle",
 };
 
 /**
@@ -149,25 +150,25 @@ function renderFilterBar(view) {
     const resetBtn = document.createElement("button");
     resetBtn.className = "filter-nav-btn reset-filter-btn";
     resetBtn.innerHTML = '<i class="fa-solid fa-undo-alt"></i>';
-    resetBtn.title     = "Resetta filtri";
-    resetBtn.onclick   = resetFilters;
+    resetBtn.title = "Resetta filtri";
+    resetBtn.onclick = resetFilters;
     container.appendChild(resetBtn);
 
     // Pulsante filtro UniCo
-    const unicoBtn    = document.createElement("button");
-    unicoBtn.id       = "unico-filter-btn";
+    const unicoBtn = document.createElement("button");
+    unicoBtn.id = "unico-filter-btn";
     unicoBtn.className = `filter-nav-btn ${state.filters.unico !== CONFIG.FILTER_STATES.UNICO.OFF ? "active" : ""}`;
     unicoBtn.innerHTML = `<span>Unico</span><i class="fa-solid ${_UNICO_ICONS[state.filters.unico]}"></i>`;
-    unicoBtn.onclick   = cycleUnicoFilter;
+    unicoBtn.onclick = cycleUnicoFilter;
     container.appendChild(unicoBtn);
 
     // Pulsante filtro "In attesa" — solo nella vista Incarichi
     if (view === "roles") {
-        const pendingBtn    = document.createElement("button");
-        pendingBtn.id       = "waiting-filter-btn";
+        const pendingBtn = document.createElement("button");
+        pendingBtn.id = "waiting-filter-btn";
         pendingBtn.className = `filter-nav-btn ${state.filters.pending ? "active" : ""}`;
         pendingBtn.innerHTML = `<span>In attesa</span><i class="fa-solid fa-hourglass-half"></i>`;
-        pendingBtn.onclick   = togglePendingFilter;
+        pendingBtn.onclick = togglePendingFilter;
         container.appendChild(pendingBtn);
     }
 }
@@ -189,7 +190,8 @@ function updateFilterButtons() {
         unicoBtn.className = `filter-nav-btn ${isActive ? "active" : ""}`;
 
         const icon = unicoBtn.querySelector("i");
-        if (icon) icon.className = `fa-solid ${_UNICO_ICONS[state.filters.unico]}`;
+        if (icon)
+            icon.className = `fa-solid ${_UNICO_ICONS[state.filters.unico]}`;
     }
 
     const pendingBtn = container.querySelector("#waiting-filter-btn");

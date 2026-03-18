@@ -281,7 +281,7 @@ self.addEventListener("message", (event) => {
  * @param {PushEvent} event - L'evento di push notification
  */
 self.addEventListener("push", (event) => {
-    // TODO: Implementare notifiche push se necessario
+    // TODO: Implementare notifiche push
     console.log("[Service Worker] Notifica Push ricevuta:", event);
 });
 
@@ -292,6 +292,6 @@ self.addEventListener("push", (event) => {
  * @param {SyncEvent} event - L'evento di sincronizzazione
  */
 self.addEventListener("sync", (event) => {
-    // TODO: Implementare sincronizzazione in background se necessario
+    // TODO: Implementare sincronizzazione in background
     console.log("[Service Worker] Sincronizzazione in background:", event);
 });
