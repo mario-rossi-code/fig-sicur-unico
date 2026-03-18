@@ -101,10 +101,10 @@ async function _loadData() {
  * Scrive la versione dell'app nell'elemento `.version` dell'header.
  * Viene eseguito fuori dal ciclo di init per non bloccare il render iniziale.
  */
-setTimeout(() => {
-    const versionEl = document.querySelector(".version");
-    if (versionEl) versionEl.textContent = `v${CONFIG.APP_VERSION}`;
-}, 0);
+// setTimeout(() => {
+//     const versionEl = document.querySelector(".version");
+//     if (versionEl) versionEl.textContent = `v${CONFIG.APP_VERSION}`;
+// }, 0);
 
 // ─── Bootstrap ────────────────────────────────────────────────────────────────
 
