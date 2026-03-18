@@ -223,6 +223,7 @@ function _attachAccordionBehavior(
     startOpen,
 ) {
     let isAnimating = false;
+    let _openGroup = null;
 
     // Oggetto che rappresenta questo gruppo, usato da _openGroup
     const self = { div, contentDiv, innerDiv, chevron };
