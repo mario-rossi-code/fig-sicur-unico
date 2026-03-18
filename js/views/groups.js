@@ -8,6 +8,9 @@
 
 "use strict";
 
+let _suppressExpand = false;
+let _openGroup = null;
+
 // ─── Entry point ──────────────────────────────────────────────────────────────
 
 /**
@@ -96,9 +99,12 @@ function _renderCityFilterBar(cities) {
         btn.className = `city-nav-btn ${isActive ? "active" : ""}`;
         btn.textContent = label;
         btn.onclick = () => {
+            DOM.content.scrollTop = 0;
             state.selectedCity =
                 state.selectedCity?.nome === label ? null : cityObj;
+            _suppressExpand = true;
             render();
+            _suppressExpand = false;
         };
         container.appendChild(btn);
     };
@@ -141,7 +147,7 @@ function _renderCityFilterBar(cities) {
  * @returns {HTMLElement} Elemento pronto per il DOM.
  */
 function _createGroupExpandable(city, group, matchedIncarichi) {
-    const shouldExpand = state.searchText !== "";
+    const shouldExpand = state.searchText !== "" && !_suppressExpand;
 
     const validPersonsCount = group.incarichi.filter((inc) =>
         hasValidPersonData(inc.persona),

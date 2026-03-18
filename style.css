@@ -1075,7 +1075,7 @@ body:has(.update-notification.show) {
 }
 
 .group-expandable.expanded .group-header {
-    background: var(--primary-bg-active);
+    background: var(--primary);
     border-bottom: 1px solid var(--border-light);
 }
 
@@ -1091,9 +1091,17 @@ body:has(.update-notification.show) {
     font-size: 1.1rem;
 }
 
+.group-expandable.expanded .group-title {
+    color: var(--secondary);
+}
+
 .group-text .group-subtitle {
     font-size: 0.8rem;
     color: var(--text-light);
+}
+
+.group-expandable.expanded .group-subtitle {
+    color: #e7efe9;
 }
 
 .group-chevron {
@@ -1101,6 +1109,10 @@ body:has(.update-notification.show) {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 1.2rem;
     transform: rotate(0deg);
+}
+
+.group-expandable.expanded .group-chevron {
+    color: var(--secondary);
 }
 
 .group-content {
