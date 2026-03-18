@@ -1,0 +1,148 @@
+{
+    "id": "/",
+
+    "name": "FIG. SICUR. UNICO",
+    "short_name": "FIG. SICUR.",
+    "description": "Gestione del personale FIG Sicur UniCo: città, gruppi e incarichi con supporto offline.",
+
+    "lang": "it",
+    "dir": "ltr",
+
+    "start_url": "/index.html?source=pwa",
+    "scope": "/",
+
+    "display": "fullscreen",
+    "display_override": ["standalone", "fullscreen", "minimal-ui"],
+    "orientation": "portrait",
+
+    "background_color": "#066731",
+    "theme_color": "#066731",
+
+    "icons": [
+        {
+            "src": "/assets/icons/icon-96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/assets/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/assets/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/assets/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+
+    "screenshots": [
+        {
+            "src": "/assets/screenshots/home-screen.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "platform": "wide",
+            "label": "Home screen dell'applicazione"
+        },
+        {
+            "src": "/assets/screenshots/groups-view.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "platform": "wide",
+            "label": "Vista gruppi con espansione"
+        },
+        {
+            "src": "/assets/screenshots/roles-view.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "platform": "wide",
+            "label": "Vista incarichi con filtri"
+        },
+        {
+            "src": "/assets/screenshots/people-view.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "platform": "wide",
+            "label": "Vista persone con badge UniCo"
+        }
+    ],
+
+    "shortcuts": [
+        {
+            "name": "Città",
+            "short_name": "Città",
+            "description": "Visualizza tutte le città",
+            "url": "/index.html?view=cities&source=pwa-shortcut",
+            "icons": [
+                {
+                    "src": "/assets/icons/shortcut-cities.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Gruppi",
+            "short_name": "Gruppi",
+            "description": "Visualizza tutti i gruppi",
+            "url": "/index.html?view=groups&source=pwa-shortcut",
+            "icons": [
+                {
+                    "src": "/assets/icons/shortcut-groups.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Incarichi",
+            "short_name": "Incarichi",
+            "description": "Visualizza tutti gli incarichi",
+            "url": "/index.html?view=roles&source=pwa-shortcut",
+            "icons": [
+                {
+                    "src": "/assets/icons/shortcut-roles.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Persone",
+            "short_name": "Persone",
+            "description": "Visualizza tutte le persone",
+            "url": "/index.html?view=people&source=pwa-shortcut",
+            "icons": [
+                {
+                    "src": "/assets/icons/shortcut-people.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ],
+
+    "protocol_handlers": [
+        {
+            "protocol": "web+figsicur",
+            "url": "/index.html?protocol=%s"
+        },
+        {
+            "protocol": "web+unico",
+            "url": "/index.html?protocol=%s"
+        }
+    ],
+
+    "categories": ["business", "productivity"],
+
+    "prefer_related_applications": false
+}
