@@ -16,7 +16,7 @@ const CONFIG = {
     APP_VERSION: "1.0",
 
     /** Nome dell'applicazione. */
-    APP_NAME: "APP SICUR. UNICO",
+    APP_NAME: "FIG. SICUR. UNICO",
 
     // ─── Chiavi localStorage ──────────────────────────────────────────────────
 

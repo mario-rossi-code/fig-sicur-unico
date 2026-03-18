@@ -175,7 +175,7 @@ function updateBreadcrumb(items) {
                     (item, index) => `
                 ${index > 0 ? '<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>' : ""}
                 <span class="${item.active ? "active" : ""}"
-                      ${item.action ? 'style="cursor:pointer;" role="button" tabindex="0"' : ""}>
+                        ${item.action ? 'style="cursor:pointer;" role="button" tabindex="0"' : ""}>
                     ${item.text}
                 </span>
             `,

@@ -104,9 +104,6 @@ function _showUpdateModal(reg) {
     modal.innerHTML = `
         <div class="update-overlay"></div>
         <div class="update-content">
-            <button class="update-close" id="updateCloseBtn" aria-label="Chiudi">
-                <i class="fa-solid fa-times"></i>
-            </button>
             <div class="update-icon">
                 <i class="fa-solid fa-download" aria-hidden="true"></i>
             </div>
@@ -116,10 +113,6 @@ function _showUpdateModal(reg) {
                 <button class="update-btn update-now" id="updateNowBtn">
                     <i class="fa-solid fa-sync-alt" aria-hidden="true"></i>
                     Aggiorna ora
-                </button>
-                <button class="update-btn update-later" id="updateLaterBtn">
-                    <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>
-                    Più tardi
                 </button>
             </div>
         </div>
@@ -207,3 +200,13 @@ function _dismissModal(modal) {
 
     setTimeout(() => modal.remove(), 300);
 }
+
+// FOR TESTING: Mostra il modale di aggiornamento all'avvio
+// setTimeout(() => {
+//     console.log("[TEST] Forzatura modale aggiornamento");
+//     // Crea una registrazione fittizia
+//     const fakeReg = {
+//         waiting: { postMessage: (msg) => console.log("[TEST] SKIP_WAITING inviato", msg) }
+//     };
+//     _showUpdateModal(fakeReg);
+// }, 1000); // Mostra dopo 1 secondi

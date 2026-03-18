@@ -14,8 +14,8 @@
 //* ============================================================================
 
 /**
- * Versione corrente della cache.
- * Il valore viene iniettato automaticamente da build.js al momento del deploy.
+ * Versione corrente della cache
+ * Il valore viene iniettato automaticamente da build.sh al momento del deploy
  * NON modificare manualmente questo valore.
  *
  * @constant {string}

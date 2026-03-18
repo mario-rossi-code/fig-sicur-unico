@@ -800,7 +800,7 @@ body:has(.update-notification.show) {
 }
 
 .modal-phone:hover {
-    background: var(--primary-bg-active);
+    background: var(--primary-dark);
 }
 
 .modal-phone-left {
@@ -1196,6 +1196,7 @@ body:has(.update-notification.show) {
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 20px;
     max-width: 400px;
     width: 90%;
@@ -1208,7 +1209,7 @@ body:has(.update-notification.show) {
 }
 
 [data-theme="dark"] .update-content {
-    background: var(--surface-dark);
+    background: var(--card-bg);
     border-color: var(--border-dark);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
 }
@@ -1224,6 +1225,11 @@ body:has(.update-notification.show) {
     justify-content: center;
     font-size: 28px;
     flex-shrink: 0;
+}
+
+[data-theme="dark"] .update-icon {
+    color: var(--secondary);
+    background: var(--primary);
 }
 
 .update-icon.updating {
@@ -1319,27 +1325,19 @@ body:has(.update-notification.show) {
     height: 32px;
     border-radius: 50%;
     border: none;
-    background: var(--surface);
+    background: none;
     color: var(--text-light);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     font-size: 1rem;
     z-index: 2002;
 }
 
-[data-theme="dark"] .update-close {
-    background: var(--surface-dark);
-    border: 1px solid var(--border-dark);
-}
-
 .update-close:hover {
-    background: var(--surface-hover);
     color: var(--text-main);
-    transform: rotate(90deg);
 }
 
 /* Nessun hover su elementi non appartenenti al modale di notifica aggiornamneto */
@@ -1487,27 +1485,6 @@ body:has(.update-notification.show) {
 .update-btn.update-now:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-}
-
-.update-btn.update-later {
-    background: transparent;
-    color: var(--text-light);
-}
-
-.update-btn.update-later:hover {
-    color: var(--text-main);
-}
-
-.update-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0.5rem;
 }
 
 /** ==== RESPONSIVE DESKTOP ==== */
@@ -1680,7 +1657,6 @@ body:has(.update-notification.show) {
 
     /* Modale notifica di aggiornamento */
     .update-content {
-        flex-direction: column;
         text-align: center;
         padding: 28px 20px;
         gap: 16px;
