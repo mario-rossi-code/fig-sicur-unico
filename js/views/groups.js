@@ -280,16 +280,23 @@ function _attachAccordionBehavior(
             open();
         } else {
             _openGroup = null;
+            isClosing = true;
             close();
+            setTimeout(() => {
+                isClosing = false;
+            }, 400);
         }
     };
 
+    let isClosing = false;
+
     // Mantiene l'altezza aggiornata al resize
     const observer = new ResizeObserver(() => {
-        if (div.classList.contains("expanded")) {
+        if (div.classList.contains("expanded") && !isClosing) {
             contentDiv.style.maxHeight = `${innerDiv.offsetHeight}px`;
         }
     });
+    observer.observe(innerDiv);
     observer.observe(innerDiv);
 }
 

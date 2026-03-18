@@ -135,6 +135,11 @@ function filterInPlace() {
                 } else {
                     // Ricerca azzerata: chiude tutto tranne il gruppo aperto manualmente
                     if (_openGroup?.div !== groupEl) {
+                        // Imposta maxHeight al valore attuale prima di animare verso 0,
+                        // così l'animazione parte dal punto corretto
+                        contentDiv.style.maxHeight = `${innerDiv.offsetHeight}px`;
+                        // Forza reflow prima di impostare 0 per far partire la transizione CSS
+                        contentDiv.offsetHeight;
                         groupEl.classList.remove("expanded");
                         chevron.style.transform = "rotate(0deg)";
                         contentDiv.style.maxHeight = "0";
