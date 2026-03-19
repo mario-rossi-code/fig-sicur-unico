@@ -38,12 +38,7 @@ function initSearch() {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 if (newText !== state.searchText) {
-                    // [TRACK] Traccia ricerca quando si ferma la digitazione
-                    trackEvent("search", {
-                        search_term: newText || "(empty)",
-                        previous_term: state.searchText || "(empty)",
-                        view: state.view,
-                    });
+                    trackSearch(newText || "(empty)", window.currentView);
                 }
             }, 1000);
 
@@ -55,11 +50,8 @@ function initSearch() {
 
     if (clearBtn) {
         clearBtn.addEventListener("click", () => {
-            // [TRACK] Traccia cancellazione ricerca
             if (state.searchText) {
-                trackEvent("search_cleared", {
-                    view: state.view,
-                });
+                trackSearchCleared(window.currentView);
             }
 
             if (searchInput) searchInput.value = "";

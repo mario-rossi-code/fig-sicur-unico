@@ -105,6 +105,12 @@ function handleProtocolUrl() {
  * @returns {void}
  */
 function _switchView(view) {
+    // Aggiorna la vista corrente
+    window.currentView = view;
+
+    // Traccia cambio vista PRIMA di renderizzare
+    trackViewChange(state.view, view);
+
     // Aggiorna classi active
     document
         .querySelectorAll(".bottom-nav .nav-item")
@@ -125,12 +131,6 @@ function _switchView(view) {
     if (CONFIG.FILTERS.RESET_ON_VIEW_CHANGE) {
         resetFiltersToDefaults();
     }
-
-    // Traccia cambio vista
-    trackEvent("view_change", {
-        from_view: state.view,
-        to_view: view,
-    });
 
     render();
     saveState();

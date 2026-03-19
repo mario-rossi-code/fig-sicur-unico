@@ -39,19 +39,16 @@ const _modalClose = document.getElementById("modalClose");
  * @returns {void}
  */
 function openModal(persona, incarico, citta, gruppo, incarichiMultipli = null) {
+    // Traccia apertura modale
+    trackModalOpen(
+        `${persona.nome} ${persona.cognome}`,
+        citta,
+        gruppo,
+        persona.abilitUniCo?.toLowerCase() === "si",
+    );
+
     const isUnico = persona.abilitUniCo.toLowerCase() === "si";
     const initials = getInitials(persona.nome, persona.cognome);
-
-    // [TRACK] Traccia apertura modale
-    trackEvent("modal_open", {
-        person_name: `${persona.nome} ${persona.cognome}`,
-        city: citta,
-        group: gruppo,
-        is_unico: isUnico,
-        has_multiple_roles: !!(
-            incarichiMultipli && incarichiMultipli.length > 1
-        ),
-    });
 
     _modalBody.innerHTML = `
         <div class="modal-simple">

@@ -18,6 +18,18 @@ const CONFIG = {
     /** Nome dell'applicazione. */
     APP_NAME: "FIG. SICUR. UNICO",
 
+    // ─── Google Analytics ──────────────────────────────────────────────────
+    GOOGLE_ANALYTICS: {
+        /** Il tuo ID di misurazione GA4 */
+        MEASUREMENT_ID: "G-3MCJ10R94P",
+
+        /** Se true, abilita il tracciamento */
+        ENABLED: true,
+
+        /** Se true, mostra il bottone di installazione PWA personalizzato */
+        SHOW_INSTALL_BUTTON: true,
+    },
+
     // ─── Chiavi localStorage ──────────────────────────────────────────────────
 
     /** Chiavi utilizzate per il salvataggio nel localStorage. */
@@ -97,18 +109,6 @@ const CONFIG = {
             /** Stato iniziale filtro "In attesa di nomina". */
             pending: false,
         },
-    },
-
-    // ─── Google Analytics ──────────────────────────────────────────────────
-    GOOGLE_ANALYTICS: {
-        /** Il tuo ID di misurazione GA4 */
-        MEASUREMENT_ID: "G-3MCJ10R94P",
-
-        /** Se true, abilita il tracciamento */
-        ENABLED: true,
-
-        /** Se true, traccia i click su tutti i link telefonici */
-        TRACK_PHONE_CLICKS: true,
     },
 
     // ─── Aggiornamento automatico ─────────────────────────────────────────────

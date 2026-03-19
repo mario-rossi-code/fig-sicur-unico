@@ -12,6 +12,9 @@
 
 "use strict";
 
+// Variabile globale per il prompt di installazione PWA
+let deferredPrompt = null;
+
 // ─── Entry point ──────────────────────────────────────────────────────────────
 
 /**
@@ -22,11 +25,12 @@
  * 1. Fix altezza layout (prima del paint per evitare layout shift).
  * 2. Tema (applica subito il colore per evitare flash).
  * 3. Ricerca, modale, navigazione, connettività.
- * 4. Service Worker (asincrono, non blocca il render).
- * 5. Allineamento navbar allo stato salvato.
- * 6. Caricamento dati → render iniziale.
- * 7. Gestione deep link dal protocollo custom.
- * 8. Listener per il controllo aggiornamenti al ritorno in primo piano.
+ * 4. Google Analytics
+ * 5. Service Worker (asincrono, non blocca il render).
+ * 6. Allineamento navbar allo stato salvato.
+ * 7. Caricamento dati → render iniziale.
+ * 8. Gestione deep link dal protocollo custom.
+ * 9. Listener per il controllo aggiornamenti al ritorno in primo piano.
  *
  * @returns {void}
  */
@@ -40,24 +44,17 @@ function initApp() {
     initNavigation();
     initConnectivityCheck();
 
-    // Service Worker e update checker (asincrono)
-    initServiceWorker();
-    navigator.serviceWorker.addEventListener("message", (event) => {
-        if (
-            event.data.type === "SYNC_ANALYTICS" &&
-            typeof _syncOfflineEvents === "function"
-        ) {
-            _syncOfflineEvents();
-        }
-    });
-
-    // Update checker (asincrono)
-    startUpdateChecker();
-
-    // Inizializza Google Analytics
-    if (CONFIG.GOOGLE_ANALYTICS.ENABLED) {
+    // ✨ Inizializza Google Analytics (se abilitato in config)
+    if (CONFIG.GOOGLE_ANALYTICS?.ENABLED) {
         initAnalytics(CONFIG.GOOGLE_ANALYTICS.MEASUREMENT_ID);
+    } else {
+        // Versione fallback se non configurato
+        initAnalytics("G-3MCJ10R94P");
     }
+
+    // Service Worker e update checker (asincroni)
+    initServiceWorker();
+    startUpdateChecker();
 
     // Sincronizza la navbar con la vista ripristinata dal localStorage
     syncNavigationWithState();
@@ -65,13 +62,95 @@ function initApp() {
     // Carica i dati e avvia il render
     _loadData();
 
+    // Inizializza tracking PWA
+    initPWATracking();
+
     // Controlla aggiornamenti SW quando la tab torna attiva
     document.addEventListener("visibilitychange", () => {
-        if (!document.hidden && "serviceWorker" in navigator) {
-            navigator.serviceWorker.ready.then((reg) => reg.update());
+        if (!document.hidden) {
+            // Traccia quando l'app torna in primo piano
+            if (typeof trackEvent === "function") {
+                trackEvent("app_foreground");
+            }
+
+            // Controlla aggiornamenti SW
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.ready.then((reg) => reg.update());
+            }
         }
     });
 }
+
+/**
+ * Inizializza il tracking per le funzionalità PWA (installazione, prompt, ecc.)
+ * @private
+ */
+function initPWATracking() {
+    // Traccia quando l'app viene installata
+    window.addEventListener("appinstalled", (event) => {
+        console.log("[App] PWA installata");
+        if (typeof trackPWAInstall === "function") {
+            trackPWAInstall("accepted");
+        }
+    });
+
+    // Traccia quando viene mostrato il prompt di installazione
+    window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        console.log("[App] Prompt installazione mostrato");
+        if (typeof trackInstallPromptShown === "function") {
+            trackInstallPromptShown(e.platforms);
+        }
+
+        // Opzionale: mostra un bottone personalizzato per installare
+        const installBtn = document.getElementById("installButton");
+        if (installBtn) {
+            installBtn.style.display = "block";
+            installBtn.addEventListener("click", handleInstallClick);
+        }
+    });
+
+    // Traccia se l'utente ha già l'app installata all'avvio
+    if (typeof getDisplayMode === "function") {
+        const mode = getDisplayMode();
+        console.log("[App] Modalità visualizzazione:", mode);
+    }
+}
+
+/**
+ * Gestisce il click sul bottone di installazione personalizzato
+ * @private
+ */
+async function handleInstallClick() {
+    if (!deferredPrompt) return;
+
+    // Traccia click sul bottone
+    if (typeof trackEvent === "function") {
+        trackEvent("install_button_click");
+    }
+
+    // Mostra il prompt nativo del browser
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+
+    // Traccia il risultato
+    console.log("[App] Risultato installazione:", outcome);
+    if (typeof trackPWAInstall === "function") {
+        trackPWAInstall(outcome);
+    }
+
+    // Nascondi il bottone e resetta il prompt
+    const installBtn = document.getElementById("installButton");
+    if (installBtn) {
+        installBtn.style.display = "none";
+    }
+    deferredPrompt = null;
+}
+
+// Aggiungi questo per tenere traccia della vista corrente
+window.currentView = "cities";
 
 // ─── Caricamento dati ─────────────────────────────────────────────────────────
 
@@ -85,6 +164,11 @@ function initApp() {
  */
 async function _loadData() {
     try {
+        // Traccia inizio caricamento dati
+        if (typeof trackEvent === "function") {
+            trackEvent("data_load_start");
+        }
+
         const res = await fetch(CONFIG.PATHS.DB_JSON);
 
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -92,10 +176,28 @@ async function _loadData() {
         const json = await res.json();
         dbData = json.citta;
 
+        // Traccia successo caricamento
+        if (typeof trackEvent === "function") {
+            trackEvent("data_load_complete", {
+                cities_count: dbData.length,
+                total_groups: dbData.reduce(
+                    (acc, city) => acc + city.gruppi.length,
+                    0,
+                ),
+            });
+        }
+
         render();
         handleProtocolUrl();
     } catch (err) {
         console.error("[App] Errore nel caricamento dei dati:", err);
+
+        // Traccia errore caricamento
+        if (typeof trackEvent === "function") {
+            trackEvent("data_load_error", {
+                error: err.message,
+            });
+        }
 
         const content = document.getElementById("content");
         if (content) {
@@ -120,13 +222,6 @@ async function _loadData() {
 //     const versionEl = document.querySelector(".version");
 //     if (versionEl) versionEl.textContent = `v${CONFIG.APP_VERSION}`;
 // }, 0);
-
-// ─── Listener per tracciare quando l'app torna in primo piano ─────────────────
-document.addEventListener("visibilitychange", () => {
-    if (!document.hidden) {
-        trackEvent("app_foreground");
-    }
-});
 
 // ─── Bootstrap ────────────────────────────────────────────────────────────────
 

@@ -1752,3 +1752,26 @@ body:has(.update-notification.show) {
         opacity: 1;
     }
 }
+
+.install-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+}
+
+.install-btn:hover {
+    background: var(--primary-dark);
+}
+
+.install-btn i {
+    font-size: 1rem;
+}

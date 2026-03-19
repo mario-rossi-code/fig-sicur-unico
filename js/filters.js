@@ -77,12 +77,8 @@ function cycleUnicoFilter() {
     const numStates = Object.keys(CONFIG.FILTER_STATES.UNICO).length;
     state.filters.unico = (state.filters.unico + 1) % numStates;
 
-    // [TRACK] Traccia cambio filtro
-    trackEvent("filter_change", {
-        filter_type: "unico",
-        old_value: oldValue,
-        new_value: state.filters.unico,
-    });
+    // Traccia cambio filtro
+    trackFilterChange("unico", oldValue, state.filters.unico);
 
     updateFilterButtons();
     render();
@@ -98,12 +94,7 @@ function togglePendingFilter() {
     const oldValue = state.filters.pending;
     state.filters.pending = !state.filters.pending;
 
-    // [TRACK] Traccia cambio filtro
-    trackEvent("filter_change", {
-        filter_type: "pending",
-        old_value: oldValue,
-        new_value: state.filters.pending,
-    });
+    trackFilterChange("pending", oldValue, state.filters.pending);
 
     updateFilterButtons();
     render();
@@ -116,9 +107,7 @@ function togglePendingFilter() {
  * @returns {void}
  */
 function resetFilters() {
-    // [TRACK] Traccia reset filtri
-    trackEvent("filter_reset");
-
+    trackFilterReset();
     resetFiltersToDefaults();
     updateFilterButtons();
     render();

@@ -95,9 +95,7 @@ function startUpdateChecker() {
  * @returns {void}
  */
 function _showUpdateModal(reg) {
-    // [TRACK] Traccia notifica aggiornamento
-    trackEvent("update_available");
-
+    trackUpdateAvailable();
     if (document.getElementById("updateNotification")) return;
 
     const modal = document.createElement("div");
@@ -142,8 +140,7 @@ function _showUpdateModal(reg) {
     // Listener pulsanti
     document.getElementById("updateNowBtn").addEventListener("click", (e) => {
         e.stopPropagation();
-        // [TRACK] Traccia aggiornamento accettato
-        trackEvent("update_accepted");
+        trackUpdateAccepted();
         _applyUpdate(modal, reg);
     });
 
