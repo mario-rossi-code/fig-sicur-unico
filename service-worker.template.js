@@ -286,12 +286,21 @@ self.addEventListener("push", (event) => {
 });
 
 /**
- * Evento 'sync' - Gestisce la sincronizzazione in background (da implementare)
+ * Evento 'sync' - Gestisce la sincronizzazione in background
  *
  * @event sync
  * @param {SyncEvent} event - L'evento di sincronizzazione
  */
 self.addEventListener("sync", (event) => {
-    // TODO: Implementare sincronizzazione in background
-    console.log("[Service Worker] Sincronizzazione in background:", event);
+    if (event.tag === "ga-sync") {
+        event.waitUntil(
+            self.clients.matchAll().then((clients) => {
+                clients.forEach((client) => {
+                    client.postMessage({
+                        type: "SYNC_ANALYTICS",
+                    });
+                });
+            }),
+        );
+    }
 });

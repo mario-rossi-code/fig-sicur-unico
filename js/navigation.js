@@ -126,6 +126,12 @@ function _switchView(view) {
         resetFiltersToDefaults();
     }
 
+    // Traccia cambio vista
+    trackEvent("view_change", {
+        from_view: state.view,
+        to_view: view,
+    });
+
     render();
     saveState();
 }

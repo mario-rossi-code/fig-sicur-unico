@@ -29,8 +29,25 @@ function initSearch() {
     const clearBtn = document.getElementById("clearBtn");
 
     if (searchInput) {
+        let searchTimeout;
+
         searchInput.addEventListener("input", (e) => {
-            state.searchText = e.target.value.toLowerCase().trim();
+            const newText = e.target.value.toLowerCase().trim();
+
+            // Debounce per non tracciare ogni singolo carattere
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                if (newText !== state.searchText) {
+                    // [TRACK] Traccia ricerca quando si ferma la digitazione
+                    trackEvent("search", {
+                        search_term: newText || "(empty)",
+                        previous_term: state.searchText || "(empty)",
+                        view: state.view,
+                    });
+                }
+            }, 1000);
+
+            state.searchText = newText;
             clearBtn?.classList.toggle("hidden", state.searchText === "");
             filterInPlace();
         });
@@ -38,6 +55,13 @@ function initSearch() {
 
     if (clearBtn) {
         clearBtn.addEventListener("click", () => {
+            // [TRACK] Traccia cancellazione ricerca
+            if (state.searchText) {
+                trackEvent("search_cleared", {
+                    view: state.view,
+                });
+            }
+
             if (searchInput) searchInput.value = "";
             state.searchText = "";
             clearBtn.classList.add("hidden");

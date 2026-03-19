@@ -99,6 +99,18 @@ const CONFIG = {
         },
     },
 
+    // ─── Google Analytics ──────────────────────────────────────────────────
+    GOOGLE_ANALYTICS: {
+        /** Il tuo ID di misurazione GA4 */
+        MEASUREMENT_ID: "G-3MCJ10R94P",
+
+        /** Se true, abilita il tracciamento */
+        ENABLED: true,
+
+        /** Se true, traccia i click su tutti i link telefonici */
+        TRACK_PHONE_CLICKS: true,
+    },
+
     // ─── Aggiornamento automatico ─────────────────────────────────────────────
 
     /**

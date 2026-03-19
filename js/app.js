@@ -40,9 +40,24 @@ function initApp() {
     initNavigation();
     initConnectivityCheck();
 
-    // Service Worker e update checker (asincroni)
+    // Service Worker e update checker (asincrono)
     initServiceWorker();
+    navigator.serviceWorker.addEventListener("message", (event) => {
+        if (
+            event.data.type === "SYNC_ANALYTICS" &&
+            typeof _syncOfflineEvents === "function"
+        ) {
+            _syncOfflineEvents();
+        }
+    });
+
+    // Update checker (asincrono)
     startUpdateChecker();
+
+    // Inizializza Google Analytics
+    if (CONFIG.GOOGLE_ANALYTICS.ENABLED) {
+        initAnalytics(CONFIG.GOOGLE_ANALYTICS.MEASUREMENT_ID);
+    }
 
     // Sincronizza la navbar con la vista ripristinata dal localStorage
     syncNavigationWithState();
@@ -105,6 +120,13 @@ async function _loadData() {
 //     const versionEl = document.querySelector(".version");
 //     if (versionEl) versionEl.textContent = `v${CONFIG.APP_VERSION}`;
 // }, 0);
+
+// ─── Listener per tracciare quando l'app torna in primo piano ─────────────────
+document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+        trackEvent("app_foreground");
+    }
+});
 
 // ─── Bootstrap ────────────────────────────────────────────────────────────────
 
