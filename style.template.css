@@ -1,5 +1,5 @@
 /**
- * @file style.css
+ * @file style.template.css
  * @description Entry point CSS — importa tutti i moduli nell'ordine corretto:
  *              variabili → base → layout → componenti → viste → animazioni → responsive.
  *
