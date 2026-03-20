@@ -203,11 +203,11 @@ function _dismissModal(modal) {
 }
 
 // FOR TESTING: Mostra il modale di aggiornamento all'avvio
-setTimeout(() => {
-    console.log("[TEST] Forzatura modale aggiornamento");
-    // Crea una registrazione fittizia
-    const fakeReg = {
-        waiting: { postMessage: (msg) => console.log("[TEST] SKIP_WAITING inviato", msg) }
-    };
-    _showUpdateModal(fakeReg);
-}, 1000); // Mostra dopo 1 secondi
+// setTimeout(() => {
+//     console.log("[TEST] Forzatura modale aggiornamento");
+//     // Crea una registrazione fittizia
+//     const fakeReg = {
+//         waiting: { postMessage: (msg) => console.log("[TEST] SKIP_WAITING inviato", msg) }
+//     };
+//     _showUpdateModal(fakeReg);
+// }, 1000); // Mostra dopo 1 secondi
