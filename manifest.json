@@ -105,7 +105,7 @@
             "url": "/index.html?view=groups&source=pwa-shortcut",
             "icons": [
                 {
-                    "src": "/assets/shortcut/shortcut-groups.png",
+                    "src": "/assets/shortcuts/shortcut-groups.png",
                     "sizes": "96x96",
                     "type": "image/png"
                 }
@@ -118,7 +118,7 @@
             "url": "/index.html?view=roles&source=pwa-shortcut",
             "icons": [
                 {
-                    "src": "/assets/shortcut/shortcut-roles.png",
+                    "src": "/assets/shortcuts/shortcut-roles.png",
                     "sizes": "96x96",
                     "type": "image/png"
                 }
@@ -131,7 +131,7 @@
             "url": "/index.html?view=people&source=pwa-shortcut",
             "icons": [
                 {
-                    "src": "/assets/shortcut/shortcut-soldiers.png",
+                    "src": "/assets/shortcuts/shortcut-soldiers.png",
                     "sizes": "96x96",
                     "type": "image/png"
                 }
