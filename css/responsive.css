@@ -1,0 +1,222 @@
+/**
+ * @file css/responsive.css
+ * @description Media query per desktop (≥769px), mobile M-L (≤768px)
+ *              e mobile S (≤319px).
+ */
+
+/* ── Desktop ─────────────────────────────────────────────────────────────── */
+
+@media (min-width: 769px) {
+    .header {
+        height: var(--header-height-desktop);
+    }
+
+    .main {
+        height: calc(100dvh - var(--header-height-desktop));
+    }
+
+    .cities-grid {
+        gap: 4rem;
+        grid-template-columns: repeat(3, 1fr);
+        padding-top: 3rem;
+    }
+
+    .city-filter {
+        padding: 0.5rem 0;
+        margin-top: 1rem;
+    }
+
+    .view-container {
+        padding-bottom: calc(var(--nav-height-desktop) + 1rem);
+    }
+
+    .bottom-nav {
+        bottom: 0;
+        height: var(--nav-height-desktop);
+        background: var(--card-bg);
+        border-top: 1px solid var(--border-light);
+        padding: 0.8rem 0;
+        padding-bottom: calc(0.8rem + env(safe-area-inset-bottom));
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+    }
+
+    .nav-item.active i {
+        transform: translateY(-2px);
+    }
+    .nav-item i {
+        font-size: 1.2rem;
+    }
+    .nav-item span {
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    .offline-banner {
+        height: var(--header-height-desktop);
+    }
+}
+
+/* ── Mobile M-L ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .header {
+        height: var(--header-height-mobile);
+    }
+
+    .main {
+        height: calc(100dvh - var(--header-height-mobile));
+    }
+
+    /* Filter buttons: icon-only on mobile */
+    .filter-nav-btn span {
+        display: none;
+    }
+    .filter-nav-btn {
+        padding: 0.4rem 0.8rem;
+    }
+    .filter-nav-btn i {
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    /* UniCo / In attesa keep their animated label */
+    #waiting-filter-btn span,
+    #unico-filter-btn span {
+        display: inline-block;
+    }
+
+    #waiting-filter-btn,
+    #unico-filter-btn {
+        max-width: 42px;
+        padding: 0.4rem;
+    }
+
+    #waiting-filter-btn i,
+    #unico-filter-btn i {
+        font-size: 1.1rem;
+        width: 24px;
+        margin: 0;
+    }
+
+    #waiting-filter-btn.active,
+    #unico-filter-btn.active {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .view-container::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    .cities-grid {
+        gap: 1rem;
+        padding-top: 1rem;
+    }
+
+    .view-container {
+        padding-bottom: calc(var(--nav-height-mobile) + 1rem);
+    }
+
+    /* Floating pill navbar */
+    .bottom-nav {
+        bottom: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        min-width: 320px;
+        height: var(--nav-height-mobile);
+        border-radius: 40px;
+        padding: 0.6rem 0.3rem;
+        background-color: var(--modal-background);
+        gap: 0.3rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-item {
+        padding: 0.4rem 0.6rem;
+        border-radius: 30px;
+    }
+
+    .nav-item.active {
+        background: var(--primary-nav-item-active);
+        color: var(--primary);
+    }
+
+    .nav-item i {
+        font-size: 1.1rem;
+    }
+    .nav-item span {
+        font-size: 0.7rem;
+    }
+
+    /* Update modal on mobile */
+    .update-content {
+        text-align: center;
+        padding: 28px 20px;
+        width: 95%;
+    }
+
+    .update-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .update-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .update-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 32px;
+    }
+
+    .update-close {
+        top: 5px;
+        right: 5px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .offline-banner {
+        height: var(--header-height-mobile);
+    }
+}
+
+/* ── Mobile S ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 319px) {
+    .header h1 {
+        font-size: 1.1rem;
+    }
+    .bottom-nav {
+        min-width: 250px;
+    }
+    .nav-item i {
+        font-size: 0.9rem;
+    }
+
+    .update-content {
+        padding: 20px 15px;
+    }
+    .update-title {
+        font-size: 1rem;
+    }
+    .update-message {
+        font-size: 0.85rem;
+    }
+}

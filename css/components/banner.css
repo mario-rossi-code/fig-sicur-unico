@@ -1,0 +1,209 @@
+/**
+ * @file css/components/banner.css
+ * @description Banner connettività offline/online e modale di aggiornamento SW.
+ */
+
+/* ── Offline banner ──────────────────────────────────────────────────────── */
+
+.offline-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--error);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 9999;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(200, 75, 75, 0.3);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-100%);
+}
+
+.offline-banner.show {
+    transform: translateY(0);
+}
+
+.offline-banner.success {
+    background: var(--success);
+    box-shadow: 0 4px 15px rgba(47, 156, 93, 0.3);
+}
+
+.offline-banner i {
+    font-size: 1.1rem;
+    animation: pulse 2s infinite;
+}
+
+/* ── Update notification modal ───────────────────────────────────────────── */
+
+.update-notification {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.update-notification.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.update-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease;
+}
+
+[data-theme="dark"] .update-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Prevent clicks on elements behind the modal */
+.update-notification.show ~ * {
+    pointer-events: none !important;
+}
+
+.update-content {
+    position: relative;
+    background: var(--modal-background);
+    width: 90%;
+    max-width: 380px;
+    padding: 2rem;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: var(--shadow-medium);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid var(--border-light);
+    z-index: 2001;
+}
+
+[data-theme="dark"] .update-content {
+    background: var(--card-bg);
+    border-color: var(--border-dark);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.update-notification.show .update-content {
+    transform: scale(1) translateY(0);
+}
+
+.update-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--primary-bg-active);
+    color: var(--primary);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.8rem;
+}
+
+[data-theme="dark"] .update-icon {
+    color: var(--secondary);
+}
+.update-icon.updating i {
+    color: var(--secondary);
+}
+
+.update-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.update-message {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.update-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.update-btn {
+    padding: 0.9rem;
+    border-radius: 16px;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.update-btn.update-now {
+    background: var(--primary);
+    color: white;
+}
+
+.update-btn.update-now:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .update-btn.update-now {
+    background: var(--primary-dark);
+}
+[data-theme="dark"] .update-btn.update-now:hover {
+    background: var(--primary);
+}
+
+.update-btn.update-later {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-light);
+}
+
+.update-btn.update-later:hover {
+    background: var(--primary-bg-hover);
+    transform: translateY(-2px);
+}
+
+.update-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    z-index: 2002;
+}
+
+.update-close:hover {
+    color: var(--text-main);
+}

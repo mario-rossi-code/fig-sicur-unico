@@ -1,0 +1,52 @@
+/**
+ * @file css/components/navbar.css
+ * @description Bottom navigation bar e singoli nav-item.
+ */
+
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.nav-item span {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    color: var(--primary);
+}
+.nav-item.active {
+    color: var(--primary);
+}
+
+[data-theme="dark"] .nav-item i {
+    color: var(--primary);
+}
+[data-theme="dark"] .nav-item.active i {
+    color: var(--secondary);
+}

@@ -1,0 +1,46 @@
+/**
+ * @file css/components/breadcrumb.css
+ * @description Breadcrumb di navigazione gerarchica (Città → Gruppo → Persone).
+ */
+
+.breadcrumb-container {
+    flex-shrink: 0;
+    padding: 0 0.5rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    max-width: var(--max-width-container);
+    width: 100%;
+}
+
+.breadcrumb-container:empty {
+    display: none;
+    height: 0;
+    padding: 0;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.breadcrumb span {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb span:hover {
+    color: var(--primary);
+}
+
+.breadcrumb .active {
+    color: var(--text-main);
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.breadcrumb i {
+    font-size: 0.8rem;
+}

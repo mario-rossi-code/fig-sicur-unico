@@ -1,0 +1,93 @@
+/**
+ * @file css/variables.css
+ * @description Variabili CSS globali: palette, shadow, layout e animazioni.
+ *              Contiene i valori per il tema light (default) e dark.
+ */
+
+:root {
+    --primary: #066731;
+    --primary-dark: #0f4d2f;
+
+    --secondary: #f9c800;
+    --secondary-dark: #d4a017;
+
+    --background: #f3f5f3;
+    --background-dark: #0b1a13;
+    --modal-background: #f3f5f3;
+
+    --card-bg: #ffffff;
+    --card-bg-dark: #18231e;
+
+    --text-main: #1b2a23;
+    --text-light: #6c7a72;
+
+    --border-light: rgba(0, 0, 0, 0.08);
+    --border-dark: rgba(255, 255, 255, 0.06);
+    --border-focus: rgba(31, 111, 61, 0.25);
+
+    /* interaction */
+    --primary-bg-hover: rgba(31, 111, 61, 0.08);
+    --primary-bg-active: rgba(31, 111, 61, 0.15);
+    --primary-bg-light: rgba(42, 204, 104, 0.5);
+
+    --primary-nav-item-hover: rgba(31, 111, 61, 0.08);
+    --primary-nav-item-active: rgba(47, 156, 93, 0.2);
+
+    /* status */
+    --success: #2f9c5d;
+    --success-bg: rgba(47, 156, 93, 0.12);
+    --success-border: rgba(47, 156, 93, 0.25);
+
+    --error: #c84b4b;
+    --error-bg: rgba(200, 75, 75, 0.1);
+    --error-border: rgba(200, 75, 75, 0.2);
+
+    /* shadows */
+    --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 6px 25px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 15px 35px rgba(31, 111, 61, 0.25);
+
+    /* layout */
+    --max-width-container: 1400px;
+    --header-height-mobile: 60px;
+    --header-height-desktop: 75px;
+    --nav-height-mobile: 60px;
+    --nav-height-desktop: 80px;
+}
+
+[data-theme="dark"] {
+    --background: #04140d;
+    --modal-background: #0b1a13;
+    --card-bg: #16241d;
+    --card-bg-dark: #0f1a15;
+
+    --text-main: #e7efe9;
+    --text-light: #9fb0a7;
+
+    --primary: #2a8a53;
+    --primary-dark: #1c5c3a;
+
+    --secondary: #f5c400;
+    --secondary-dark: #d4a017;
+
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-dark: rgba(0, 0, 0, 0.4);
+
+    --primary-bg-hover: rgba(31, 111, 61, 0.08);
+    --primary-bg-active: rgba(80, 243, 142, 0.15);
+    --primary-bg-light: rgba(121, 245, 169, 0.45);
+
+    --primary-nav-item-hover: rgba(245, 196, 0, 0.08);
+    --primary-nav-item-active: rgba(47, 156, 93, 0.2);
+
+    --success: #4ed08a;
+    --success-bg: rgba(78, 208, 138, 0.12);
+    --success-border: rgba(78, 208, 138, 0.25);
+
+    --error: #ff7b7b;
+    --error-bg: rgba(255, 123, 123, 0.1);
+    --error-border: rgba(255, 123, 123, 0.25);
+
+    --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --shadow-hover: 0 20px 45px rgba(0, 0, 0, 0.55);
+}

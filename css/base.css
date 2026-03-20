@@ -1,0 +1,61 @@
+/**
+ * @file css/base.css
+ * @description Reset, stili di base del documento e classi di utilità generiche.
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body {
+    background: var(--background);
+    color: var(--text-main);
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+    min-height: 100dvh;
+    overflow: hidden;
+}
+
+/* Previene interazioni quando il modale di aggiornamento è visibile */
+body:has(.update-notification.show) {
+    overflow: hidden !important;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.container {
+    max-width: var(--max-width-container);
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+
+/* ── Utility ─────────────────────────────────────────────────────────────── */
+
+.hidden {
+    display: none !important;
+}
+
+.no-results {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--card-bg);
+    border-radius: 30px;
+}
+
+.no-results i {
+    font-size: 3rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.no-results p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}

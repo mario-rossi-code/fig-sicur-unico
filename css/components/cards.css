@@ -1,0 +1,183 @@
+/**
+ * @file css/components/cards.css
+ * @description Card generica, card persona compatta, avatar e badge.
+ */
+
+/* ── List item card (generica) ───────────────────────────────────────────── */
+
+.list-item-card {
+    background: var(--primary-bg-active);
+    border-radius: 14px;
+    padding: 1rem 1.4rem;
+    border: 1px solid var(--border-light);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+[data-theme="dark"] .list-item-card {
+    background: var(--card-bg);
+}
+
+.list-item-card:not(:first-child) {
+    margin-top: 0.5rem;
+}
+
+.list-item-card:hover {
+    border-color: var(--primary);
+}
+
+.list-item-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+.list-item-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 0.2rem;
+}
+
+/* ── Person compact card ─────────────────────────────────────────────────── */
+
+.person-compact-card {
+    background: var(--primary-bg-active);
+    border-radius: 16px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid var(--border-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.person-compact-card:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .person-compact-card {
+    background: var(--card-bg);
+}
+
+.person-compact-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Non-interactive (vacant slot) */
+.person-compact-card[style*="cursor: default"]:hover {
+    border-color: var(--border-light);
+    box-shadow: none;
+    transform: none;
+}
+
+.person-compact-info {
+    flex: 1;
+}
+
+.person-compact-name {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.8rem;
+}
+
+.person-compact-role {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+/* ── Avatar ──────────────────────────────────────────────────────────────── */
+
+.avatar-small {
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+    background: var(--primary);
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.avatar-small i {
+    color: var(--secondary);
+}
+
+.avatar-small .avatar-status {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid var(--background);
+}
+
+/* ── Status dot ──────────────────────────────────────────────────────────── */
+
+.status-ok {
+    background: var(--success);
+}
+.status-no {
+    background: var(--error);
+}
+
+/* ── Badges ──────────────────────────────────────────────────────────────── */
+
+.unico-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: var(--success-bg);
+    color: var(--success);
+    border: 1px solid var(--success-border);
+}
+
+.unico-badge.no {
+    background: var(--error-bg);
+    color: var(--error);
+    border-color: var(--error-border);
+}
+
+.pending-badge {
+    display: inline-block;
+    background: var(--text-light);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .pending-badge {
+    background: var(--primary-dark);
+    color: var(--text-main);
+}
+
+/* ── Operational detail row ──────────────────────────────────────────────── */
+
+.operational-detail {
+    margin-top: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-light);
+}
+
+.divider {
+    font-size: 0.7rem;
+}
+.incarichi-count {
+    font-size: 0.8rem;
+}

@@ -1,0 +1,31 @@
+/**
+ * @file css/views/cities.css
+ * @description Griglia delle città (livello 1 della navigazione gerarchica).
+ */
+
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: start;
+    padding: 0;
+    scrollbar-width: none;
+}
+
+.cities-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* Card città nella griglia: quadrata e centrata */
+.cities-grid .list-item-card {
+    aspect-ratio: 1 / 1;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 0;
+}
+
+.cities-grid .list-item-card:not(:first-child) {
+    margin-top: 0;
+}
