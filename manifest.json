@@ -99,19 +99,6 @@
 
     "shortcuts": [
         {
-            "name": "Città",
-            "short_name": "Città",
-            "description": "Visualizza tutte le città",
-            "url": "/index.html?view=cities&source=pwa-shortcut",
-            "icons": [
-                {
-                    "src": "/assets/icons/shortcut-cities.png",
-                    "sizes": "96x96",
-                    "type": "image/png"
-                }
-            ]
-        },
-        {
             "name": "Gruppi",
             "short_name": "Gruppi",
             "description": "Visualizza tutti i gruppi",
