@@ -47,16 +47,56 @@ const state = _initState();
 // ─── Funzioni di stato ────────────────────────────────────────────────────────
 
 /**
- * Inizializza lo stato caricando dal localStorage o usando i valori di default.
+ * Legge i parametri dall'URL e restituisce un oggetto con i valori.
+ * Utile per gestire shortcut e navigazione diretta.
+ * @returns {Object}
+ */
+function getUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        view: params.get("view"),
+        protocol: params.get("protocol"),
+        source: params.get("source"),
+    };
+}
+
+/**
+ * Rimuove i parametri dall'URL dopo che sono stati processati.
+ * Utile per evitare che i parametri delle shortcut rimangano visibili.
+ */
+function cleanUrlParams() {
+    if (window.location.search) {
+        const url = new URL(window.location.href);
+        url.search = "";
+        window.history.replaceState({}, "", url.toString());
+    }
+}
+
+/**
+ * Inizializza lo stato caricando dal localStorage, dai parametri URL o usando i valori di default.
  * I filtri vengono sempre ricreati dai default se `CONFIG.FILTERS.PERSISTENT` è false.
  * @private
  * @returns {AppState}
  */
 function _initState() {
     const saved = loadState();
+    const urlParams = getUrlParams();
 
-    const base = saved || {
-        view: "cities",
+    // Determina la vista: priorità a URL params, poi localStorage, infine default
+    let initialView = "cities";
+
+    if (
+        urlParams.view &&
+        ["cities", "groups", "roles", "people"].includes(urlParams.view)
+    ) {
+        initialView = urlParams.view;
+        console.log(`[State] Vista impostata da URL param: ${initialView}`);
+    } else if (saved?.view) {
+        initialView = saved.view;
+    }
+
+    const base = {
+        view: initialView,
         selectedCity: null,
         selectedGroup: null,
         searchText: "",
@@ -83,6 +123,15 @@ function _initState() {
  */
 function saveState() {
     try {
+        // Non salva lo stato se è stato impostato da una shortcut
+        const urlParams = getUrlParams();
+        if (urlParams.source === "pwa-shortcut") {
+            console.log(
+                "[State] Stato da shortcut, non salvo nel localStorage",
+            );
+            return;
+        }
+
         const payload = {
             view: state.view,
             selectedCity: null,

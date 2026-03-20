@@ -82,6 +82,25 @@ function initApp() {
 }
 
 /**
+ * Sincronizza la navbar con lo stato corrente
+ * @private
+ */
+function syncNavigationWithState() {
+    // Si assicura che state.view sia disponibile
+    if (typeof state !== "undefined" && state.view) {
+        const navItems = document.querySelectorAll(".nav-item");
+        navItems.forEach((item) => {
+            item.classList.remove("active");
+            if (item.getAttribute("data-view") === state.view) {
+                item.classList.add("active");
+            }
+        });
+        window.currentView = state.view;
+        console.log(`[App] Navbar sincronizzata con vista: ${state.view}`);
+    }
+}
+
+/**
  * Inizializza il tracking per le funzionalità PWA (installazione, prompt, ecc.)
  * @private
  */
@@ -149,6 +168,44 @@ async function handleInstallClick() {
     deferredPrompt = null;
 }
 
+/**
+ * Gestisce i parametri URL e pulisce l'URL se necessario
+ * @private
+ */
+function handleUrlParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const view = urlParams.get("view");
+    const source = urlParams.get("source");
+
+    // Se c'è un parametro view valido, si assicura che la vista sia impostata
+    if (view && ["cities", "groups", "roles", "people"].includes(view)) {
+        console.log(
+            `[App] Navigazione da ${source || "URL"} alla vista: ${view}`,
+        );
+
+        // Aggiorna la navbar per riflettere la vista corrente
+        const navItems = document.querySelectorAll(".nav-item");
+        navItems.forEach((item) => {
+            item.classList.remove("active");
+            if (item.getAttribute("data-view") === view) {
+                item.classList.add("active");
+            }
+        });
+
+        // Aggiorna window.currentView
+        window.currentView = view;
+
+        // Se è stato aperto tramite shortcut, pulisce l'URL dopo un breve ritardo
+        if (source === "pwa-shortcut") {
+            setTimeout(() => {
+                if (typeof cleanUrlParams === "function") {
+                    cleanUrlParams();
+                }
+            }, 100);
+        }
+    }
+}
+
 // Variabile per tenere traccia della vista corrente
 window.currentView = "cities";
 
@@ -189,6 +246,9 @@ async function _loadData() {
 
         render();
         handleProtocolUrl();
+
+        // Gestisce i parametri URL dopo il render
+        handleUrlParams();
     } catch (err) {
         console.error("[App] Errore nel caricamento dei dati:", err);
 
