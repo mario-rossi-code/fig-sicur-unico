@@ -1,4 +1,4 @@
-# 🚀 FI UR Unico
+# 🚀 FIG SICUR UNICO
 
 ## Web App Statica – Guida Completa
 
@@ -92,6 +92,65 @@ Installa:
 ### Struttura
 
 fig-sicur-unico/
+│
+├── index.html ← Pagina principale
+├── style.css ← Stili
+├── manifest.json ← PWA manifest
+├── build.sh ← Script build SW
+├── service-worker.template.js ← Template SW
+├── service-worker.js ← Generato da build.sh
+│
+├── assets/
+│ ├── db.json ← Database personale
+│ ├── img/
+│ │ └── logo.png
+│ ├── icons/
+│ │ ├── icon-96.png
+│ │ ├── icon-192.png
+│ │ └── icon-512.png
+│ └── screenshots/ ← Screenshot per il manifest
+│ ├── home-screen.png
+│ ├── groups-view.png
+│ ├── roles-view.png
+│ └── people-view.png
+│
+├── css/
+│ ├── variables.css → :root, [data-theme="dark"]
+│ ├── base.css → \*, body, .container, utility (.hidden, .no-results)
+│ ├── layout.css → header, main, .view-container, .main-content
+│ ├── components/
+│ │ ├── cards.css → .list-item-card, .person-compact-card, .group-expandable
+│ │ ├── modal.css → .modal-overlay, .modal-content, modale militare
+│ │ ├── navbar.css → .bottom-nav, .nav-item
+│ │ ├── search.css → .search-wrapper, .search-box, .city-filter, filtri
+│ │ ├── breadcrumb.css → .breadcrumb-container
+│ │ ├── banner.css → .offline-banner, .update-notification
+│ │ └── avatar.css → .avatar-small, .modal-avatar
+│ ├── views/
+│ │ ├── cities.css → .cities-grid
+│ │ └── groups.css → .group-expandable (parti specifiche)
+│ ├── animations.css → @keyframes, .card-enter
+│ └── responsive.css → @media queries
+│
+└── js/
+├── config.js ← Costanti e configurazione globale
+├── state.js ← Stato app + saveState/loadState
+├── utils.js ← Funzioni pure (sanitize, search, layout)
+├── theme.js ← Tema chiaro/scuro + meta theme-color
+├── filters.js ← Logica filtri + render barra filtri
+├── search.js ← Listener barra di ricerca
+├── modal.js ← Modale dettaglio militare
+├── render.js ← Orchestratore render + builder condivisi
+├── navigation.js ← Bottom nav + deep link
+├── connectivity.js ← Banner online/offline
+├── service-worker-manager.js ← Registrazione SW + modale aggiornamento
+├── app.js ← Bootstrap e initApp()
+│
+└── views/
+├── cities.js ← Vista Città
+├── groups.js ← Vista Gruppi espandibili
+├── roles.js ← Vista Incarichi
+└── people.js ← Vista Militari
 
 ---
 

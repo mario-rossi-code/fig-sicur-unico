@@ -47,32 +47,53 @@
 
     "screenshots": [
         {
-            "src": "/assets/screenshots/home-screen.png",
-            "sizes": "1080x1920",
-            "type": "image/png",
-            "platform": "wide",
+            "src": "/assets/screenshots/cities-light-theme.webp",
+            "sizes": "355x737",
+            "type": "image/webp",
+            "platform": "narrow",
             "label": "Home screen dell'applicazione"
         },
         {
-            "src": "/assets/screenshots/groups-view.png",
-            "sizes": "1080x1920",
-            "type": "image/png",
-            "platform": "wide",
+            "src": "/assets/screenshots/cities-dark-theme.webp",
+            "sizes": "355x737",
+            "type": "image/webp",
+            "platform": "narrow",
+            "label": "Home screen dell'applicazione - tema scuro"
+        },
+        {
+            "src": "/assets/screenshots/groups-light-theme.webp",
+            "sizes": "355x737",
+            "type": "image/webp",
+            "platform": "narrow",
             "label": "Vista gruppi con espansione"
         },
         {
-            "src": "/assets/screenshots/roles-view.png",
-            "sizes": "1080x1920",
-            "type": "image/png",
-            "platform": "wide",
+            "src": "/assets/screenshots/roles-light-theme.webp",
+            "sizes": "355x737",
+            "type": "image/webp",
+            "platform": "narrow",
             "label": "Vista incarichi con filtri"
         },
         {
-            "src": "/assets/screenshots/people-view.png",
-            "sizes": "1080x1920",
-            "type": "image/png",
-            "platform": "wide",
-            "label": "Vista persone con badge UniCo"
+            "src": "/assets/screenshots/soldiers-light-theme.webp",
+            "sizes": "355x737",
+            "type": "image/webp",
+            "platform": "narrow",
+            "label": "Vista militari con filtri e badge UniCo"
+        },
+        {
+            "src": "/assets/screenshots/modal-detail-light-theme.webp",
+            "sizes": "355x737",
+            "type": "image/webp",
+            "platform": "narrow",
+            "label": "Dettaglio informazioni militare conn contatti"
+        },
+        {
+            "src": "/assets/screenshots/updates-light-theme.webp",
+            "sizes": "355x737",
+            "type": "image/webp",
+            "platform": "narrow",
+            "label": "Aggiornamenti automatici dell'applicazione"
         }
     ],
 
@@ -117,9 +138,9 @@
             ]
         },
         {
-            "name": "Persone",
-            "short_name": "Persone",
-            "description": "Visualizza tutte le persone",
+            "name": "Militari",
+            "short_name": "Militari",
+            "description": "Visualizza tutti i militari",
             "url": "/index.html?view=people&source=pwa-shortcut",
             "icons": [
                 {

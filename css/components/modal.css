@@ -1,6 +1,6 @@
 /**
  * @file css/components/modal.css
- * @description Modale di dettaglio persona: overlay, contenuto, avatar,
+ * @description Modale di dettaglio militare: overlay, contenuto, avatar,
  *              sezioni incarichi e contatti.
  */
 
@@ -9,13 +9,13 @@
 .modal-overlay {
     position: fixed;
     inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -29,9 +29,9 @@
 .modal-content {
     width: 92%;
     max-width: 420px;
-    background: var(--modal-background);
-    border-radius: 22px;
     border: 1px solid var(--border-light);
+    border-radius: 22px;
+    background: var(--modal-background);
     box-shadow: var(--shadow-medium);
     transform: translateY(25px) scale(0.95);
     transition: all 0.35s ease;
@@ -54,8 +54,8 @@
     border: none;
     border-radius: 50%;
     font-size: 1.5rem;
-    background: transparent;
     color: var(--primary);
+    background: transparent;
     cursor: pointer;
     transition: 0.2s;
 }
@@ -67,8 +67,8 @@
 /* ── Simple layout ───────────────────────────────────────────────────────── */
 
 .modal-simple {
-    padding: 2rem 1.6rem 1.8rem 1.6rem;
     text-align: center;
+    padding: 2rem 1.6rem 1.8rem 1.6rem;
 }
 
 /* ── Avatar ──────────────────────────────────────────────────────────────── */
@@ -81,16 +81,16 @@
 }
 
 .modal-avatar {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--primary-dark);
-    color: var(--secondary);
-    font-weight: 700;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--secondary);
+    background: var(--primary-dark);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -100,8 +100,8 @@
     right: 4px;
     width: 18px;
     height: 18px;
-    border-radius: 50%;
     border: 3px solid var(--background);
+    border-radius: 50%;
 }
 
 /* ── Header info ─────────────────────────────────────────────────────────── */
@@ -136,15 +136,15 @@
 }
 
 .modal-unico-badge.ok {
-    background: var(--success-bg);
-    color: var(--success);
     border: 1px solid var(--success-border);
+    color: var(--success);
+    background: var(--success-bg);
 }
 
 .modal-unico-badge.no {
-    background: var(--error-bg);
-    color: var(--error);
     border: 1px solid var(--error-border);
+    color: var(--error);
+    background: var(--error-bg);
 }
 
 /* ── City / group boxes ──────────────────────────────────────────────────── */
@@ -159,8 +159,8 @@
 .modal-box {
     text-align: left;
     padding: 0.75rem;
-    border-radius: 12px;
     border: 1px solid var(--border-light);
+    border-radius: 12px;
     background: var(--primary-bg-active);
 }
 
@@ -180,15 +180,15 @@
 /* ── Sections ────────────────────────────────────────────────────────────── */
 
 .modal-section {
-    margin-top: 1.3rem;
     text-align: left;
+    margin-top: 1.3rem;
 }
 
 .modal-section-title {
+    margin-bottom: 0.5rem;
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-light);
-    margin-bottom: 0.5rem;
 }
 
 .modal-incarico-item {
@@ -205,12 +205,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5rem;
     padding: 0.7rem 0.8rem;
     border-radius: 12px;
+    color: white;
     background: var(--primary);
     text-decoration: none;
-    color: white;
-    margin-bottom: 0.5rem;
     transition: 0.2s;
 }
 
@@ -247,13 +247,13 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 0.75rem;
-    background: var(--card-bg);
-    border-radius: 14px;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    border: 1px solid var(--border-light);
     text-align: center;
+    padding: 0.75rem;
+    color: var(--text-light);
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    font-size: 0.9rem;
 }
 
 .modal-no-contacts i {

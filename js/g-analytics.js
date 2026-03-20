@@ -85,7 +85,7 @@ function getDisplayMode() {
  * @param {Object} params - Parametri aggiuntivi
  */
 function trackEvent(eventName, params = {}) {
-    // Aggiungi parametri base a tutti gli eventi
+    // Parametri base a tutti gli eventi
     const enhancedParams = {
         ...params,
         app_version: CONFIG.APP_VERSION,
@@ -236,7 +236,7 @@ function trackSearchCleared(view) {
 }
 
 /**
- * Traccia apertura modale persona
+ * Traccia apertura modale militare
  */
 function trackModalOpen(personName, city, group, isUnico) {
     trackEvent("modal_open", {

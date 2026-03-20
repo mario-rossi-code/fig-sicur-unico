@@ -84,14 +84,23 @@ function startUpdateChecker() {
 // ─── Modale aggiornamento ─────────────────────────────────────────────────────
 
 /**
- * Mostra la modale di notifica aggiornamento all'utente.
- * Se la modale esiste già (chiamata doppia), non viene duplicata.
- *
- * La modale blocca l'interazione con il contenuto sottostante e si
- * auto-chiude dopo 30 secondi se l'utente non risponde.
+ * Durata del lock iniziale sui pulsanti dopo la comparsa del modale (ms).
+ * Previene click involontari su "Aggiorna ora" se l'utente stava già
+ * toccando lo schermo nel momento in cui il modale è apparso.
  *
  * @private
- * @param {ServiceWorkerRegistration} reg - La registrazione del Service Worker.
+ * @constant {number}
+ */
+const _MODAL_CLICK_LOCK_MS = 1000;
+
+/**
+ * Mostra la modale di notifica aggiornamento all'utente.
+ * Se la modale esiste già (chiamata doppia), non viene duplicata.
+ * I pulsanti restano disabilitati per `_MODAL_CLICK_LOCK_MS` ms dopo
+ * la comparsa, per evitare click involontari.
+ *
+ * @private
+ * @param {ServiceWorkerRegistration} reg
  * @returns {void}
  */
 function _showUpdateModal(reg) {
@@ -111,7 +120,7 @@ function _showUpdateModal(reg) {
             <div class="update-title">Nuova versione disponibile</div>
             <div class="update-message">Aggiorna per le ultime funzionalità.</div>
             <div class="update-actions">
-                <button class="update-btn update-now" id="updateNowBtn">
+                <button class="update-btn update-now" id="updateNowBtn" disabled>
                     <i class="fa-solid fa-sync-alt" aria-hidden="true"></i>
                     Aggiorna ora
                 </button>
@@ -124,40 +133,30 @@ function _showUpdateModal(reg) {
     document.body.style.pointerEvents = "none";
     modal.style.pointerEvents = "auto";
 
-    // Previeni click su overlay
+    // Previeni click su overlay e contenuto
     modal.querySelector(".update-overlay").addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
     });
-
-    // Previeni propagazione dai click sul contenuto
-    modal
-        .querySelector(".update-content")
-        .addEventListener("click", (e) => e.stopPropagation());
-
-    setTimeout(() => modal.classList.add("show"), 100);
-
-    // Listener pulsanti
-    document.getElementById("updateNowBtn").addEventListener("click", (e) => {
+    modal.querySelector(".update-content").addEventListener("click", (e) => {
         e.stopPropagation();
-        trackUpdateAccepted();
-        _applyUpdate(modal, reg);
     });
 
-    document.getElementById("updateLaterBtn").addEventListener("click", (e) => {
-        e.stopPropagation();
-        _dismissModal(modal);
-    });
+    // Mostra il modale con animazione
+    setTimeout(() => modal.classList.add("show"), 10);
 
-    document.getElementById("updateCloseBtn").addEventListener("click", (e) => {
-        e.stopPropagation();
-        _dismissModal(modal);
-    });
+    // ── Click lock: abilita i pulsanti solo dopo _MODAL_CLICK_LOCK_MS ────────
+    const updateNowBtn = document.getElementById("updateNowBtn");
 
-    // Auto-dismiss dopo 30 secondi
     setTimeout(() => {
-        if (modal.classList.contains("show")) _dismissModal(modal);
-    }, 30_000);
+        updateNowBtn.disabled = false;
+
+        updateNowBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            trackUpdateAccepted();
+            _applyUpdate(modal, reg);
+        });
+    }, _MODAL_CLICK_LOCK_MS);
 }
 
 /**
@@ -204,11 +203,11 @@ function _dismissModal(modal) {
 }
 
 // FOR TESTING: Mostra il modale di aggiornamento all'avvio
-// setTimeout(() => {
-//     console.log("[TEST] Forzatura modale aggiornamento");
-//     // Crea una registrazione fittizia
-//     const fakeReg = {
-//         waiting: { postMessage: (msg) => console.log("[TEST] SKIP_WAITING inviato", msg) }
-//     };
-//     _showUpdateModal(fakeReg);
-// }, 1000); // Mostra dopo 1 secondi
+setTimeout(() => {
+    console.log("[TEST] Forzatura modale aggiornamento");
+    // Crea una registrazione fittizia
+    const fakeReg = {
+        waiting: { postMessage: (msg) => console.log("[TEST] SKIP_WAITING inviato", msg) }
+    };
+    _showUpdateModal(fakeReg);
+}, 1000); // Mostra dopo 1 secondi

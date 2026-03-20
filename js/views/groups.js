@@ -49,9 +49,9 @@ function renderGroupsList() {
                 matchesSearchObj(
                     group.nome,
                     inc.nome,
-                    inc.persona.grado,
-                    inc.persona.nome,
-                    inc.persona.cognome,
+                    inc.militare.grado,
+                    inc.militare.nome,
+                    inc.militare.cognome,
                 ),
             );
 
@@ -119,9 +119,9 @@ function _renderCityFilterBar(cities) {
                     matchesSearchObj(
                         g.nome,
                         inc.nome,
-                        inc.persona.grado,
-                        inc.persona.nome,
-                        inc.persona.cognome,
+                        inc.militare.grado,
+                        inc.militare.nome,
+                        inc.militare.cognome,
                     ),
                 ),
             );
@@ -150,7 +150,7 @@ function _createGroupExpandable(city, group, matchedIncarichi) {
     const shouldExpand = state.searchText !== "" && !_suppressExpand;
 
     const validPersonsCount = group.incarichi.filter((inc) =>
-        hasValidPersonData(inc.persona),
+        hasValidPersonData(inc.militare),
     ).length;
     const pendingCount = group.incarichi.length - validPersonsCount;
 
@@ -178,15 +178,15 @@ function _createGroupExpandable(city, group, matchedIncarichi) {
     const innerDiv = div.querySelector(".group-content-inner");
     const chevron = div.querySelector(".group-chevron");
 
-    // Inserisce le card persona nel corpo espandibile
-    // CreatePersonCard ritorna la card, aggiungiamo data-search prima di inserirla
+    // Inserisce le card militare nel corpo espandibile
+    // CreatePersonCard ritorna la card, aggiunge data-search prima di inserirla
     matchedIncarichi.forEach((inc) => {
         const card = createPersonCard(inc, city.nome, group.nome);
         card.dataset.search = [
             inc.nome,
-            inc.persona?.nome || "",
-            inc.persona?.cognome || "",
-            inc.persona?.grado || "",
+            inc.militare?.nome || "",
+            inc.militare?.cognome || "",
+            inc.militare?.grado || "",
             group.nome,
             city.nome,
         ]

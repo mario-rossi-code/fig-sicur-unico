@@ -1,13 +1,13 @@
 /**
  * @file filters.js
- * @description Logica dei filtri attivi sulle viste Incarichi e Persone.
+ * @description Logica dei filtri attivi sulle viste Incarichi e Militari.
  *
  *              Filtri disponibili:
  *              - **UniCo** (ciclico): OFF → Solo abilitati → Solo non abilitati → OFF
- *              - **In attesa** (toggle): mostra solo gli incarichi senza persona assegnata
+ *              - **In attesa** (toggle): mostra solo gli incarichi senza militare assegnata
  *
  *              Espone funzioni per:
- *              - Verificare se un incarico/persona passa i filtri attivi
+ *              - Verificare se un incarico/militare passa i filtri attivi
  *              - Ciclare/resettare i filtri
  *              - Aggiornare visivamente i pulsanti nella UI
  */
@@ -17,20 +17,20 @@
 // ─── Predicati filtro ─────────────────────────────────────────────────────────
 
 /**
- * Verifica se una persona supera il filtro UniCo attivo.
+ * Verifica se un militare supera il filtro UniCo attivo.
  *
  * - `OFF`: tutti passano.
  * - `SI`:  passa solo chi ha `abilitUniCo === "si"` (case-insensitive).
  * - `NO`:  passa solo chi NON ha `abilitUniCo === "si"`.
  *
- * @param {Object|null|undefined} persona - Oggetto persona.
- * @returns {boolean} `true` se la persona supera il filtro.
+ * @param {Object|null|undefined} militare - Oggetto militare.
+ * @returns {boolean} `true` se il militare supera il filtro.
  */
-function passesUnicoFilter(persona) {
+function passesUnicoFilter(militare) {
     if (state.filters.unico === CONFIG.FILTER_STATES.UNICO.OFF) return true;
 
     const isUnico =
-        persona?.abilitUniCo && persona.abilitUniCo.toLowerCase() === "si";
+        militare?.abilitUniCo && militare.abilitUniCo.toLowerCase() === "si";
 
     return state.filters.unico === CONFIG.FILTER_STATES.UNICO.SI
         ? isUnico
@@ -41,26 +41,26 @@ function passesUnicoFilter(persona) {
  * Verifica se un incarico supera il filtro "In attesa di nomina".
  *
  * Quando il filtro è attivo, vengono mostrati **solo** gli incarichi privi
- * di persona valida (slot vacanti).
+ * di militare valida (slot vacanti).
  *
- * @param {Object|null|undefined} persona - Oggetto persona dell'incarico.
+ * @param {Object|null|undefined} militare - Oggetto militare dell'incarico.
  * @returns {boolean} `true` se l'incarico supera il filtro.
  */
-function passesPendingFilter(persona) {
+function passesPendingFilter(militare) {
     if (!state.filters.pending) return true;
-    return !hasValidPersonData(persona);
+    return !hasValidPersonData(militare);
 }
 
 /**
  * Verifica se un incarico supera **tutti** i filtri attivi contemporaneamente.
  * Usato nella vista Incarichi dove sia UniCo che Pending sono applicabili.
  *
- * @param {{ persona?: Object }} inc - Oggetto incarico con eventuale persona.
+ * @param {{ militare?: Object }} inc - Oggetto incarico con eventuale militare.
  * @returns {boolean} `true` se l'incarico supera tutti i filtri.
  */
 function passesAllFilters(inc) {
-    const persona = inc?.persona;
-    return passesUnicoFilter(persona) && passesPendingFilter(persona);
+    const militare = inc?.militare;
+    return passesUnicoFilter(militare) && passesPendingFilter(militare);
 }
 
 // ─── Azioni filtro ────────────────────────────────────────────────────────────
@@ -128,7 +128,7 @@ const _UNICO_ICONS = {
 
 /**
  * Renderizza (o ri-renderizza) la barra filtri nel `cityFilterContainer`
- * per le viste Incarichi (`"roles"`) e Persone (`"people"`).
+ * per le viste Incarichi (`"roles"`) e Militari (`"people"`).
  *
  * Se la barra è già presente per la stessa vista, aggiorna solo lo stato
  * visivo dei pulsanti senza ricostruire il DOM.

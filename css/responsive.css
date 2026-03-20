@@ -22,8 +22,8 @@
     }
 
     .city-filter {
-        padding: 0.5rem 0;
         margin-top: 1rem;
+        padding: 0.5rem 0;
     }
 
     .view-container {
@@ -33,10 +33,10 @@
     .bottom-nav {
         bottom: 0;
         height: var(--nav-height-desktop);
-        background: var(--card-bg);
-        border-top: 1px solid var(--border-light);
         padding: 0.8rem 0;
         padding-bottom: calc(0.8rem + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--border-light);
+        background: var(--card-bg);
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
     }
 
@@ -105,9 +105,9 @@
 
     #waiting-filter-btn i,
     #unico-filter-btn i {
-        font-size: 1.1rem;
         width: 24px;
         margin: 0;
+        font-size: 1.1rem;
     }
 
     #waiting-filter-btn.active,
@@ -132,14 +132,14 @@
     .bottom-nav {
         bottom: 0.5rem;
         left: 50%;
-        transform: translateX(-50%);
+        gap: 0.3rem;
         width: auto;
         min-width: 320px;
         height: var(--nav-height-mobile);
-        border-radius: 40px;
         padding: 0.6rem 0.3rem;
+        border-radius: 40px;
         background-color: var(--modal-background);
-        gap: 0.3rem;
+        transform: translateX(-50%);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
@@ -149,8 +149,8 @@
     }
 
     .nav-item.active {
-        background: var(--primary-nav-item-active);
         color: var(--primary);
+        background: var(--primary-nav-item-active);
     }
 
     .nav-item i {
@@ -164,13 +164,12 @@
     .update-content {
         text-align: center;
         padding: 28px 20px;
-        width: 95%;
     }
 
     .update-actions {
-        width: 100%;
         flex-direction: column;
         gap: 8px;
+        width: 100%;
     }
 
     .update-btn {

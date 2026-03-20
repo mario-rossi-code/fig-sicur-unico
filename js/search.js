@@ -83,7 +83,7 @@ function initSearch() {
  * Logica:
  * - Vista `cities` livello 1: mostra/nasconde le card città.
  * - Vista `cities` livelli 2-3: re-render completo (navigazione gerarchica).
- * - Vista `groups`: mostra/nasconde card persona dentro ogni accordion,
+ * - Vista `groups`: mostra/nasconde card militare dentro ogni accordion,
  *   espande i gruppi con risultati, nasconde quelli senza.
  * - Viste `roles` / `people`: mostra/nasconde le card e gli header alfabetici orfani.
  *
@@ -97,7 +97,7 @@ function filterInPlace() {
     if (!content) return;
 
     // I livelli 2-3 della gerarchia città richiedono re-render completo
-    // perché il DOM cambia strutturalmente (breadcrumb, lista gruppi/persone)
+    // perché il DOM cambia strutturalmente (breadcrumb, lista gruppi/militari)
     if (state.view === "cities" && state.selectedCity) {
         render();
         return;
@@ -127,7 +127,7 @@ function filterInPlace() {
             const chevron = groupEl.querySelector(".group-chevron");
             let groupVisible = 0;
 
-            // Mostra/nasconde le singole card persona
+            // Mostra/nasconde le singole card militare
             cards.forEach((card) => {
                 const match = !query || card.dataset.search.includes(query);
                 card.style.display = match ? "" : "none";
@@ -176,7 +176,7 @@ function filterInPlace() {
             header.style.display = hasVisible ? "" : "none";
         });
     } else {
-        // ── Viste Incarichi e Persone ─────────────────────────────────────
+        // ── Viste Incarichi e Militari ─────────────────────────────────────
         const cards = content.querySelectorAll(
             ".person-compact-card[data-search]",
         );

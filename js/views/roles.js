@@ -54,7 +54,7 @@ function renderRolesList() {
  * Raccoglie tutti gli incarichi dal database in una struttura piatta.
  *
  * @private
- * @returns {Array<{role: string, persona: Object, city: string, group: string}>}
+ * @returns {Array<{role: string, militare: Object, city: string, group: string}>}
  */
 function _collectAllRoles() {
     const roles = [];
@@ -64,7 +64,7 @@ function _collectAllRoles() {
             group.incarichi.forEach((inc) => {
                 roles.push({
                     role: inc.nome,
-                    persona: inc.persona,
+                    militare: inc.militare,
                     city: city.nome,
                     group: group.nome,
                 });
@@ -79,7 +79,7 @@ function _collectAllRoles() {
  * Verifica se un incarico corrisponde alla ricerca testuale corrente.
  *
  * @private
- * @param {{ role: string, persona: Object, city: string, group: string }} item
+ * @param {{ role: string, militare: Object, city: string, group: string }} item
  * @returns {boolean}
  */
 function _matchesRoleSearch(item) {
@@ -87,9 +87,9 @@ function _matchesRoleSearch(item) {
         item.city,
         item.group,
         item.role,
-        item.persona?.grado || "",
-        item.persona?.nome || "",
-        item.persona?.cognome || "",
+        item.militare?.grado || "",
+        item.militare?.nome || "",
+        item.militare?.cognome || "",
     );
 }
 
@@ -100,7 +100,7 @@ function _matchesRoleSearch(item) {
  * Altrimenti mostra nome, grado, gruppo, città e il badge UniCo.
  *
  * @private
- * @param {{ role: string, persona: Object, city: string, group: string }} item
+ * @param {{ role: string, militare: Object, city: string, group: string }} item
  * @returns {HTMLElement}
  */
 function _createRoleCard(item) {
@@ -110,14 +110,14 @@ function _createRoleCard(item) {
         item.role,
         item.city,
         item.group,
-        item.persona?.nome || "",
-        item.persona?.cognome || "",
-        item.persona?.grado || "",
+        item.militare?.nome || "",
+        item.militare?.cognome || "",
+        item.militare?.grado || "",
     ]
         .join(" ")
         .toLowerCase();
 
-    const hasValidPerson = hasValidPersonData(item.persona);
+    const hasValidPerson = hasValidPersonData(item.militare);
 
     if (!hasValidPerson) {
         card.innerHTML = `
@@ -139,9 +139,9 @@ function _createRoleCard(item) {
         card.style.cursor = "default";
         card.style.opacity = "0.8";
     } else {
-        const persona = sanitizePersona(item.persona);
-        const isUnico = persona.abilitUniCo.toLowerCase() === "si";
-        const initials = getInitials(persona.nome, persona.cognome);
+        const militare = sanitizeSoldier(item.militare);
+        const isUnico = militare.abilitUniCo.toLowerCase() === "si";
+        const initials = getInitials(militare.nome, militare.cognome);
 
         card.innerHTML = `
             <div class="avatar-small" style="position: relative;">
@@ -153,7 +153,7 @@ function _createRoleCard(item) {
                     ${item.role}
                 </div>
                 <div class="person-compact-name">
-                    ${persona.grado} ${persona.nome} ${persona.cognome}
+                    ${militare.grado} ${militare.nome} ${militare.cognome}
                 </div>
                 <div class="person-compact-role" style="font-size:0.8rem;">
                     ${item.group}, <span class="card-city">${item.city}</span>
@@ -162,7 +162,7 @@ function _createRoleCard(item) {
         `;
 
         card.onclick = () =>
-            openModal(persona, item.role, item.city, item.group);
+            openModal(militare, item.role, item.city, item.group);
     }
 
     return card;

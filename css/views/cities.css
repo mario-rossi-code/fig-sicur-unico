@@ -18,12 +18,12 @@
 /* Card città nella griglia: quadrata e centrata */
 .cities-grid .list-item-card {
     aspect-ratio: 1 / 1;
-    padding: 1rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin-top: 0;
+    padding: 1rem;
 }
 
 .cities-grid .list-item-card:not(:first-child) {

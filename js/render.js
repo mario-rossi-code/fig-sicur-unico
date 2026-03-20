@@ -7,7 +7,7 @@
  *              (definita in `js/views/`).
  *
  *              Contiene anche i builder di card riutilizzati in più viste:
- *              - `createPersonCard()`       → card persona (vista Città/Gruppi)
+ *              - `createPersonCard()`       → card militare (vista Città/Gruppi)
  *              - `createLetterHeader()`     → intestazione alfabetica
  *              - `updateBreadcrumb()`       → breadcrumb di navigazione gerarchica
  */
@@ -86,12 +86,12 @@ function render() {
 // ─── Builder condivisi ────────────────────────────────────────────────────────
 
 /**
- * Crea una card persona per la navigazione gerarchica (vista Città → Gruppi → Persone).
+ * Crea una card militare per la navigazione gerarchica (vista Città → Gruppi → Militari).
  *
- * Se la persona non ha dati validi (slot vacante), la card viene resa
+ * Se il militare non ha dati validi (slot vacante), la card viene resa
  * non interattiva e mostra "In attesa di nomina".
  *
- * @param {{ nome: string, persona: Object }} inc  - Oggetto incarico.
+ * @param {{ nome: string, militare: Object }} inc  - Oggetto incarico.
  * @param {string}                            cityName  - Nome della città.
  * @param {string}                            groupName - Nome del gruppo.
  * @returns {HTMLElement} Card pronta per il DOM.
@@ -100,7 +100,7 @@ function createPersonCard(inc, cityName, groupName) {
     const card = document.createElement("div");
     card.className = "person-compact-card card-enter";
 
-    const hasValidPerson = hasValidPersonData(inc.persona);
+    const hasValidPerson = hasValidPersonData(inc.militare);
 
     if (!hasValidPerson) {
         card.innerHTML = `
@@ -119,9 +119,9 @@ function createPersonCard(inc, cityName, groupName) {
         card.style.cursor = "default";
         card.style.opacity = "0.8";
     } else {
-        const persona = sanitizePersona(inc.persona);
-        const isUnico = persona.abilitUniCo.toLowerCase() === "si";
-        const initials = getInitials(persona.nome, persona.cognome);
+        const militare = sanitizeSoldier(inc.militare);
+        const isUnico = militare.abilitUniCo.toLowerCase() === "si";
+        const initials = getInitials(militare.nome, militare.cognome);
 
         card.innerHTML = `
             <div class="avatar-small" style="position: relative;">
@@ -133,12 +133,12 @@ function createPersonCard(inc, cityName, groupName) {
                     ${inc.nome}
                 </div>
                 <div class="person-compact-name">
-                    ${persona.grado} ${persona.nome} ${persona.cognome}
+                    ${militare.grado} ${militare.nome} ${militare.cognome}
                 </div>
             </div>
         `;
 
-        card.onclick = () => openModal(persona, inc.nome, cityName, groupName);
+        card.onclick = () => openModal(militare, inc.nome, cityName, groupName);
     }
 
     return card;
@@ -146,7 +146,7 @@ function createPersonCard(inc, cityName, groupName) {
 
 /**
  * Crea un'intestazione alfabetica usata come separatore visivo
- * nelle viste Incarichi e Persone.
+ * nelle viste Incarichi e Militari.
  *
  * @param {string} letter - Lettera dell'intestazione (es. `"A"`).
  * @returns {HTMLElement} Elemento `<div class="letter-header">`.

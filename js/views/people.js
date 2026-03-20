@@ -1,6 +1,6 @@
 /**
  * @file views/people.js
- * @description Vista elenco Persone, de-duplicate per persona fisica,
+ * @description Vista elenco Militari, de-duplicate per militare fisico,
  *              ordinate alfabeticamente per nome con separatori alfabetici
  *              e barra filtro UniCo.
  *
@@ -13,13 +13,13 @@
 // ─── Entry point ──────────────────────────────────────────────────────────────
 
 /**
- * Renderizza la lista de-duplicata di tutte le persone presenti nel database.
- * Le persone con più incarichi appaiono una sola volta con il conteggio.
+ * Renderizza la lista de-duplicata di tutte i militari presenti nel database.
+ * I militari con più incarichi appaiono una sola volta con il conteggio.
  * I slot vacanti ("In attesa di nomina") non vengono mostrati in questa vista.
  *
  * Applica il filtro UniCo e la ricerca testuale.
  *
- * @returns {boolean} `true` se almeno una persona è visibile.
+ * @returns {boolean} `true` se almeno un militare è visibile.
  */
 function renderPeopleList() {
     DOM.content.className = "view-container list-view";
@@ -30,24 +30,24 @@ function renderPeopleList() {
 
     // Ordina per nome, poi cognome
     people.sort((a, b) => {
-        const nomeCompare = (a.persona.nome || "").localeCompare(
-            b.persona.nome || "",
+        const nomeCompare = (a.militare.nome || "").localeCompare(
+            b.militare.nome || "",
         );
         return nomeCompare !== 0
             ? nomeCompare
-            : (a.persona.cognome || "").localeCompare(b.persona.cognome || "");
+            : (a.militare.cognome || "").localeCompare(b.militare.cognome || "");
     });
 
     let currentLetter = "";
     let hasResults = false;
 
     people.forEach((item) => {
-        if (!passesUnicoFilter(item.persona) || !_matchesPeopleSearch(item))
+        if (!passesUnicoFilter(item.militare) || !_matchesPeopleSearch(item))
             return;
 
         hasResults = true;
 
-        const letter = (item.persona.nome || "").charAt(0).toUpperCase();
+        const letter = (item.militare.nome || "").charAt(0).toUpperCase();
         if (letter !== currentLetter) {
             currentLetter = letter;
             DOM.content.appendChild(createLetterHeader(letter));
@@ -62,12 +62,12 @@ function renderPeopleList() {
 // ─── Helper privati ───────────────────────────────────────────────────────────
 
 /**
- * Raccoglie tutte le persone valide dal database, de-duplicandole per chiave
+ * Raccoglie tutte i militari valide dal database, de-duplicandole per chiave
  * univoca (nome + cognome + grado + telefoni + abilitUniCo).
- * Per ogni persona aggrega la lista di tutti i suoi incarichi.
+ * Per ogni militare aggrega la lista di tutti i suoi incarichi.
  *
  * @private
- * @returns {Array<{persona: Object, incarichi: string[], role: string, city: string, group: string}>}
+ * @returns {Array<{militare: Object, incarichi: string[], role: string, city: string, group: string}>}
  */
 function _collectUniquePeople() {
     const map = new Map();
@@ -75,7 +75,7 @@ function _collectUniquePeople() {
     dbData.forEach((city) => {
         city.gruppi.forEach((group) => {
             group.incarichi.forEach((inc) => {
-                const p = inc.persona;
+                const p = inc.militare;
                 if (!hasValidPersonData(p)) return;
 
                 const key = [
@@ -89,7 +89,7 @@ function _collectUniquePeople() {
 
                 if (!map.has(key)) {
                     map.set(key, {
-                        persona: p,
+                        militare: p,
                         incarichi: [inc.nome],
                         role: inc.nome,
                         city: city.nome,
@@ -109,10 +109,10 @@ function _collectUniquePeople() {
 }
 
 /**
- * Verifica se una persona corrisponde alla ricerca testuale corrente.
+ * Verifica se un militare corrisponde alla ricerca testuale corrente.
  *
  * @private
- * @param {{ persona: Object, role: string, city: string, group: string }} item
+ * @param {{ militare: Object, role: string, city: string, group: string }} item
  * @returns {boolean}
  */
 function _matchesPeopleSearch(item) {
@@ -120,29 +120,29 @@ function _matchesPeopleSearch(item) {
         item.city || "",
         item.group || "",
         item.role || "",
-        item.persona?.grado || "",
-        item.persona?.nome || "",
-        item.persona?.cognome || "",
+        item.militare?.grado || "",
+        item.militare?.nome || "",
+        item.militare?.cognome || "",
     );
 }
 
 /**
- * Crea la card di una persona per la vista Persone.
+ * Crea la card di un militare per la vista militari.
  *
  * Mostra: avatar, nome completo, grado, gruppo, badge UniCo e conteggio incarichi.
  * Al click apre la modale con tutti gli incarichi aggregati.
  *
  * @private
- * @param {{ persona: Object, incarichi: string[], role: string, city: string, group: string }} item
+ * @param {{ militare: Object, incarichi: string[], role: string, city: string, group: string }} item
  * @returns {HTMLElement}
  */
 function _createPersonListItem(item) {
     const card = document.createElement("div");
     card.className = "person-compact-card card-enter";
     card.dataset.search = [
-        item.persona.nome,
-        item.persona.cognome,
-        item.persona.grado,
+        item.militare.nome,
+        item.militare.cognome,
+        item.militare.grado,
         item.group,
         item.city,
         ...(item.incarichi || []),
@@ -150,9 +150,9 @@ function _createPersonListItem(item) {
         .join(" ")
         .toLowerCase();
 
-    const persona = sanitizePersona(item.persona);
-    const isUnico = persona.abilitUniCo.toLowerCase() === "si";
-    const initials = getInitials(persona.nome, persona.cognome);
+    const militare = sanitizeSoldier(item.militare);
+    const isUnico = militare.abilitUniCo.toLowerCase() === "si";
+    const initials = getInitials(militare.nome, militare.cognome);
     const numIncarichi = item.incarichi?.length || 0;
     const incarichiLabel = numIncarichi === 1 ? "incarico" : "incarichi";
 
@@ -160,10 +160,10 @@ function _createPersonListItem(item) {
         <div class="avatar-small">${initials}</div>
         <div class="person-compact-info">
             <div class="list-item-title" style="color:var(--text-main); font-size:1.1rem;">
-                ${persona.nome} ${persona.cognome}
+                ${militare.nome} ${militare.cognome}
             </div>
             <div class="person-compact-role" style="font-size:0.8rem; color:var(--text-light); margin-top:2px;">
-                ${persona.grado} &mdash; ${item.group || ""}
+                ${militare.grado} &mdash; ${item.group || ""}
             </div>
             <div class="operational-detail">
                 <span class="incarichi-count">${numIncarichi} ${incarichiLabel}</span>
@@ -177,7 +177,7 @@ function _createPersonListItem(item) {
 
     card.onclick = () =>
         openModal(
-            persona,
+            militare,
             item.role || "",
             item.city || "",
             item.group || "",

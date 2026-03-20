@@ -53,7 +53,7 @@ function syncNavigationWithState() {
  * - `citta[/nome]` → Vista Città, con eventuale selezione diretta.
  * - `gruppi`       → Vista Gruppi.
  * - `incarichi`    → Vista Incarichi.
- * - `persone`      → Vista Persone.
+ * - `militari`      → Vista Militari.
  *
  * Da chiamare **dopo** `loadData()`, in modo che `dbData` sia popolato.
  *
@@ -74,7 +74,7 @@ function handleProtocolUrl() {
         citta: "cities",
         gruppi: "groups",
         incarichi: "roles",
-        persone: "people",
+        militari: "people",
     };
 
     if (VIEW_MAP[command]) {

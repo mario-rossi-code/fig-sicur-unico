@@ -8,11 +8,11 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {}
+                            "militare": {}
                         },
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {
+                            "militare": {
                                 "nome": "",
                                 "cognome": "",
                                 "grado": "",
@@ -23,7 +23,7 @@
                         },
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Francesco",
                                 "cognome": "Ricci",
                                 "grado": "Appuntato",
@@ -34,7 +34,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Marco",
                                 "cognome": "Rossi",
                                 "grado": "Capitano",
@@ -45,7 +45,7 @@
                         },
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giuseppe",
                                 "cognome": "Verdi",
                                 "grado": "Maresciallo",
@@ -56,7 +56,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luca",
                                 "cognome": "Bianchi",
                                 "grado": "Tenente",
@@ -67,7 +67,7 @@
                         },
                         {
                             "nome": "Coordinatore Operazioni Speciali",
-                            "persona": {
+                            "militare": {
                                 "nome": "Marco",
                                 "cognome": "Rossi",
                                 "grado": "Capitano",
@@ -83,7 +83,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Stazione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giovanni",
                                 "cognome": "Ferrari",
                                 "grado": "Luogotenente",
@@ -94,7 +94,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Paolo",
                                 "cognome": "Russo",
                                 "grado": "Capitano",
@@ -110,7 +110,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
-                            "persona": {
+                            "militare": {
                                 "nome": "Carmine",
                                 "cognome": "Coppola",
                                 "grado": "Appuntato",
@@ -121,7 +121,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Salvatore",
                                 "cognome": "Ferrara",
                                 "grado": "Maresciallo",
@@ -132,7 +132,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Vincenzo",
                                 "cognome": "De Luca",
                                 "grado": "Brigadiere",
@@ -148,7 +148,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
-                            "persona": {
+                            "militare": {
                                 "nome": "Angelo",
                                 "cognome": "Gallo",
                                 "grado": "Tenente",
@@ -159,7 +159,7 @@
                         },
                         {
                             "nome": "Comandante Squadra",
-                            "persona": {
+                            "militare": {
                                 "nome": "Gennaro",
                                 "cognome": "Sorrentino",
                                 "grado": "Brigadiere",
@@ -170,7 +170,7 @@
                         },
                         {
                             "nome": "Istruttore",
-                            "persona": {
+                            "militare": {
                                 "nome": "Raffaele",
                                 "cognome": "Mancini",
                                 "grado": "Maresciallo",
@@ -186,7 +186,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Pasquale",
                                 "cognome": "Coppola",
                                 "grado": "Brigadiere",
@@ -197,7 +197,7 @@
                         },
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luigi",
                                 "cognome": "Ferrara",
                                 "grado": "Appuntato",
@@ -208,7 +208,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Domenico",
                                 "cognome": "Romano",
                                 "grado": "Capitano",
@@ -219,7 +219,7 @@
                         },
                         {
                             "nome": "Ufficiale Amministrativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Ciro",
                                 "cognome": "Esposito",
                                 "grado": "Maresciallo",
@@ -235,7 +235,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giuseppe",
                                 "cognome": "Verdi",
                                 "grado": "Luogotenente",
@@ -246,7 +246,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Antonio",
                                 "cognome": "Esposito",
                                 "grado": "Maresciallo",
@@ -257,7 +257,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Francesco",
                                 "cognome": "De Simone",
                                 "grado": "Tenente",
@@ -273,7 +273,7 @@
                     "incarichi": [
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Salvatore",
                                 "cognome": "Ferrara",
                                 "grado": "Brigadiere",
@@ -284,7 +284,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Vincenzo",
                                 "cognome": "De Luca",
                                 "grado": "Capitano",
@@ -300,7 +300,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Gennaro",
                                 "cognome": "Sorrentino",
                                 "grado": "Maresciallo",
@@ -311,7 +311,7 @@
                         },
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Carmine",
                                 "cognome": "Coppola",
                                 "grado": "Appuntato",
@@ -322,7 +322,7 @@
                         },
                         {
                             "nome": "Comandante Plotone",
-                            "persona": {
+                            "militare": {
                                 "nome": "Raffaele",
                                 "cognome": "Mancini",
                                 "grado": "Tenente",
@@ -338,7 +338,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luigi",
                                 "cognome": "Ferrara",
                                 "grado": "Appuntato",
@@ -349,7 +349,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Paolo",
                                 "cognome": "Russo",
                                 "grado": "Capitano",
@@ -360,7 +360,7 @@
                         },
                         {
                             "nome": "Comandante Squadra",
-                            "persona": {
+                            "militare": {
                                 "nome": "Angelo",
                                 "cognome": "Gallo",
                                 "grado": "Brigadiere",
@@ -371,7 +371,7 @@
                         },
                         {
                             "nome": "Ufficiale Amministrativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Domenico",
                                 "cognome": "Romano",
                                 "grado": "Maresciallo",
@@ -387,7 +387,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Marco",
                                 "cognome": "Rossi",
                                 "grado": "Capitano",
@@ -398,7 +398,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Ciro",
                                 "cognome": "Esposito",
                                 "grado": "Brigadiere",
@@ -409,7 +409,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giovanni",
                                 "cognome": "Ferrari",
                                 "grado": "Tenente",
@@ -425,7 +425,7 @@
                     "incarichi": [
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luca",
                                 "cognome": "Bianchi",
                                 "grado": "Appuntato",
@@ -436,7 +436,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Pasquale",
                                 "cognome": "Coppola",
                                 "grado": "Maresciallo",
@@ -447,7 +447,7 @@
                         },
                         {
                             "nome": "Comandante Stazione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Francesco",
                                 "cognome": "De Simone",
                                 "grado": "Luogotenente",
@@ -463,7 +463,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Antonio",
                                 "cognome": "Esposito",
                                 "grado": "Brigadiere",
@@ -474,7 +474,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giuseppe",
                                 "cognome": "Verdi",
                                 "grado": "Capitano",
@@ -490,7 +490,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Raffaele",
                                 "cognome": "Mancini",
                                 "grado": "Appuntato",
@@ -501,7 +501,7 @@
                         },
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Salvatore",
                                 "cognome": "Ferrara",
                                 "grado": "Maresciallo",
@@ -512,7 +512,7 @@
                         },
                         {
                             "nome": "Comandante Squadra",
-                            "persona": {
+                            "militare": {
                                 "nome": "Gennaro",
                                 "cognome": "Sorrentino",
                                 "grado": "Brigadiere",
@@ -523,7 +523,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Vincenzo",
                                 "cognome": "De Luca",
                                 "grado": "Tenente",
@@ -539,7 +539,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Angelo",
                                 "cognome": "Gallo",
                                 "grado": "Luogotenente",
@@ -550,7 +550,7 @@
                         },
                         {
                             "nome": "Istruttore",
-                            "persona": {
+                            "militare": {
                                 "nome": "Paolo",
                                 "cognome": "Russo",
                                 "grado": "Maresciallo",
@@ -561,7 +561,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Carmine",
                                 "cognome": "Coppola",
                                 "grado": "Capitano",
@@ -577,7 +577,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
-                            "persona": {
+                            "militare": {
                                 "nome": "Domenico",
                                 "cognome": "Romano",
                                 "grado": "Tenente",
@@ -588,7 +588,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luigi",
                                 "cognome": "Ferrara",
                                 "grado": "Brigadiere",
@@ -604,7 +604,7 @@
                     "incarichi": [
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Pasquale",
                                 "cognome": "Coppola",
                                 "grado": "Appuntato",
@@ -615,7 +615,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Ciro",
                                 "cognome": "Esposito",
                                 "grado": "Maresciallo",
@@ -626,7 +626,7 @@
                         },
                         {
                             "nome": "Ufficiale Amministrativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giovanni",
                                 "cognome": "Ferrari",
                                 "grado": "Capitano",
@@ -642,7 +642,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
-                            "persona": {
+                            "militare": {
                                 "nome": "Marco",
                                 "cognome": "Rossi",
                                 "grado": "Brigadiere",
@@ -653,7 +653,7 @@
                         },
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giuseppe",
                                 "cognome": "Verdi",
                                 "grado": "Maresciallo",
@@ -664,7 +664,7 @@
                         },
                         {
                             "nome": "Comandante Stazione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Francesco",
                                 "cognome": "De Simone",
                                 "grado": "Luogotenente",
@@ -675,7 +675,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luca",
                                 "cognome": "Bianchi",
                                 "grado": "Tenente",
@@ -696,7 +696,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Andrea",
                                 "cognome": "Conti",
                                 "grado": "Brigadiere",
@@ -707,7 +707,7 @@
                         },
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Simone",
                                 "cognome": "Moretti",
                                 "grado": "Appuntato",
@@ -718,7 +718,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Alessandro",
                                 "cognome": "Barbieri",
                                 "grado": "Capitano",
@@ -729,7 +729,7 @@
                         },
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Stefano",
                                 "cognome": "Fontana",
                                 "grado": "Maresciallo",
@@ -740,7 +740,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Davide",
                                 "cognome": "Santoro",
                                 "grado": "Luogotenente",
@@ -751,7 +751,7 @@
                         },
                         {
                             "nome": "Istruttore",
-                            "persona": {
+                            "militare": {
                                 "nome": "Roberto",
                                 "cognome": "Marino",
                                 "grado": "Maresciallo",
@@ -762,7 +762,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Fabio",
                                 "cognome": "Greco",
                                 "grado": "Brigadiere",
@@ -773,7 +773,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Massimo",
                                 "cognome": "Lombardi",
                                 "grado": "Capitano",
@@ -784,7 +784,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Federico",
                                 "cognome": "Galli",
                                 "grado": "Tenente",
@@ -800,7 +800,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
-                            "persona": {
+                            "militare": {
                                 "nome": "Claudio",
                                 "cognome": "Martini",
                                 "grado": "Maresciallo",
@@ -811,7 +811,7 @@
                         },
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Emanuele",
                                 "cognome": "Serra",
                                 "grado": "Appuntato",
@@ -822,7 +822,7 @@
                         },
                         {
                             "nome": "Comandante Plotone",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giorgio",
                                 "cognome": "Palumbo",
                                 "grado": "Tenente",
@@ -838,7 +838,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Squadra",
-                            "persona": {
+                            "militare": {
                                 "nome": "Michele",
                                 "cognome": "Rizzi",
                                 "grado": "Brigadiere",
@@ -849,7 +849,7 @@
                         },
                         {
                             "nome": "Ufficiale Amministrativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Matteo",
                                 "cognome": "Fabbri",
                                 "grado": "Capitano",
@@ -865,7 +865,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Pietro",
                                 "cognome": "Bianco",
                                 "grado": "Appuntato",
@@ -876,7 +876,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Lorenzo",
                                 "cognome": "Colombo",
                                 "grado": "Maresciallo",
@@ -887,7 +887,7 @@
                         },
                         {
                             "nome": "Comandante Stazione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Alberto",
                                 "cognome": "Sartori",
                                 "grado": "Luogotenente",
@@ -898,7 +898,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Nicola",
                                 "cognome": "Cattaneo",
                                 "grado": "Tenente",
@@ -914,7 +914,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Valerio",
                                 "cognome": "Testa",
                                 "grado": "Capitano",
@@ -925,7 +925,7 @@
                         },
                         {
                             "nome": "Istruttore",
-                            "persona": {
+                            "militare": {
                                 "nome": "Daniele",
                                 "cognome": "Leone",
                                 "grado": "Maresciallo",
@@ -936,7 +936,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Tommaso",
                                 "cognome": "Vitale",
                                 "grado": "Brigadiere",
@@ -952,7 +952,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
-                            "persona": {
+                            "militare": {
                                 "nome": "Enrico",
                                 "cognome": "Longo",
                                 "grado": "Tenente",
@@ -963,7 +963,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Silvio",
                                 "cognome": "Guerra",
                                 "grado": "Luogotenente",
@@ -979,7 +979,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Adriano",
                                 "cognome": "Ferri",
                                 "grado": "Maresciallo",
@@ -990,7 +990,7 @@
                         },
                         {
                             "nome": "Comandante Squadra",
-                            "persona": {
+                            "militare": {
                                 "nome": "Gianni",
                                 "cognome": "Caruso",
                                 "grado": "Brigadiere",
@@ -1001,7 +1001,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giulio",
                                 "cognome": "Messina",
                                 "grado": "Capitano",
@@ -1017,7 +1017,7 @@
                     "incarichi": [
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Oscar",
                                 "cognome": "Bruno",
                                 "grado": "Appuntato",
@@ -1028,7 +1028,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Maurizio",
                                 "cognome": "Costa",
                                 "grado": "Tenente",
@@ -1044,7 +1044,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
-                            "persona": {
+                            "militare": {
                                 "nome": "Antonio",
                                 "cognome": "Giordano",
                                 "grado": "Brigadiere",
@@ -1055,7 +1055,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Francesco",
                                 "cognome": "Rizzo",
                                 "grado": "Capitano",
@@ -1066,7 +1066,7 @@
                         },
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Marco",
                                 "cognome": "Lombardo",
                                 "grado": "Maresciallo",
@@ -1082,7 +1082,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giuseppe",
                                 "cognome": "Morelli",
                                 "grado": "Maresciallo",
@@ -1093,7 +1093,7 @@
                         },
                         {
                             "nome": "Comandante Stazione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luca",
                                 "cognome": "Silvestri",
                                 "grado": "Luogotenente",
@@ -1104,7 +1104,7 @@
                         },
                         {
                             "nome": "Ufficiale Amministrativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Paolo",
                                 "cognome": "Rinaldi",
                                 "grado": "Tenente",
@@ -1120,7 +1120,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Salvatore",
                                 "cognome": "Ferraro",
                                 "grado": "Appuntato",
@@ -1131,7 +1131,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giovanni",
                                 "cognome": "Monti",
                                 "grado": "Brigadiere",
@@ -1142,7 +1142,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Vincenzo",
                                 "cognome": "Coppola",
                                 "grado": "Capitano",
@@ -1163,7 +1163,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Pietro",
                                 "cognome": "Bianco",
                                 "grado": "Brigadiere",
@@ -1174,7 +1174,7 @@
                         },
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Lorenzo",
                                 "cognome": "Colombo",
                                 "grado": "Appuntato",
@@ -1185,7 +1185,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Alberto",
                                 "cognome": "Sartori",
                                 "grado": "Capitano",
@@ -1196,7 +1196,7 @@
                         },
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Nicola",
                                 "cognome": "Cattaneo",
                                 "grado": "Maresciallo",
@@ -1207,7 +1207,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Valerio",
                                 "cognome": "Testa",
                                 "grado": "Luogotenente",
@@ -1218,7 +1218,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Daniele",
                                 "cognome": "Leone",
                                 "grado": "Tenente",
@@ -1234,7 +1234,7 @@
                     "incarichi": [
                         {
                             "nome": "Istruttore",
-                            "persona": {
+                            "militare": {
                                 "nome": "Tommaso",
                                 "cognome": "Vitale",
                                 "grado": "Maresciallo",
@@ -1245,7 +1245,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Enrico",
                                 "cognome": "Longo",
                                 "grado": "Capitano",
@@ -1261,7 +1261,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
-                            "persona": {
+                            "militare": {
                                 "nome": "Silvio",
                                 "cognome": "Guerra",
                                 "grado": "Tenente",
@@ -1272,7 +1272,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Adriano",
                                 "cognome": "Ferri",
                                 "grado": "Maresciallo",
@@ -1283,7 +1283,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Gianni",
                                 "cognome": "Caruso",
                                 "grado": "Brigadiere",
@@ -1299,7 +1299,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giulio",
                                 "cognome": "Messina",
                                 "grado": "Appuntato",
@@ -1310,7 +1310,7 @@
                         },
                         {
                             "nome": "Comandante Squadra",
-                            "persona": {
+                            "militare": {
                                 "nome": "Oscar",
                                 "cognome": "Bruno",
                                 "grado": "Brigadiere",
@@ -1321,7 +1321,7 @@
                         },
                         {
                             "nome": "Comandante Stazione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Maurizio",
                                 "cognome": "Costa",
                                 "grado": "Luogotenente",
@@ -1332,7 +1332,7 @@
                         },
                         {
                             "nome": "Ufficiale Amministrativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Antonio",
                                 "cognome": "Giordano",
                                 "grado": "Capitano",
@@ -1348,7 +1348,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Francesco",
                                 "cognome": "Rizzo",
                                 "grado": "Maresciallo",
@@ -1359,7 +1359,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Marco",
                                 "cognome": "Lombardo",
                                 "grado": "Tenente",
@@ -1375,7 +1375,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giuseppe",
                                 "cognome": "Morelli",
                                 "grado": "Capitano",
@@ -1386,7 +1386,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luca",
                                 "cognome": "Silvestri",
                                 "grado": "Luogotenente",
@@ -1397,7 +1397,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Paolo",
                                 "cognome": "Rinaldi",
                                 "grado": "Brigadiere",
@@ -1418,7 +1418,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Salvatore",
                                 "cognome": "Ferraro",
                                 "grado": "Brigadiere",
@@ -1429,7 +1429,7 @@
                         },
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giovanni",
                                 "cognome": "Monti",
                                 "grado": "Appuntato",
@@ -1440,7 +1440,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Vincenzo",
                                 "cognome": "Coppola",
                                 "grado": "Capitano",
@@ -1451,7 +1451,7 @@
                         },
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Andrea",
                                 "cognome": "Conti",
                                 "grado": "Maresciallo",
@@ -1462,7 +1462,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Simone",
                                 "cognome": "Moretti",
                                 "grado": "Luogotenente",
@@ -1473,7 +1473,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Alessandro",
                                 "cognome": "Barbieri",
                                 "grado": "Tenente",
@@ -1489,7 +1489,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
-                            "persona": {
+                            "militare": {
                                 "nome": "Stefano",
                                 "cognome": "Fontana",
                                 "grado": "Tenente",
@@ -1500,7 +1500,7 @@
                         },
                         {
                             "nome": "Istruttore",
-                            "persona": {
+                            "militare": {
                                 "nome": "Davide",
                                 "cognome": "Santoro",
                                 "grado": "Maresciallo",
@@ -1511,7 +1511,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Roberto",
                                 "cognome": "Marino",
                                 "grado": "Capitano",
@@ -1527,7 +1527,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Squadra",
-                            "persona": {
+                            "militare": {
                                 "nome": "Fabio",
                                 "cognome": "Greco",
                                 "grado": "Brigadiere",
@@ -1538,7 +1538,7 @@
                         },
                         {
                             "nome": "Comandante Stazione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Massimo",
                                 "cognome": "Lombardi",
                                 "grado": "Luogotenente",
@@ -1549,7 +1549,7 @@
                         },
                         {
                             "nome": "Ufficiale Amministrativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Federico",
                                 "cognome": "Galli",
                                 "grado": "Capitano",
@@ -1570,7 +1570,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Claudio",
                                 "cognome": "Martini",
                                 "grado": "Brigadiere",
@@ -1581,7 +1581,7 @@
                         },
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Emanuele",
                                 "cognome": "Serra",
                                 "grado": "Appuntato",
@@ -1592,7 +1592,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giorgio",
                                 "cognome": "Palumbo",
                                 "grado": "Capitano",
@@ -1603,7 +1603,7 @@
                         },
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Michele",
                                 "cognome": "Rizzi",
                                 "grado": "Maresciallo",
@@ -1614,7 +1614,7 @@
                         },
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Matteo",
                                 "cognome": "Fabbri",
                                 "grado": "Luogotenente",
@@ -1625,7 +1625,7 @@
                         },
                         {
                             "nome": "Istruttore",
-                            "persona": {
+                            "militare": {
                                 "nome": "Antonio",
                                 "cognome": "Esposito",
                                 "grado": "Maresciallo",
@@ -1636,7 +1636,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giuseppe",
                                 "cognome": "Verdi",
                                 "grado": "Capitano",
@@ -1647,7 +1647,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luca",
                                 "cognome": "Bianchi",
                                 "grado": "Tenente",
@@ -1663,7 +1663,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
-                            "persona": {
+                            "militare": {
                                 "nome": "Francesco",
                                 "cognome": "Ricci",
                                 "grado": "Maresciallo",
@@ -1674,7 +1674,7 @@
                         },
                         {
                             "nome": "Comandante Plotone",
-                            "persona": {
+                            "militare": {
                                 "nome": "Marco",
                                 "cognome": "Rossi",
                                 "grado": "Tenente",
@@ -1685,7 +1685,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giovanni",
                                 "cognome": "Ferrari",
                                 "grado": "Brigadiere",
@@ -1701,7 +1701,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Squadra",
-                            "persona": {
+                            "militare": {
                                 "nome": "Paolo",
                                 "cognome": "Russo",
                                 "grado": "Brigadiere",
@@ -1712,7 +1712,7 @@
                         },
                         {
                             "nome": "Comandante Stazione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Vincenzo",
                                 "cognome": "De Luca",
                                 "grado": "Luogotenente",
@@ -1723,7 +1723,7 @@
                         },
                         {
                             "nome": "Ufficiale Amministrativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Salvatore",
                                 "cognome": "Ferrara",
                                 "grado": "Capitano",
@@ -1734,7 +1734,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Carmine",
                                 "cognome": "Coppola",
                                 "grado": "Tenente",
@@ -1755,7 +1755,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Angelo",
                                 "cognome": "Gallo",
                                 "grado": "Brigadiere",
@@ -1766,7 +1766,7 @@
                         },
                         {
                             "nome": "Autista",
-                            "persona": {
+                            "militare": {
                                 "nome": "Gennaro",
                                 "cognome": "Sorrentino",
                                 "grado": "Appuntato",
@@ -1777,7 +1777,7 @@
                         },
                         {
                             "nome": "Comandante Compagnia",
-                            "persona": {
+                            "militare": {
                                 "nome": "Raffaele",
                                 "cognome": "Mancini",
                                 "grado": "Capitano",
@@ -1788,7 +1788,7 @@
                         },
                         {
                             "nome": "Comandante Nucleo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Pasquale",
                                 "cognome": "Coppola",
                                 "grado": "Maresciallo",
@@ -1799,7 +1799,7 @@
                         },
                         {
                             "nome": "Ufficiale Operazioni",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luigi",
                                 "cognome": "Ferrara",
                                 "grado": "Tenente",
@@ -1815,7 +1815,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Sezione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Domenico",
                                 "cognome": "Romano",
                                 "grado": "Luogotenente",
@@ -1826,7 +1826,7 @@
                         },
                         {
                             "nome": "Istruttore",
-                            "persona": {
+                            "militare": {
                                 "nome": "Ciro",
                                 "cognome": "Esposito",
                                 "grado": "Maresciallo",
@@ -1837,7 +1837,7 @@
                         },
                         {
                             "nome": "Ufficiale Investigativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Francesco",
                                 "cognome": "De Simone",
                                 "grado": "Capitano",
@@ -1853,7 +1853,7 @@
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
-                            "persona": {
+                            "militare": {
                                 "nome": "Antonio",
                                 "cognome": "Giordano",
                                 "grado": "Tenente",
@@ -1864,7 +1864,7 @@
                         },
                         {
                             "nome": "Operativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Francesco",
                                 "cognome": "Rizzo",
                                 "grado": "Brigadiere",
@@ -1880,7 +1880,7 @@
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
-                            "persona": {
+                            "militare": {
                                 "nome": "Marco",
                                 "cognome": "Lombardo",
                                 "grado": "Maresciallo",
@@ -1891,7 +1891,7 @@
                         },
                         {
                             "nome": "Comandante Squadra",
-                            "persona": {
+                            "militare": {
                                 "nome": "Giuseppe",
                                 "cognome": "Morelli",
                                 "grado": "Brigadiere",
@@ -1902,7 +1902,7 @@
                         },
                         {
                             "nome": "Comandante Stazione",
-                            "persona": {
+                            "militare": {
                                 "nome": "Luca",
                                 "cognome": "Silvestri",
                                 "grado": "Luogotenente",
@@ -1913,7 +1913,7 @@
                         },
                         {
                             "nome": "Ufficiale Amministrativo",
-                            "persona": {
+                            "militare": {
                                 "nome": "Paolo",
                                 "cognome": "Rinaldi",
                                 "grado": "Capitano",

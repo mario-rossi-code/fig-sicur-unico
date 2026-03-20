@@ -22,7 +22,7 @@ echo "[Build] Service Worker generato con versione: ${VERSION}"
 # Ordine identico agli @import in style.css:
 #   variabili → base → layout → componenti → viste → animazioni → responsive
 #
-# Se aggiungi un nuovo modulo CSS, inseriscilo qui nella posizione corretta.
+# Inserire qui nella posizione corretta eventuali nuovi moduli CSS
 
 CSS_MODULES="
   css/variables.css
@@ -40,13 +40,13 @@ CSS_MODULES="
   css/responsive.css
 "
 
-# Header del bundle (utile per debugging in DevTools)
+# Header del bundle (utile per debug in DevTools)
 cat > style.css << HEADER
 /*!
  * FIG. SICUR. UNICO — CSS Bundle
  * Build: ${VERSION}
  * Generato automaticamente da build.sh — non modificare direttamente.
- * Modifica i file sorgente in css/ e riesegui build.sh.
+ * Modificare i file sorgente in css/ e rieseguire build.sh.
  */
 HEADER
 

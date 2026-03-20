@@ -13,12 +13,12 @@
 }
 
 body {
-    background: var(--background);
+    min-height: 100dvh;
     color: var(--text-main);
+    background: var(--background);
     transition:
         background 0.3s ease,
         color 0.3s ease;
-    min-height: 100dvh;
     overflow: hidden;
 }
 
@@ -31,8 +31,8 @@ body:has(.update-notification.show) {
 
 .container {
     max-width: var(--max-width-container);
-    padding: 0 2rem;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 /* ── Utility ─────────────────────────────────────────────────────────────── */
@@ -45,17 +45,17 @@ body:has(.update-notification.show) {
     flex-shrink: 0;
     text-align: center;
     padding: 4rem 2rem;
-    background: var(--card-bg);
     border-radius: 30px;
+    background: var(--card-bg);
 }
 
 .no-results i {
+    margin-bottom: 1rem;
     font-size: 3rem;
     color: var(--text-light);
-    margin-bottom: 1rem;
 }
 
 .no-results p {
-    color: var(--text-light);
     font-size: 1.1rem;
+    color: var(--text-light);
 }

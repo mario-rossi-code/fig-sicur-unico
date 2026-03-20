@@ -1,8 +1,8 @@
 /**
  * @file modal.js
- * @description Gestione della modale di dettaglio persona.
+ * @description Gestione della modale di dettaglio militare.
  *
- *              - `openModal()`: apre la modale popolandola con i dati della persona.
+ *              - `openModal()`: apre la modale popolandola con i dati del militare.
  *              - `closeModal()`: chiude la modale con animazione.
  *              - `initModal()`: registra tutti i listener (close button, overlay click, Escape).
  */
@@ -23,32 +23,32 @@ const _modalClose = document.getElementById("modalClose");
 // ─── API pubblica ─────────────────────────────────────────────────────────────
 
 /**
- * Apre la modale con i dati completi di una persona.
+ * Apre la modale con i dati completi di un militare.
  *
- * @param {Object}   persona              - Dati sanitizzati della persona.
- * @param {string}   persona.nome
- * @param {string}   persona.cognome
- * @param {string}   persona.grado
- * @param {string}   persona.abilitUniCo  - `"si"` oppure altro.
- * @param {string}   persona.telefono_cell
- * @param {string}   persona.telefono_ufficio
+ * @param {Object}   militare              - Dati sanitizzati del militare.
+ * @param {string}   militare.nome
+ * @param {string}   militare.cognome
+ * @param {string}   militare.grado
+ * @param {string}   militare.abilitUniCo  - `"si"` oppure altro.
+ * @param {string}   militare.telefono_cell
+ * @param {string}   militare.telefono_ufficio
  * @param {string}   incarico             - Incarico principale (usato se `incarichiMultipli` è vuoto).
  * @param {string}   citta                - Città di appartenenza.
  * @param {string}   gruppo               - Gruppo di appartenenza.
- * @param {string[]} [incarichiMultipli]  - Lista completa degli incarichi della persona.
+ * @param {string[]} [incarichiMultipli]  - Lista completa degli incarichi del militare.
  * @returns {void}
  */
-function openModal(persona, incarico, citta, gruppo, incarichiMultipli = null) {
+function openModal(militare, incarico, citta, gruppo, incarichiMultipli = null) {
     // Traccia apertura modale
     trackModalOpen(
-        `${persona.nome} ${persona.cognome}`,
+        `${militare.nome} ${militare.cognome}`,
         citta,
         gruppo,
-        persona.abilitUniCo?.toLowerCase() === "si",
+        militare.abilitUniCo?.toLowerCase() === "si",
     );
 
-    const isUnico = persona.abilitUniCo.toLowerCase() === "si";
-    const initials = getInitials(persona.nome, persona.cognome);
+    const isUnico = militare.abilitUniCo.toLowerCase() === "si";
+    const initials = getInitials(militare.nome, militare.cognome);
 
     _modalBody.innerHTML = `
         <div class="modal-simple">
@@ -57,10 +57,10 @@ function openModal(persona, incarico, citta, gruppo, incarichiMultipli = null) {
                 <div class="modal-avatar">${initials}</div>
             </div>
 
-            <div class="modal-name">${persona.nome} ${persona.cognome}</div>
+            <div class="modal-name">${militare.nome} ${militare.cognome}</div>
 
             <div class="modal-meta">
-                <div class="modal-grado">${persona.grado}</div>
+                <div class="modal-grado">${militare.grado}</div>
                 <div class="modal-unico-badge ${isUnico ? "ok" : "no"}">
                     UniCo <i class="fa-solid ${isUnico ? "fa-check" : "fa-times"}"></i>
                 </div>
@@ -84,7 +84,7 @@ function openModal(persona, incarico, citta, gruppo, incarichiMultipli = null) {
 
             <div class="modal-section">
                 <div class="modal-section-title">Contatti</div>
-                ${_renderContacts(persona)}
+                ${_renderContacts(militare)}
             </div>
 
         </div>
@@ -160,14 +160,14 @@ function _renderIncarichiList(incarichi) {
  * Mostra solo i numeri disponibili; se nessuno è presente, mostra un placeholder.
  *
  * @private
- * @param {Object} persona - Dati sanitizzati della persona.
+ * @param {Object} militare - Dati sanitizzati del militare.
  * @returns {string} HTML dei contatti.
  */
-function _renderContacts(persona) {
+function _renderContacts(militare) {
     const hasCellulare =
-        persona.telefono_cell && persona.telefono_cell.trim() !== "";
+        militare.telefono_cell && militare.telefono_cell.trim() !== "";
     const hasUfficio =
-        persona.telefono_ufficio && persona.telefono_ufficio.trim() !== "";
+        militare.telefono_ufficio && militare.telefono_ufficio.trim() !== "";
 
     if (!hasCellulare && !hasUfficio) {
         return `
@@ -181,11 +181,11 @@ function _renderContacts(persona) {
     let html = "";
 
     if (hasCellulare) {
-        html += _phoneLink(persona.telefono_cell, "fa-mobile-alt", "Cellulare");
+        html += _phoneLink(militare.telefono_cell, "fa-mobile-alt", "Cellulare");
     }
 
     if (hasUfficio) {
-        html += _phoneLink(persona.telefono_ufficio, "fa-building", "Ufficio");
+        html += _phoneLink(militare.telefono_ufficio, "fa-building", "Ufficio");
     }
 
     return html;

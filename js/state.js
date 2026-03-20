@@ -25,7 +25,7 @@ let dbData = [];
 /**
  * @typedef {Object} AppFilters
  * @property {number}  unico   - Stato filtro UniCo: 0=OFF, 1=SI, 2=NO.
- * @property {boolean} pending - Se `true`, mostra solo incarichi senza persona assegnata.
+ * @property {boolean} pending - Se `true`, mostra solo incarichi senza militare assegnato.
  */
 
 /**

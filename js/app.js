@@ -104,7 +104,7 @@ function initPWATracking() {
             trackInstallPromptShown(e.platforms);
         }
 
-        // Opzionale: mostra un bottone personalizzato per installare
+        // Mostra un bottone personalizzato per installare
         const installBtn = document.getElementById("installButton");
         if (installBtn) {
             installBtn.style.display = "block";
@@ -149,7 +149,7 @@ async function handleInstallClick() {
     deferredPrompt = null;
 }
 
-// Aggiungi questo per tenere traccia della vista corrente
+// Variabile per tenere traccia della vista corrente
 window.currentView = "cities";
 
 // ─── Caricamento dati ─────────────────────────────────────────────────────────

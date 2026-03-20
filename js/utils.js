@@ -4,7 +4,7 @@
  *
  *              Espone:
  *              - Sanitizzazione dei valori
- *              - Controllo dei dati persona
+ *              - Controllo dei dati militare
  *              - Calcolo delle iniziali
  *              - Matching della ricerca (testo e multi-campo)
  *              - Fix dell'altezza del layout
@@ -12,7 +12,7 @@
 
 "use strict";
 
-// ─── Dati persona ─────────────────────────────────────────────────────────────
+// ─── Dati militare ─────────────────────────────────────────────────────────────
 
 /**
  * Sanitizza un valore sostituendo `null`, `undefined`, `"null"` e `"undefined"`
@@ -34,51 +34,51 @@ function sanitizeValue(value) {
 }
 
 /**
- * Verifica se un oggetto persona contiene almeno un campo significativo
+ * Verifica se un oggetto militare contiene almeno un campo significativo
  * (nome, cognome, grado, abilitUniCo o un numero di telefono).
  *
  * Le card "In attesa di nomina" hanno tutti i campi vuoti/nulli:
- * questo metodo le distingue dalle persone reali.
+ * questo metodo le distingue dai militari reali.
  *
- * @param {Object|null|undefined} persona - Oggetto persona da verificare.
- * @returns {boolean} `true` se la persona ha almeno un dato valido.
+ * @param {Object|null|undefined} militare - Oggetto militare da verificare.
+ * @returns {boolean} `true` se il militare ha almeno un dato valido.
  */
-function hasValidPersonData(persona) {
-    if (!persona) return false;
+function hasValidPersonData(militare) {
+    if (!militare) return false;
 
     return (
-        (persona.nome && persona.nome.trim() !== "") ||
-        (persona.cognome && persona.cognome.trim() !== "") ||
-        (persona.grado && persona.grado.trim() !== "") ||
-        (persona.abilitUniCo && persona.abilitUniCo.trim() !== "") ||
-        (persona.telefono_cell && persona.telefono_cell.trim() !== "") ||
-        (persona.telefono_ufficio && persona.telefono_ufficio.trim() !== "")
+        (militare.nome && militare.nome.trim() !== "") ||
+        (militare.cognome && militare.cognome.trim() !== "") ||
+        (militare.grado && militare.grado.trim() !== "") ||
+        (militare.abilitUniCo && militare.abilitUniCo.trim() !== "") ||
+        (militare.telefono_cell && militare.telefono_cell.trim() !== "") ||
+        (militare.telefono_ufficio && militare.telefono_ufficio.trim() !== "")
     );
 }
 
 /**
- * Crea un oggetto persona con tutti i campi sanitizzati.
+ * Crea un oggetto militare con tutti i campi sanitizzati.
  * Da usare prima di renderizzare o aprire la modale.
  *
- * @param {Object} persona - Oggetto persona grezzo dal database.
+ * @param {Object} militare - Oggetto militare grezzo dal database.
  * @returns {{nome: string, cognome: string, grado: string, abilitUniCo: string, telefono_cell: string, telefono_ufficio: string}}
  */
-function sanitizePersona(persona) {
+function sanitizeSoldier(militare) {
     return {
-        nome: sanitizeValue(persona.nome),
-        cognome: sanitizeValue(persona.cognome),
-        grado: sanitizeValue(persona.grado),
-        abilitUniCo: sanitizeValue(persona.abilitUniCo),
-        telefono_cell: sanitizeValue(persona.telefono_cell),
-        telefono_ufficio: sanitizeValue(persona.telefono_ufficio),
+        nome: sanitizeValue(militare.nome),
+        cognome: sanitizeValue(militare.cognome),
+        grado: sanitizeValue(militare.grado),
+        abilitUniCo: sanitizeValue(militare.abilitUniCo),
+        telefono_cell: sanitizeValue(militare.telefono_cell),
+        telefono_ufficio: sanitizeValue(militare.telefono_ufficio),
     };
 }
 
 /**
  * Restituisce le iniziali di nome e cognome in maiuscolo.
  *
- * @param {string} nome    - Nome della persona.
- * @param {string} cognome - Cognome della persona.
+ * @param {string} nome    - Nome del militare.
+ * @param {string} cognome - Cognome del militare.
  * @returns {string} Due caratteri maiuscoli (es. `"MR"`).
  */
 function getInitials(nome, cognome) {
@@ -105,10 +105,10 @@ function matchesSearch(text, groupObj = null) {
     if (groupObj) {
         return groupObj.incarichi.some((inc) =>
             matchesSearchObj(
-                inc.persona.nome,
-                inc.persona.cognome,
+                inc.militare.nome,
+                inc.militare.cognome,
                 inc.nome,
-                inc.persona.grado,
+                inc.militare.grado,
             ),
         );
     }
@@ -125,7 +125,7 @@ function matchesSearch(text, groupObj = null) {
  * @returns {boolean} `true` se tutti i token di ricerca trovano corrispondenza.
  *
  * @example
- * // Cercando "mario rossi" trova persone con nome "Mario" e cognome "Rossi"
+ * Cercando "mario rossi" trova militari con nome "Mario" e cognome "Rossi"
  * matchesSearchObj("Mario", "Rossi", "Comandante");
  */
 function matchesSearchObj(...fields) {

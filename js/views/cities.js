@@ -1,10 +1,10 @@
 /**
  * @file views/cities.js
- * @description Vista gerarchica Città → Gruppi → Persone.
+ * @description Vista gerarchica Città → Gruppi → Militari.
  *
  *              Livello 1 – Griglia di tutte le città.
  *              Livello 2 – Lista gruppi della città selezionata.
- *              Livello 3 – Lista persone del gruppo selezionato.
+ *              Livello 3 – Lista militari del gruppo selezionato.
  *
  *              Espone:
  *              - `renderCitiesHierarchy()` → entry point chiamato da `render()`
@@ -18,7 +18,7 @@
  * Renderizza la navigazione gerarchica in base allo stato corrente:
  * - Se nessuna città è selezionata: griglia delle città (livello 1).
  * - Se è selezionata una città ma non un gruppo: lista gruppi (livello 2).
- * - Se è selezionato anche un gruppo: lista persone (livello 3).
+ * - Se è selezionato anche un gruppo: lista militari (livello 3).
  *
  * @returns {boolean} `true` se almeno un elemento è stato renderizzato.
  */
@@ -134,7 +134,7 @@ function _createGroupCard(group) {
     el.innerHTML = `
         <div class="person-compact-info">
             <div class="list-item-title">${group.nome}</div>
-            <div class="list-item-subtitle">${group.incarichi.length} Persone</div>
+            <div class="list-item-subtitle">${group.incarichi.length} Militari</div>
         </div>
         <i class="fa-solid fa-chevron-right" style="color:var(--text-light)" aria-hidden="true"></i>
     `;
@@ -147,13 +147,13 @@ function _createGroupCard(group) {
     return el;
 }
 
-// ─── Livello 3: lista persone del gruppo ──────────────────────────────────────
+// ─── Livello 3: lista militari del gruppo ──────────────────────────────────────
 
 /**
- * Renderizza la lista delle persone del gruppo selezionato.
+ * Renderizza la lista dei militari del gruppo selezionato.
  *
  * @private
- * @returns {boolean} `true` se almeno una persona corrisponde alla ricerca.
+ * @returns {boolean} `true` se almeno un militare corrisponde alla ricerca.
  */
 function _renderGroupPeople() {
     DOM.content.className = "view-container list-view";
@@ -183,10 +183,10 @@ function _renderGroupPeople() {
     state.selectedGroup.incarichi.forEach((inc) => {
         if (
             !matchesSearchObj(
-                inc.persona.nome,
-                inc.persona.cognome,
+                inc.militare.nome,
+                inc.militare.cognome,
                 inc.nome,
-                inc.persona.grado,
+                inc.militare.grado,
             )
         )
             return;
