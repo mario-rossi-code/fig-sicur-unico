@@ -1,6 +1,6 @@
 /**
  * @file config.js
- * @description Configurazione centrale dell'applicazione FIG. SICUR. UNICO.
+ * @description Configurazione centrale dell'applicazione Figure di Sicurezza.
  *              Tutte le costanti, percorsi e valori di default sono definiti qui.
  *              Modificare questo file per cambiare comportamenti globali.
  */
@@ -16,7 +16,7 @@ const CONFIG = {
     APP_VERSION: "1.0",
 
     /** Nome dell'applicazione. */
-    APP_NAME: "FIG. SICUR. UNICO",
+    APP_NAME: "Figure di Sicurezza",
 
     // ─── Google Analytics ──────────────────────────────────────────────────
     GOOGLE_ANALYTICS: {

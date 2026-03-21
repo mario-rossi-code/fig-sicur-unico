@@ -105,7 +105,7 @@ function _matchesRoleSearch(item) {
  */
 function _createRoleCard(item) {
     const card = document.createElement("div");
-    card.className = "person-compact-card card-enter";
+    card.className = "person-compact-card";
     card.dataset.search = [
         item.role,
         item.city,

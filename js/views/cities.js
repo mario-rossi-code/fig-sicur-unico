@@ -39,11 +39,10 @@ function renderCitiesHierarchy() {
 function _renderCitiesGrid() {
     DOM.content.className = "view-container cities-grid";
 
-    const sorted = [...dbData].sort((a, b) => a.nome.localeCompare(b.nome));
     let index = 0;
     let hasResults = false;
 
-    sorted.forEach((city) => {
+    dbData.forEach((city) => {
         if (!matchesSearch(city.nome)) return;
         hasResults = true;
         DOM.content.appendChild(_createCityCard(city, index++));
@@ -62,7 +61,7 @@ function _renderCitiesGrid() {
  */
 function _createCityCard(city, index) {
     const card = document.createElement("div");
-    card.className = "list-item-card card-enter";
+    card.className = "list-item-card";
     card.dataset.search = city.nome.toLowerCase();
     card.style.animationDelay = `${index * CONFIG.ANIMATION.CARD_STAGGER}ms`;
 
@@ -129,7 +128,7 @@ function _renderCityGroups() {
  */
 function _createGroupCard(group) {
     const el = document.createElement("div");
-    el.className = "list-item-card card-enter";
+    el.className = "list-item-card";
 
     el.innerHTML = `
         <div class="person-compact-info">

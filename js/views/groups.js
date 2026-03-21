@@ -26,25 +26,16 @@ let _openGroup = null;
 function renderGroupsList() {
     DOM.content.className = "view-container list-view";
 
-    const sortedCities = [...dbData].sort((a, b) =>
-        a.nome.localeCompare(b.nome),
-    );
+    _renderCityFilterBar(dbData);
 
-    _renderCityFilterBar(sortedCities);
-
-    const citiesToShow = state.selectedCity
-        ? [state.selectedCity]
-        : sortedCities;
+    const citiesToShow = state.selectedCity ? [state.selectedCity] : dbData;
     const wrapper = document.createElement("div");
     let hasResults = false;
 
     citiesToShow.forEach((city) => {
-        const sortedGroups = [...city.gruppi].sort((a, b) =>
-            a.nome.localeCompare(b.nome),
-        );
         const matchedGroups = [];
 
-        sortedGroups.forEach((group) => {
+        city.gruppi.forEach((group) => {
             const matchedIncarichi = group.incarichi.filter((inc) =>
                 matchesSearchObj(
                     group.nome,

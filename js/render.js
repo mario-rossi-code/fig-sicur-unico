@@ -98,7 +98,7 @@ function render() {
  */
 function createPersonCard(inc, cityName, groupName) {
     const card = document.createElement("div");
-    card.className = "person-compact-card card-enter";
+    card.className = "person-compact-card";
 
     const hasValidPerson = hasValidPersonData(inc.militare);
 

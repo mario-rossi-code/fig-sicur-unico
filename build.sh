@@ -43,7 +43,7 @@ CSS_MODULES="
 # Header del bundle (utile per debug in DevTools)
 cat > style.css << HEADER
 /*!
- * FIG. SICUR. UNICO — CSS Bundle
+ * Figure di Sicurezza — CSS Bundle
  * Build: ${VERSION}
  * Generato automaticamente da build.sh — non modificare direttamente.
  * Modificare i file sorgente in css/ e rieseguire build.sh.

@@ -1,6 +1,6 @@
 /**
  * @file g-analytics.js
- * @description Google Analytics per FIG. SICUR. UNICO
+ * @description Google Analytics per Figure di Sicurezza
  *              Traccia: PWA installata, eventi, filtri, ricerche, click telefonici
  */
 

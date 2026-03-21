@@ -138,7 +138,7 @@ function _matchesPeopleSearch(item) {
  */
 function _createPersonListItem(item) {
     const card = document.createElement("div");
-    card.className = "person-compact-card card-enter";
+    card.className = "person-compact-card";
     card.dataset.search = [
         item.militare.nome,
         item.militare.cognome,

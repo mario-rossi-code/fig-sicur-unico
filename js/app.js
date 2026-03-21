@@ -1,6 +1,6 @@
 /**
  * @file app.js
- * @description Entry point dell'applicazione FIG. SICUR. UNICO.
+ * @description Entry point dell'applicazione Figure di Sicurezza.
  *
  *              Responsabilità:
  *              - Avviare tutti i sotto-sistemi nell'ordine corretto.

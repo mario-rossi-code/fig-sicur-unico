@@ -129,7 +129,7 @@ fig-sicur-unico/
 │ ├── views/
 │ │ ├── cities.css → .cities-grid
 │ │ └── groups.css → .group-expandable (parti specifiche)
-│ ├── animations.css → @keyframes, .card-enter
+│ ├── animations.css → @keyframes
 │ └── responsive.css → @media queries
 │
 └── js/

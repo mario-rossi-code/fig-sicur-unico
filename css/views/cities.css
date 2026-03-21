@@ -24,6 +24,7 @@
     text-align: center;
     margin-top: 0;
     padding: 1rem;
+    transition: none;
 }
 
 .cities-grid .list-item-card:not(:first-child) {

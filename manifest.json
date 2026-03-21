@@ -1,9 +1,9 @@
 {
     "id": "/",
 
-    "name": "FIG SICUR. UNICO",
-    "short_name": "FIG SICUR. UNICO",
-    "description": "Gestione del personale FIG Sicur UniCo: città, gruppi e incarichi con supporto offline.",
+    "name": "Figure di Sicurezza",
+    "short_name": "Fig. Sicurezza",
+    "description": "Gestione delle figure di Sicurezza: città, gruppi e incarichi con supporto offline.",
 
     "lang": "it",
     "dir": "ltr",
