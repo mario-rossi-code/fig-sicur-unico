@@ -96,7 +96,7 @@ function syncNavigationWithState() {
             }
         });
         window.currentView = state.view;
-        console.log(`[App] Navbar sincronizzata con vista: ${state.view}`);
+        // console.log(`[App] Navbar sincronizzata con vista: ${state.view}`);
     }
 }
 
