@@ -43,7 +43,6 @@ function initApp() {
     initModal();
     initNavigation();
     initConnectivityCheck();
-    initSwipeDetection();
 
     // Inizializza Google Analytics (se abilitato in config)
     if (CONFIG.GOOGLE_ANALYTICS?.ENABLED) {
