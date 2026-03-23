@@ -7,7 +7,7 @@
  *              - Ad ogni keystroke viene chiamato `filterInPlace()` che
  *                mostra/nasconde le card visualizzate.
  *              - Il re-render completo avviene solo al cambio di vista o
- *                al click su città/gruppo (navigazione gerarchica).
+ *                al click su città/comando (navigazione gerarchica).
  *
  *              Elementi filtrabili: qualsiasi elemento con `data-search`
  *              nel DOM di `#content`. Ogni vista deve popolare questo
@@ -84,7 +84,7 @@ function initSearch() {
  * - Vista `cities` livello 1: mostra/nasconde le card città.
  * - Vista `cities` livelli 2-3: re-render completo (navigazione gerarchica).
  * - Vista `groups`: mostra/nasconde card militare dentro ogni accordion,
- *   espande i gruppi con risultati, nasconde quelli senza.
+ *   espande i comandi con risultati, nasconde quelli senza.
  * - Viste `roles` / `people`: mostra/nasconde le card e gli header alfabetici orfani.
  *
  * Mostra/nasconde `#noResults` in base all'esito.
@@ -97,7 +97,7 @@ function filterInPlace() {
     if (!content) return;
 
     // I livelli 2-3 della gerarchia città richiedono re-render completo
-    // perché il DOM cambia strutturalmente (breadcrumb, lista gruppi/militari)
+    // perché il DOM cambia strutturalmente (breadcrumb, lista comandi/militari)
     if (state.view === "cities" && state.selectedCity) {
         render();
         return;
@@ -115,7 +115,7 @@ function filterInPlace() {
             if (match) visibleCount++;
         });
     } else if (state.view === "groups") {
-        // ── Vista Gruppi: accordion ───────────────────────────────────────
+        // ── Vista Comandi: accordion ───────────────────────────────────────
         const groups = content.querySelectorAll(".group-expandable");
 
         groups.forEach((groupEl) => {
@@ -135,21 +135,21 @@ function filterInPlace() {
             });
 
             if (groupVisible === 0) {
-                // Nessuna card corrisponde: nasconde l'intero gruppo
+                // Nessuna card corrisponde: nasconde l'intero comando
                 groupEl.style.display = "none";
             } else {
                 groupEl.style.display = "";
                 visibleCount += groupVisible;
 
                 if (query) {
-                    // Con ricerca attiva: espande il gruppo
+                    // Con ricerca attiva: espande il comando
                     groupEl.classList.add("expanded");
                     chevron.style.transform = "rotate(180deg)";
                     setTimeout(() => {
                         contentDiv.style.maxHeight = `${innerDiv.offsetHeight}px`;
                     }, 10);
                 } else {
-                    // Ricerca azzerata: chiude tutto tranne il gruppo aperto manualmente
+                    // Ricerca azzerata: chiude tutto tranne il comando aperto manualmente
                     if (_openGroup?.div !== groupEl) {
                         // Imposta maxHeight al valore attuale prima di animare verso 0,
                         // così l'animazione parte dal punto corretto
@@ -164,7 +164,7 @@ function filterInPlace() {
             }
         });
 
-        // Nasconde gli header città senza gruppi visibili sotto di loro
+        // Nasconde gli header città senza comandi visibili sotto di loro
         const headers = content.querySelectorAll(".letter-header");
         headers.forEach((header) => {
             let next = header.nextElementSibling;

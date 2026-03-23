@@ -2,9 +2,9 @@
     "citta": [
         {
             "nome": "Napoli",
-            "gruppi": [
+            "comandi": [
                 {
-                    "nome": "Gruppo Napoli Centro",
+                    "nome": "Comando Napoli Centro",
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
@@ -79,7 +79,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Nola",
+                    "nome": "Comando Nola",
                     "incarichi": [
                         {
                             "nome": "Comandante Stazione",
@@ -106,7 +106,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Ischia",
+                    "nome": "Comando Ischia",
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
@@ -144,7 +144,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Castellammare",
+                    "nome": "Comando Castellammare",
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
@@ -182,7 +182,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Pozzuoli",
+                    "nome": "Comando Pozzuoli",
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
@@ -231,7 +231,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Giugliano",
+                    "nome": "Comando Giugliano",
                     "incarichi": [
                         {
                             "nome": "Comandante Nucleo",
@@ -269,7 +269,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Torre del Greco",
+                    "nome": "Comando Torre del Greco",
                     "incarichi": [
                         {
                             "nome": "Operativo",
@@ -296,7 +296,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Casoria",
+                    "nome": "Comando Casoria",
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
@@ -334,7 +334,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Afragola",
+                    "nome": "Comando Afragola",
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
@@ -383,7 +383,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Portici",
+                    "nome": "Comando Portici",
                     "incarichi": [
                         {
                             "nome": "Comandante Nucleo",
@@ -421,7 +421,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Sorrento",
+                    "nome": "Comando Sorrento",
                     "incarichi": [
                         {
                             "nome": "Autista",
@@ -459,7 +459,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Procida",
+                    "nome": "Comando Procida",
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
@@ -486,7 +486,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Capri",
+                    "nome": "Comando Capri",
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
@@ -535,7 +535,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Marano",
+                    "nome": "Comando Marano",
                     "incarichi": [
                         {
                             "nome": "Comandante Sezione",
@@ -573,7 +573,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Melito",
+                    "nome": "Comando Melito",
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
@@ -600,7 +600,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Acerra",
+                    "nome": "Comando Acerra",
                     "incarichi": [
                         {
                             "nome": "Autista",
@@ -638,7 +638,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Pompei",
+                    "nome": "Comando Pompei",
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
@@ -690,9 +690,9 @@
         },
         {
             "nome": "Salerno",
-            "gruppi": [
+            "comandi": [
                 {
-                    "nome": "Gruppo Salerno Centro",
+                    "nome": "Comando Salerno Centro",
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
@@ -796,7 +796,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Cava de' Tirreni",
+                    "nome": "Comando Cava de' Tirreni",
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
@@ -834,7 +834,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Battipaglia",
+                    "nome": "Comando Battipaglia",
                     "incarichi": [
                         {
                             "nome": "Comandante Squadra",
@@ -861,7 +861,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Nocera Inferiore",
+                    "nome": "Comando Nocera Inferiore",
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
@@ -910,7 +910,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Eboli",
+                    "nome": "Comando Eboli",
                     "incarichi": [
                         {
                             "nome": "Comandante Nucleo",
@@ -948,7 +948,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Amalfi",
+                    "nome": "Comando Amalfi",
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
@@ -975,7 +975,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Sarno",
+                    "nome": "Comando Sarno",
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
@@ -1013,7 +1013,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Mercato San Severino",
+                    "nome": "Comando Mercato San Severino",
                     "incarichi": [
                         {
                             "nome": "Autista",
@@ -1040,7 +1040,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Pontecagnano",
+                    "nome": "Comando Pontecagnano",
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
@@ -1078,7 +1078,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Sapri",
+                    "nome": "Comando Sapri",
                     "incarichi": [
                         {
                             "nome": "Comandante Sezione",
@@ -1116,7 +1116,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Vallo della Lucania",
+                    "nome": "Comando Vallo della Lucania",
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
@@ -1157,9 +1157,9 @@
         },
         {
             "nome": "Avellino",
-            "gruppi": [
+            "comandi": [
                 {
-                    "nome": "Gruppo Avellino Centro",
+                    "nome": "Comando Avellino Centro",
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
@@ -1230,7 +1230,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Ariano Irpino",
+                    "nome": "Comando Ariano Irpino",
                     "incarichi": [
                         {
                             "nome": "Istruttore",
@@ -1257,7 +1257,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Montella",
+                    "nome": "Comando Montella",
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
@@ -1295,7 +1295,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Solofra",
+                    "nome": "Comando Solofra",
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
@@ -1344,7 +1344,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Grottaminarda",
+                    "nome": "Comando Grottaminarda",
                     "incarichi": [
                         {
                             "nome": "Addetto Operativo",
@@ -1371,7 +1371,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Cervinara",
+                    "nome": "Comando Cervinara",
                     "incarichi": [
                         {
                             "nome": "Comandante Nucleo",
@@ -1412,9 +1412,9 @@
         },
         {
             "nome": "Benevento",
-            "gruppi": [
+            "comandi": [
                 {
-                    "nome": "Gruppo Benevento Centro",
+                    "nome": "Comando Benevento Centro",
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
@@ -1485,7 +1485,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Montesarchio",
+                    "nome": "Comando Montesarchio",
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
@@ -1523,7 +1523,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Cerreto Sannita",
+                    "nome": "Comando Cerreto Sannita",
                     "incarichi": [
                         {
                             "nome": "Comandante Squadra",
@@ -1564,9 +1564,9 @@
         },
         {
             "nome": "Caserta",
-            "gruppi": [
+            "comandi": [
                 {
-                    "nome": "Gruppo Caserta Centro",
+                    "nome": "Comando Caserta Centro",
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
@@ -1659,7 +1659,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Santa Maria Capua Vetere",
+                    "nome": "Comando Santa Maria Capua Vetere",
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",
@@ -1697,7 +1697,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Aversa",
+                    "nome": "Comando Aversa",
                     "incarichi": [
                         {
                             "nome": "Comandante Squadra",
@@ -1749,9 +1749,9 @@
         },
         {
             "nome": "Roan Napoli",
-            "gruppi": [
+            "comandi": [
                 {
-                    "nome": "Gruppo Roan Napoli Centro",
+                    "nome": "Comando Roan Napoli Centro",
                     "incarichi": [
                         {
                             "nome": "Addetto Amministrativo Completo",
@@ -1811,7 +1811,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Roan Pozzuoli",
+                    "nome": "Comando Roan Pozzuoli",
                     "incarichi": [
                         {
                             "nome": "Comandante Sezione",
@@ -1849,7 +1849,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Roan Ischia",
+                    "nome": "Comando Roan Ischia",
                     "incarichi": [
                         {
                             "nome": "Comandante Plotone",
@@ -1876,7 +1876,7 @@
                     ]
                 },
                 {
-                    "nome": "Gruppo Roan Capri",
+                    "nome": "Comando Roan Capri",
                     "incarichi": [
                         {
                             "nome": "Addetto Logistica",

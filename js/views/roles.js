@@ -12,7 +12,7 @@
 // ─── Entry point ──────────────────────────────────────────────────────────────
 
 /**
- * Renderizza la lista di tutti gli incarichi da tutti i gruppi e città,
+ * Renderizza la lista di tutti gli incarichi da tutti i comandi e città,
  * ordinati alfabeticamente con intestazioni per lettera.
  *
  * Applica i filtri attivi (UniCo e/o "In attesa") e la ricerca testuale.
@@ -24,7 +24,7 @@ function renderRolesList() {
 
     renderFilterBar("roles");
 
-    // Raccoglie e ordina tutti gli incarichi da tutti i gruppi
+    // Raccoglie e ordina tutti gli incarichi da tutti i comandi
     const allRoles = _collectAllRoles();
     allRoles.sort((a, b) => a.role.localeCompare(b.role));
 
@@ -60,7 +60,7 @@ function _collectAllRoles() {
     const roles = [];
 
     dbData.forEach((city) => {
-        city.gruppi.forEach((group) => {
+        city.comandi.forEach((group) => {
             group.incarichi.forEach((inc) => {
                 roles.push({
                     role: inc.nome,
@@ -97,7 +97,7 @@ function _matchesRoleSearch(item) {
  * Crea la card di un incarico.
  *
  * Se l'incarico è vacante ("In attesa di nomina"), la card è non interattiva.
- * Altrimenti mostra nome, grado, gruppo, città e il badge UniCo.
+ * Altrimenti mostra nome, grado, comando, città e il badge UniCo.
  *
  * @private
  * @param {{ role: string, militare: Object, city: string, group: string }} item

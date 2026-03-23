@@ -3,7 +3,7 @@
 
     "name": "Figure di Sicurezza",
     "short_name": "Fig. Sicurezza",
-    "description": "Gestione delle figure di Sicurezza: città, gruppi e incarichi con supporto offline.",
+    "description": "Gestione delle figure di Sicurezza: città, comandi e incarichi con supporto offline.",
 
     "lang": "it",
     "dir": "ltr",
@@ -65,7 +65,7 @@
             "sizes": "355x737",
             "type": "image/webp",
             "platform": "narrow",
-            "label": "Vista gruppi con espansione"
+            "label": "Vista comandi con espansione"
         },
         {
             "src": "/assets/screenshots/roles-light-theme.webp",
@@ -99,9 +99,9 @@
 
     "shortcuts": [
         {
-            "name": "Gruppi",
-            "short_name": "Gruppi",
-            "description": "Visualizza tutti i gruppi",
+            "name": "Comandi",
+            "short_name": "Comandi",
+            "description": "Visualizza tutti i comandi",
             "url": "/index.html?view=groups&source=pwa-shortcut",
             "icons": [
                 {

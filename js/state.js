@@ -32,7 +32,7 @@ let dbData = [];
  * @typedef {Object} AppState
  * @property {'cities'|'groups'|'roles'|'people'} view - Vista (tab) correntemente attiva.
  * @property {Object|null} selectedCity  - Città selezionata nella navigazione gerarchica.
- * @property {Object|null} selectedGroup - Gruppo selezionato nella navigazione gerarchica.
+ * @property {Object|null} selectedGroup - Comando selezionato nella navigazione gerarchica.
  * @property {string}      searchText   - Testo di ricerca normalizzato (lowercase, trim).
  * @property {AppFilters}  filters      - Filtri attivi.
  */

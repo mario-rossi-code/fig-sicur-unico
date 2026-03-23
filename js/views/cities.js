@@ -1,10 +1,10 @@
 /**
  * @file views/cities.js
- * @description Vista gerarchica Città → Gruppi → Militari.
+ * @description Vista gerarchica Città → Comandi → Militari.
  *
  *              Livello 1 – Griglia di tutte le città.
- *              Livello 2 – Lista gruppi della città selezionata.
- *              Livello 3 – Lista militari del gruppo selezionato.
+ *              Livello 2 – Lista comandi della città selezionata.
+ *              Livello 3 – Lista militari del comando selezionato.
  *
  *              Espone:
  *              - `renderCitiesHierarchy()` → entry point chiamato da `render()`
@@ -17,8 +17,8 @@
 /**
  * Renderizza la navigazione gerarchica in base allo stato corrente:
  * - Se nessuna città è selezionata: griglia delle città (livello 1).
- * - Se è selezionata una città ma non un gruppo: lista gruppi (livello 2).
- * - Se è selezionato anche un gruppo: lista militari (livello 3).
+ * - Se è selezionata una città ma non un comando: lista comandi (livello 2).
+ * - Se è selezionato anche un comando: lista militari (livello 3).
  *
  * @returns {boolean} `true` se almeno un elemento è stato renderizzato.
  */
@@ -70,7 +70,7 @@ function _createCityCard(city, index) {
             <i class="fa-solid fa-city" aria-hidden="true"></i>
         </div>
         <div class="list-item-title">${city.nome}</div>
-        <div class="list-item-subtitle">${city.gruppi.length} Gruppi</div>
+        <div class="list-item-subtitle">${city.comandi.length} Comandi</div>
     `;
 
     card.onclick = () => {
@@ -80,13 +80,13 @@ function _createCityCard(city, index) {
     return card;
 }
 
-// ─── Livello 2: lista gruppi ──────────────────────────────────────────────────
+// ─── Livello 2: lista comandi ──────────────────────────────────────────────────
 
 /**
- * Renderizza la lista dei gruppi della città selezionata.
+ * Renderizza la lista dei comandi della città selezionata.
  *
  * @private
- * @returns {boolean} `true` se almeno un gruppo è visibile.
+ * @returns {boolean} `true` se almeno un comando è visibile.
  */
 function _renderCityGroups() {
     DOM.content.className = "view-container list-view";
@@ -109,7 +109,7 @@ function _renderCityGroups() {
         { text: state.selectedCity.nome, active: true },
     ]);
 
-    const sorted = [...state.selectedCity.gruppi].sort((a, b) =>
+    const sorted = [...state.selectedCity.comandi].sort((a, b) =>
         a.nome.localeCompare(b.nome),
     );
     let hasResults = false;
@@ -124,10 +124,10 @@ function _renderCityGroups() {
 }
 
 /**
- * Crea la card di un gruppo per la lista della città.
+ * Crea la card di un comando per la lista della città.
  *
  * @private
- * @param {Object} group - Oggetto gruppo.
+ * @param {Object} group - Oggetto comando.
  * @returns {HTMLElement}
  */
 function _createGroupCard(group) {
@@ -149,10 +149,10 @@ function _createGroupCard(group) {
     return el;
 }
 
-// ─── Livello 3: lista militari del gruppo ──────────────────────────────────────
+// ─── Livello 3: lista militari del comando ──────────────────────────────────────
 
 /**
- * Renderizza la lista dei militari del gruppo selezionato.
+ * Renderizza la lista dei militari del comando selezionato.
  *
  * @private
  * @returns {boolean} `true` se almeno un militare corrisponde alla ricerca.
@@ -178,7 +178,7 @@ function _renderGroupPeople() {
         {
             text: state.selectedCity.nome,
             action: () => {
-                // Torna alla lista dei gruppi della città
+                // Torna alla lista dei comandi della città
                 state.selectedGroup = null;
                 render();
                 saveState();

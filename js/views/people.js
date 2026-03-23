@@ -73,7 +73,7 @@ function _collectUniquePeople() {
     const map = new Map();
 
     dbData.forEach((city) => {
-        city.gruppi.forEach((group) => {
+        city.comandi.forEach((group) => {
             group.incarichi.forEach((inc) => {
                 const p = inc.militare;
                 if (!hasValidPersonData(p)) return;
@@ -129,7 +129,7 @@ function _matchesPeopleSearch(item) {
 /**
  * Crea la card di un militare per la vista militari.
  *
- * Mostra: avatar, nome completo, grado, gruppo, badge UniCo e conteggio incarichi.
+ * Mostra: avatar, nome completo, grado, comando, badge UniCo e conteggio incarichi.
  * Al click apre la modale con tutti gli incarichi aggregati.
  *
  * @private

@@ -34,16 +34,16 @@ const _modalClose = document.getElementById("modalClose");
  * @param {string}   militare.telefono_ufficio
  * @param {string}   incarico             - Incarico principale (usato se `incarichiMultipli` è vuoto).
  * @param {string}   citta                - Città di appartenenza.
- * @param {string}   gruppo               - Gruppo di appartenenza.
+ * @param {string}   Comando               - Comando di appartenenza.
  * @param {string[]} [incarichiMultipli]  - Lista completa degli incarichi del militare.
  * @returns {void}
  */
-function openModal(militare, incarico, citta, gruppo, incarichiMultipli = null) {
+function openModal(militare, incarico, citta, comando, incarichiMultipli = null) {
     // Traccia apertura modale
     trackModalOpen(
         `${militare.nome} ${militare.cognome}`,
         citta,
-        gruppo,
+        comando,
         militare.abilitUniCo?.toLowerCase() === "si",
     );
 
@@ -72,8 +72,8 @@ function openModal(militare, incarico, citta, gruppo, incarichiMultipli = null) 
                     <div class="modal-box-value">${citta}</div>
                 </div>
                 <div class="modal-box">
-                    <div class="modal-box-label">Gruppo</div>
-                    <div class="modal-box-value">${gruppo}</div>
+                    <div class="modal-box-label">Comando</div>
+                    <div class="modal-box-value">${comando}</div>
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 /**
  * @file views/groups.js
- * @description Vista elenco Gruppi con card espandibili e pill di filtro per città.
+ * @description Vista elenco Comandi con card espandibili e pill di filtro per città.
  *
  *              Espone:
  *              - `renderGroupsList()` → entry point chiamato da `render()`
@@ -14,14 +14,14 @@ let _openGroup = null;
 // ─── Entry point ──────────────────────────────────────────────────────────────
 
 /**
- * Renderizza la lista di tutti i gruppi, raggruppati per città e ordinati
- * alfabeticamente. Ogni gruppo è racchiuso in una card espandibile.
+ * Renderizza la lista di tutti i comandi, raggruppati per città e ordinati
+ * alfabeticamente. Ogni comando è racchiuso in una card espandibile.
  *
- * Se `state.selectedCity` è impostato, mostra solo i gruppi di quella città.
- * Supporta la ricerca testuale: i gruppi con almeno un incarico corrispondente
+ * Se `state.selectedCity` è impostato, mostra solo i comandi di quella città.
+ * Supporta la ricerca testuale: i comandi con almeno un incarico corrispondente
  * vengono mostrati automaticamente espansi.
  *
- * @returns {boolean} `true` se almeno un gruppo è visibile.
+ * @returns {boolean} `true` se almeno un comando è visibile.
  */
 function renderGroupsList() {
     DOM.content.className = "view-container list-view";
@@ -35,7 +35,7 @@ function renderGroupsList() {
     citiesToShow.forEach((city) => {
         const matchedGroups = [];
 
-        city.gruppi.forEach((group) => {
+        city.comandi.forEach((group) => {
             const matchedIncarichi = group.incarichi.filter((inc) =>
                 matchesSearchObj(
                     group.nome,
@@ -68,7 +68,7 @@ function renderGroupsList() {
 // ─── Pill filtro città ────────────────────────────────────────────────────────
 
 /**
- * Renderizza la barra di pill per filtrare per città nella vista Gruppi.
+ * Renderizza la barra di pill per filtrare per città nella vista Comandi.
  * Il pulsante "Tutte" deseleziona il filtro; gli altri selezionano la città
  * (e la deselezionano se si clicca di nuovo sulla stessa).
  *
@@ -105,7 +105,7 @@ function _renderCityFilterBar(cities) {
     cities.forEach((city) => {
         // Se c'è una ricerca attiva, mostra solo le città con risultati
         if (state.searchText) {
-            const hasMatches = city.gruppi.some((g) =>
+            const hasMatches = city.comandi.some((g) =>
                 g.incarichi.some((inc) =>
                     matchesSearchObj(
                         g.nome,
@@ -122,18 +122,18 @@ function _renderCityFilterBar(cities) {
     });
 }
 
-// ─── Card gruppo espandibile ──────────────────────────────────────────────────
+// ─── Card comando espandibile ──────────────────────────────────────────────────
 
 /**
- * Crea una card gruppo espandibile con animazione accordion.
+ * Crea una card comando espandibile con animazione accordion.
  *
- * Il gruppo si apre automaticamente se è attiva una ricerca (`state.searchText`).
+ * Il comando si apre automaticamente se è attiva una ricerca (`state.searchText`).
  * Alla chiusura/apertura, il contenuto si anima tramite `max-height` e lo
- * scroll porta il gruppo in cima alla viewport (sotto l'eventuale header di città).
+ * scroll porta il comando in cima alla viewport (sotto l'eventuale header di città).
  *
  * @private
- * @param {Object}   city             - Città a cui appartiene il gruppo.
- * @param {Object}   group            - Gruppo da renderizzare.
+ * @param {Object}   city             - Città a cui appartiene il comando.
+ * @param {Object}   group            - Comando da renderizzare.
  * @param {Object[]} matchedIncarichi - Incarichi che superano la ricerca attiva.
  * @returns {HTMLElement} Elemento pronto per il DOM.
  */
@@ -199,11 +199,11 @@ function _createGroupExpandable(city, group, matchedIncarichi) {
 }
 
 /**
- * Aggiunge il comportamento accordion alla card gruppo.
- * Un solo gruppo può essere aperto alla volta: aprirne uno chiude il precedente.
+ * Aggiunge il comportamento accordion alla card comando.
+ * Un solo comando può essere aperto alla volta: aprirne uno chiude il precedente.
  *
  * @private
- * @param {HTMLElement} div         - Card gruppo radice.
+ * @param {HTMLElement} div         - Card comando radice.
  * @param {HTMLElement} header      - Intestazione cliccabile.
  * @param {HTMLElement} contentDiv  - Contenitore animato.
  * @param {HTMLElement} innerDiv    - Contenuto reale (misurato).
@@ -222,17 +222,17 @@ function _attachAccordionBehavior(
     let isAnimating = false;
     let _openGroup = null;
 
-    // Oggetto che rappresenta questo gruppo, usato da _openGroup
+    // Oggetto che rappresenta questo comando, usato da _openGroup
     const self = { div, contentDiv, innerDiv, chevron };
 
-    // Funzione che chiude questo gruppo
+    // Funzione che chiude questo comando
     const close = () => {
         chevron.style.transform = "rotate(0deg)";
         contentDiv.style.maxHeight = "0";
         setTimeout(() => div.classList.remove("expanded"), 400);
     };
 
-    // Funzione che apre questo gruppo
+    // Funzione che apre questo comando
     const open = () => {
         div.classList.add("expanded");
         chevron.style.transform = "rotate(180deg)";
@@ -264,7 +264,7 @@ function _attachAccordionBehavior(
         const isExpanding = !div.classList.contains("expanded");
 
         if (isExpanding) {
-            // Chiude il gruppo attualmente aperto (se diverso da questo)
+            // Chiude il comando attualmente aperto (se diverso da questo)
             if (_openGroup && _openGroup.div !== div) {
                 _openGroup.chevron.style.transform = "rotate(0deg)";
                 _openGroup.contentDiv.style.maxHeight = "0";
@@ -298,11 +298,11 @@ function _attachAccordionBehavior(
 }
 
 /**
- * Scrolla il contenitore principale per portare la card gruppo in cima,
+ * Scrolla il contenitore principale per portare la card comando in cima,
  * posizionandola 0.5rem sotto l'eventuale intestazione di città sticky.
  *
  * @private
- * @param {HTMLElement} groupDiv - Card gruppo da portare in vista.
+ * @param {HTMLElement} groupDiv - Card comando da portare in vista.
  * @returns {void}
  */
 function _scrollGroupToTop(groupDiv) {
@@ -312,7 +312,7 @@ function _scrollGroupToTop(groupDiv) {
     const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
     const halfRem = rem * 0.5;
 
-    // Cerca l'ultimo letter-header sopra il gruppo
+    // Cerca l'ultimo letter-header sopra il comando
     const letterHeaders = container.querySelectorAll(".letter-header");
     let lastHeaderBottom = 0;
 
@@ -334,7 +334,7 @@ function _scrollGroupToTop(groupDiv) {
 
 /**
  * Crea l'intestazione sticky di una città usata come separatore
- * nella lista dei gruppi.
+ * nella lista dei comandi.
  *
  * @private
  * @param {string} cityName - Nome della città.

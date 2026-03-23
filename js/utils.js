@@ -90,11 +90,11 @@ function getInitials(nome, cognome) {
 /**
  * Verifica se un singolo testo corrisponde al testo di ricerca corrente.
  * Opzionalmente, se il testo diretto non corrisponde, controlla anche
- * gli incarichi del gruppo (ricerca profonda).
+ * gli incarichi del comando (ricerca profonda).
  *
  * @param {string}      text      - Testo principale da verificare.
- * @param {Object|null} [groupObj] - Oggetto gruppo per ricerca profonda negli incarichi.
- * @returns {boolean} `true` se il testo (o un incarico del gruppo) corrisponde.
+ * @param {Object|null} [groupObj] - Oggetto comando per ricerca profonda negli incarichi.
+ * @returns {boolean} `true` se il testo (o un incarico del comando) corrisponde.
  */
 function matchesSearch(text, groupObj = null) {
     if (!state.searchText) return true;

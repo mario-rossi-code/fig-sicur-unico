@@ -148,7 +148,7 @@ fig-sicur-unico/
 │
 └── views/
 ├── cities.js ← Vista Città
-├── groups.js ← Vista Gruppi espandibili
+├── groups.js ← Vista Comandi espandibili
 ├── roles.js ← Vista Incarichi
 └── people.js ← Vista Militari
 

@@ -7,7 +7,7 @@
  *              (definita in `js/views/`).
  *
  *              Contiene anche i builder di card riutilizzati in più viste:
- *              - `createPersonCard()`       → card militare (vista Città/Gruppi)
+ *              - `createPersonCard()`       → card militare (vista Città/Comandi)
  *              - `createLetterHeader()`     → intestazione alfabetica
  *              - `updateBreadcrumb()`       → breadcrumb di navigazione gerarchica
  */
@@ -86,14 +86,14 @@ function render() {
 // ─── Builder condivisi ────────────────────────────────────────────────────────
 
 /**
- * Crea una card militare per la navigazione gerarchica (vista Città → Gruppi → Militari).
+ * Crea una card militare per la navigazione gerarchica (vista Città → Comandi → Militari).
  *
  * Se il militare non ha dati validi (slot vacante), la card viene resa
  * non interattiva e mostra "In attesa di nomina".
  *
  * @param {{ nome: string, militare: Object }} inc  - Oggetto incarico.
  * @param {string}                            cityName  - Nome della città.
- * @param {string}                            groupName - Nome del gruppo.
+ * @param {string}                            groupName - Nome del comando.
  * @returns {HTMLElement} Card pronta per il DOM.
  */
 function createPersonCard(inc, cityName, groupName) {

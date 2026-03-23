@@ -238,7 +238,7 @@ async function _loadData() {
             trackEvent("data_load_complete", {
                 cities_count: dbData.length,
                 total_groups: dbData.reduce(
-                    (acc, city) => acc + city.gruppi.length,
+                    (acc, city) => acc + city.comandi.length,
                     0,
                 ),
             });

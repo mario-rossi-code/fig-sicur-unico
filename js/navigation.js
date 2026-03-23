@@ -65,7 +65,7 @@ function syncNavigationWithState() {
  *
  * Comandi supportati:
  * - `citta[/nome]` → Vista Città, con eventuale selezione diretta.
- * - `gruppi`       → Vista Gruppi.
+ * - `comandi`       → Vista Comandi.
  * - `incarichi`    → Vista Incarichi.
  * - `militari`      → Vista Militari.
  *
@@ -86,7 +86,7 @@ function handleProtocolUrl() {
 
     const VIEW_MAP = {
         citta: "cities",
-        gruppi: "groups",
+        comandi: "groups",
         incarichi: "roles",
         militari: "people",
     };
@@ -110,7 +110,7 @@ function handleProtocolUrl() {
  * @private
  * @param {string} view - Vista corrente
  * @param {Object} selectedCity - Città selezionata (opzionale)
- * @param {Object} selectedGroup - Gruppo selezionato (opzionale)
+ * @param {Object} selectedGroup - Comando selezionato (opzionale)
  * @returns {void}
  */
 function pushHistoryState(view, selectedCity = null, selectedGroup = null) {
@@ -168,13 +168,13 @@ function restoreStateFromHistory(historyState) {
         state.selectedCity = null;
     }
 
-    // Ripristina il gruppo selezionato
+    // Ripristina il comando selezionato
     if (
         historyState.selectedGroup &&
         historyState.selectedGroup.nome &&
         state.selectedCity
     ) {
-        const group = state.selectedCity.gruppi.find(
+        const group = state.selectedCity.comandi.find(
             (g) => g.nome === historyState.selectedGroup.nome,
         );
         if (group) {
@@ -242,7 +242,7 @@ function _switchView(view) {
 }
 
 /**
- * Naviga alla lista dei gruppi di una città
+ * Naviga alla lista dei comandi di una città
  * @param {Object} city - Città da selezionare
  * @returns {void}
  */
@@ -257,9 +257,9 @@ function navigateToCityGroups(city) {
 }
 
 /**
- * Naviga alla lista dei militari di un gruppo
+ * Naviga alla lista dei militari di un comando
  * @param {Object} city - Città corrente
- * @param {Object} group - Gruppo da selezionare
+ * @param {Object} group - Comando da selezionare
  * @returns {void}
  */
 function navigateToGroupPeople(city, group) {
