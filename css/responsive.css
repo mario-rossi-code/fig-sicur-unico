@@ -12,7 +12,10 @@
     }
 
     .main {
-        height: calc(100dvh - var(--header-height-desktop));
+        height: calc(
+            100dvh - var(--header-height-desktop) -
+                env(safe-area-inset-top, 0px)
+        );
     }
 
     .cities-grid {
@@ -76,7 +79,9 @@
     }
 
     .main {
-        height: calc(100dvh - var(--header-height-mobile));
+        height: calc(
+            100dvh - var(--header-height-mobile) - env(safe-area-inset-top, 0px)
+        );
     }
 
     /* Filter buttons: icon-only on mobile */

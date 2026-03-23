@@ -48,6 +48,7 @@
     --shadow-hover: 0 15px 35px rgba(31, 111, 61, 0.25);
 
     /* layout */
+    --safe-top: env(safe-area-inset-top, 0px);
     --max-width-container: 1400px;
     --header-height-mobile: 60px;
     --header-height-desktop: 75px;
