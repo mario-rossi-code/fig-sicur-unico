@@ -1235,12 +1235,12 @@
                         {
                             "nome": "Istruttore",
                             "militare": {
-                                "nome": "Tommaso",
-                                "cognome": "Vitale",
-                                "grado": "Maresciallo",
+                                "nome": "Francesco",
+                                "cognome": "Ricci",
+                                "grado": "Appuntato",
                                 "abilitUniCo": "no",
-                                "telefono_cell": "+393333456708",
-                                "telefono_ufficio": "+390232345608"
+                                "telefono_cell": "393332345627",
+                                "telefono_ufficio": "390222345627"
                             }
                         },
                         {
@@ -1571,12 +1571,12 @@
                         {
                             "nome": "Addetto Amministrativo Completo",
                             "militare": {
-                                "nome": "Claudio",
-                                "cognome": "Martini",
-                                "grado": "Brigadiere",
+                                "nome": "Francesco",
+                                "cognome": "Ricci",
+                                "grado": "Appuntato",
                                 "abilitUniCo": "no",
-                                "telefono_cell": "+393335678904",
-                                "telefono_ufficio": "+390252345604"
+                                "telefono_cell": "393332345627",
+                                "telefono_ufficio": "390222345627"
                             }
                         },
                         {

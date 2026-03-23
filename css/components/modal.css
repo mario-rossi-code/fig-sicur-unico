@@ -29,6 +29,9 @@
 .modal-content {
     width: 92%;
     max-width: 420px;
+    max-height: 88dvh;
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--border-light);
     border-radius: 22px;
     background: var(--modal-background);
@@ -36,6 +39,7 @@
     transform: translateY(25px) scale(0.95);
     transition: all 0.35s ease;
     position: relative;
+    overflow: hidden;
 }
 
 .modal-overlay.show .modal-content {
@@ -58,6 +62,7 @@
     background: transparent;
     cursor: pointer;
     transition: 0.2s;
+    z-index: 2;
 }
 
 .modal-close:hover {
@@ -69,6 +74,7 @@
 .modal-simple {
     text-align: center;
     padding: 2rem 1.6rem 1.8rem 1.6rem;
+    overflow-y: auto;
 }
 
 /* ── Avatar ──────────────────────────────────────────────────────────────── */
@@ -147,7 +153,7 @@
     background: var(--error-bg);
 }
 
-/* ── City / group boxes ──────────────────────────────────────────────────── */
+/* ── City / group boxes (solo quando il contesto è unico) ────────────────── */
 
 .modal-city-group {
     display: grid;
@@ -191,12 +197,73 @@
     color: var(--text-light);
 }
 
+/* ── Incarico item – layout semplice (contesto unico) ────────────────────── */
+
 .modal-incarico-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.35rem 0;
     font-size: 0.9rem;
+}
+
+/* ── Incarico item – layout con contesto (città/gruppo diversi) ──────────── */
+
+.modal-incarico-item--ctx {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    background: var(--primary-bg-active);
+}
+
+.modal-incarico-item--ctx:not(:last-child) {
+    margin-bottom: 0.4rem;
+}
+
+[data-theme="dark"] .modal-incarico-item--ctx {
+    background: var(--card-bg);
+}
+
+/* Riga nome incarico */
+.modal-incarico-nome {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.modal-incarico-nome i {
+    color: var(--primary);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+/* Riga contesto: icona + città > chevron > gruppo */
+.modal-incarico-ctx {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    /* Indentato per allinearsi al testo del nome sopra */
+    padding-left: 1.3rem;
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.modal-incarico-ctx i {
+    font-size: 0.65rem;
+    flex-shrink: 0;
+}
+
+/* Il separatore chevron tra città e gruppo */
+.modal-incarico-ctx .fa-chevron-right {
+    font-size: 0.55rem;
+    opacity: 0.5;
 }
 
 /* ── Contacts ────────────────────────────────────────────────────────────── */

@@ -18,6 +18,9 @@ const CONFIG = {
     /** Nome dell'applicazione. */
     APP_NAME: "Figure di Sicurezza",
 
+    /** Nome breve per PWA */
+    APP_SHORT_NAME: "Fig. Sicurezza",
+
     // ─── Google Analytics ──────────────────────────────────────────────────
     GOOGLE_ANALYTICS: {
         /** Il tuo ID di misurazione GA4 */

@@ -248,6 +248,40 @@
 
         <!-- Script principale (moduli caricati in ordine) -->
         <script src="./js/config.js"></script>
+        <script>
+            // Imposta dinamicamente il titolo della pagina
+            document.title = CONFIG.APP_NAME;
+
+            // Aggiorna anche il meta tag apple-mobile-web-app-title
+            const appleTitle = document.querySelector(
+                'meta[name="apple-mobile-web-app-title"]',
+            );
+            if (appleTitle) {
+                appleTitle.content = CONFIG.APP_NAME;
+            }
+
+            // Aggiorna il contenuto dell'header quando il DOM è caricato
+            document.addEventListener("DOMContentLoaded", function () {
+                const headerTitle = document.querySelector(".header h1");
+                if (headerTitle) {
+                    // Mantiene il logo e aggiorna solo il testo
+                    const logoWrapper =
+                        headerTitle.querySelector(".logo-wrapper");
+                    if (logoWrapper) {
+                        headerTitle.innerHTML = "";
+                        headerTitle.appendChild(logoWrapper);
+                        headerTitle.appendChild(
+                            document.createTextNode(CONFIG.APP_NAME),
+                        );
+                    } else {
+                        headerTitle.innerHTML = `<div class="logo-wrapper">
+                    <img class="logo" src="./assets/img/logo.png" alt="Logo" />
+                    <div class="version"></div>
+                </div>${CONFIG.APP_NAME}`;
+                    }
+                }
+            });
+        </script>
         <script src="./js/g-analytics.js"></script>
         <script src="./js/state.js"></script>
         <script src="./js/utils.js"></script>

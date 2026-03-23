@@ -5,6 +5,19 @@
  *              - `openModal()`: apre la modale popolandola con i dati del militare.
  *              - `closeModal()`: chiude la modale con animazione.
  *              - `initModal()`: registra tutti i listener (close button, overlay click, Escape).
+ *
+ *              La firma di openModal supporta due modalità di chiamata:
+ *
+ *              A) Vista Città / Comandi / Incarichi (contesto singolo):
+ *                 openModal(militare, incarico, citta, comando)
+ *                 → incarico è una stringa, citta e comando sono stringhe.
+ *
+ *              B) Vista Militari (contesti multipli):
+ *                 openModal(militare, incarichi)
+ *                 → incarichi è un array di oggetti { nome, city, group }.
+ *
+ *              La funzione rileva automaticamente la modalità in base al tipo
+ *              del secondo argomento (stringa vs array).
  */
 
 "use strict";
@@ -25,30 +38,54 @@ const _modalClose = document.getElementById("modalClose");
 /**
  * Apre la modale con i dati completi di un militare.
  *
- * @param {Object}   militare              - Dati sanitizzati del militare.
- * @param {string}   militare.nome
- * @param {string}   militare.cognome
- * @param {string}   militare.grado
- * @param {string}   militare.abilitUniCo  - `"si"` oppure altro.
- * @param {string}   militare.telefono_cell
- * @param {string}   militare.telefono_ufficio
- * @param {string}   incarico             - Incarico principale (usato se `incarichiMultipli` è vuoto).
- * @param {string}   citta                - Città di appartenenza.
- * @param {string}   Comando               - Comando di appartenenza.
- * @param {string[]} [incarichiMultipli]  - Lista completa degli incarichi del militare.
+ * Firma A – contesto singolo (viste Città / Comandi / Incarichi):
+ *   openModal(militare, incarico, citta, comando)
+ *
+ * Firma B – contesti multipli (vista Militari):
+ *   openModal(militare, incarichi)
+ *   dove incarichi = Array<{ nome: string, city: string, group: string }>
+ *
+ * @param {Object} militare
+ * @param {string|Array<{nome:string,city:string,group:string}>} incaricoOrIncarichi
+ * @param {string}  [citta]   - Solo firma A.
+ * @param {string}  [comando] - Solo firma A.
  * @returns {void}
  */
-function openModal(militare, incarico, citta, comando, incarichiMultipli = null) {
-    // Traccia apertura modale
+function openModal(militare, incaricoOrIncarichi, citta, comando) {
+    // ── Normalizza gli argomenti in un array di oggetti { nome, city, group } ──
+    let incarichi;
+    if (Array.isArray(incaricoOrIncarichi)) {
+        // Firma B: già nel formato corretto
+        incarichi = incaricoOrIncarichi;
+    } else {
+        // Firma A: singola stringa + citta + comando
+        incarichi = [
+            {
+                nome: incaricoOrIncarichi,
+                city: citta || "",
+                group: comando || "",
+            },
+        ];
+    }
+
+    // Analytics: usa il primo incarico come riferimento
     trackModalOpen(
         `${militare.nome} ${militare.cognome}`,
-        citta,
-        comando,
+        incarichi[0]?.city || "",
+        incarichi[0]?.group || "",
         militare.abilitUniCo?.toLowerCase() === "si",
     );
 
     const isUnico = militare.abilitUniCo.toLowerCase() === "si";
     const initials = getInitials(militare.nome, militare.cognome);
+
+    // Tutti gli incarichi condividono lo stesso contesto?
+    const allSameContext =
+        incarichi.length > 0 &&
+        incarichi.every(
+            (i) =>
+                i.city === incarichi[0].city && i.group === incarichi[0].group,
+        );
 
     _modalBody.innerHTML = `
         <div class="modal-simple">
@@ -66,20 +103,25 @@ function openModal(militare, incarico, citta, comando, incarichiMultipli = null)
                 </div>
             </div>
 
+            ${
+                allSameContext
+                    ? `
             <div class="modal-city-group">
                 <div class="modal-box">
                     <div class="modal-box-label">Città</div>
-                    <div class="modal-box-value">${citta}</div>
+                    <div class="modal-box-value">${incarichi[0].city}</div>
                 </div>
                 <div class="modal-box">
                     <div class="modal-box-label">Comando</div>
-                    <div class="modal-box-value">${comando}</div>
+                    <div class="modal-box-value">${incarichi[0].group}</div>
                 </div>
-            </div>
+            </div>`
+                    : ""
+            }
 
             <div class="modal-section">
                 <div class="modal-section-title">Incarichi</div>
-                ${_renderIncarichiList(incarichiMultipli || [incarico])}
+                ${_renderIncarichiList(incarichi, allSameContext)}
             </div>
 
             <div class="modal-section">
@@ -136,21 +178,56 @@ function initModal() {
 // ─── Helper privati ───────────────────────────────────────────────────────────
 
 /**
- * Genera l'HTML per l'elenco degli incarichi nella modale.
+ * Genera l'HTML per l'elenco degli incarichi.
+ *
+ * - Contesto unico (allSameContext = true):
+ *   Lista semplice con sola icona + nome. Città e comando sono già mostrati
+ *   nei box sopra, non serve ripeterli.
+ *
+ * - Contesti multipli (allSameContext = false):
+ *   Ogni incarico è una card con nome in evidenza e una riga secondaria
+ *   "Città › Comando" che ne specifica il contesto.
  *
  * @private
- * @param {string[]} incarichi - Lista dei nomi degli incarichi.
- * @returns {string} HTML dell'elenco.
+ * @param {Array<{nome:string,city:string,group:string}>} incarichi
+ * @param {boolean} allSameContext
+ * @returns {string}
  */
-function _renderIncarichiList(incarichi) {
-    return incarichi
+function _renderIncarichiList(incarichi, allSameContext) {
+    if (allSameContext) {
+        return incarichi
+            .map(
+                (inc) => `
+                <div class="modal-incarico-item">
+                    <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+                    ${inc.nome}
+                </div>`,
+            )
+            .join("");
+    }
+
+    // Contesti multipli: raggruppa per città › gruppo per leggibilità
+    // Ordina per città poi gruppo così incarichi dello stesso comando stanno insieme
+    const sorted = [...incarichi].sort((a, b) => {
+        const cityComp = a.city.localeCompare(b.city);
+        return cityComp !== 0 ? cityComp : a.group.localeCompare(b.group);
+    });
+
+    return sorted
         .map(
             (inc) => `
-            <div class="modal-incarico-item">
-                <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
-                ${inc}
-            </div>
-        `,
+            <div class="modal-incarico-item modal-incarico-item--ctx">
+                <div class="modal-incarico-nome">
+                    <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+                    <span>${inc.nome}</span>
+                </div>
+                <div class="modal-incarico-ctx">
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    <span>${inc.city}</span>
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    <span>${inc.group}</span>
+                </div>
+            </div>`,
         )
         .join("");
 }
@@ -179,15 +256,14 @@ function _renderContacts(militare) {
     }
 
     let html = "";
-
-    if (hasCellulare) {
-        html += _phoneLink(militare.telefono_cell, "fa-mobile-alt", "Cellulare");
-    }
-
-    if (hasUfficio) {
+    if (hasCellulare)
+        html += _phoneLink(
+            militare.telefono_cell,
+            "fa-mobile-alt",
+            "Cellulare",
+        );
+    if (hasUfficio)
         html += _phoneLink(militare.telefono_ufficio, "fa-building", "Ufficio");
-    }
-
     return html;
 }
 
@@ -195,10 +271,10 @@ function _renderContacts(militare) {
  * Genera l'HTML per un singolo link telefonico.
  *
  * @private
- * @param {string} number    - Numero di telefono.
- * @param {string} icon      - Classe Font Awesome (senza prefisso).
- * @param {string} label     - Etichetta (es. `"Cellulare"`, `"Ufficio"`).
- * @returns {string} HTML del link.
+ * @param {string} number - Numero di telefono.
+ * @param {string} icon   - Classe Font Awesome (senza prefisso fa-).
+ * @param {string} label  - Etichetta (es. "Cellulare", "Ufficio").
+ * @returns {string}
  */
 function _phoneLink(number, icon, label) {
     return `

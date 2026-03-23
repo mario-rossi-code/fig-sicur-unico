@@ -35,7 +35,9 @@ function renderPeopleList() {
         );
         return nomeCompare !== 0
             ? nomeCompare
-            : (a.militare.cognome || "").localeCompare(b.militare.cognome || "");
+            : (a.militare.cognome || "").localeCompare(
+                  b.militare.cognome || "",
+              );
     });
 
     let currentLetter = "";
@@ -64,10 +66,16 @@ function renderPeopleList() {
 /**
  * Raccoglie tutte i militari valide dal database, de-duplicandole per chiave
  * univoca (nome + cognome + grado + telefoni + abilitUniCo).
- * Per ogni militare aggrega la lista di tutti i suoi incarichi.
+ *
+ * Per ogni militare aggrega la lista completa dei suoi incarichi come oggetti
+ * { nome, city, group } — così la modale può mostrare il contesto corretto
+ * anche quando lo stesso militare compare in città o comandi diversi.
  *
  * @private
- * @returns {Array<{militare: Object, incarichi: string[], role: string, city: string, group: string}>}
+ * @returns {Array<{
+ *   militare: Object,
+ *   incarichi: Array<{nome: string, city: string, group: string}>
+ * }>}
  */
 function _collectUniquePeople() {
     const map = new Map();
@@ -90,15 +98,29 @@ function _collectUniquePeople() {
                 if (!map.has(key)) {
                     map.set(key, {
                         militare: p,
-                        incarichi: [inc.nome],
-                        role: inc.nome,
-                        city: city.nome,
-                        group: group.nome,
+                        incarichi: [
+                            {
+                                nome: inc.nome,
+                                city: city.nome,
+                                group: group.nome,
+                            },
+                        ],
                     });
                 } else {
                     const existing = map.get(key);
-                    if (!existing.incarichi.includes(inc.nome)) {
-                        existing.incarichi.push(inc.nome);
+                    // Evita duplicati esatti sullo stesso incarico/città/gruppo
+                    const alreadyPresent = existing.incarichi.some(
+                        (i) =>
+                            i.nome === inc.nome &&
+                            i.city === city.nome &&
+                            i.group === group.nome,
+                    );
+                    if (!alreadyPresent) {
+                        existing.incarichi.push({
+                            nome: inc.nome,
+                            city: city.nome,
+                            group: group.nome,
+                        });
                     }
                 }
             });
@@ -110,42 +132,50 @@ function _collectUniquePeople() {
 
 /**
  * Verifica se un militare corrisponde alla ricerca testuale corrente.
+ * Cerca nei campi del militare e in tutti i suoi incarichi (nome, città, gruppo).
  *
  * @private
- * @param {{ militare: Object, role: string, city: string, group: string }} item
+ * @param {{ militare: Object, incarichi: Array<{nome:string,city:string,group:string}> }} item
  * @returns {boolean}
  */
 function _matchesPeopleSearch(item) {
-    return matchesSearchObj(
-        item.city || "",
-        item.group || "",
-        item.role || "",
-        item.militare?.grado || "",
-        item.militare?.nome || "",
-        item.militare?.cognome || "",
+    // Controlla i campi diretti del militare
+    if (
+        matchesSearchObj(
+            item.militare?.grado || "",
+            item.militare?.nome || "",
+            item.militare?.cognome || "",
+        )
+    )
+        return true;
+
+    // Controlla ogni incarico con il suo contesto
+    return item.incarichi.some((inc) =>
+        matchesSearchObj(inc.nome, inc.city, inc.group),
     );
 }
 
 /**
  * Crea la card di un militare per la vista militari.
  *
- * Mostra: avatar, nome completo, grado, comando, badge UniCo e conteggio incarichi.
- * Al click apre la modale con tutti gli incarichi aggregati.
+ * Mostra: avatar, nome completo, grado, primo comando, badge UniCo e
+ * conteggio incarichi. Al click apre la modale con tutti gli incarichi
+ * aggregati (ognuno con il proprio contesto città/gruppo).
  *
  * @private
- * @param {{ militare: Object, incarichi: string[], role: string, city: string, group: string }} item
+ * @param {{ militare: Object, incarichi: Array<{nome:string,city:string,group:string}> }} item
  * @returns {HTMLElement}
  */
 function _createPersonListItem(item) {
     const card = document.createElement("div");
     card.className = "person-compact-card";
+
+    // data-search include tutti i contesti per la ricerca in-place
     card.dataset.search = [
         item.militare.nome,
         item.militare.cognome,
         item.militare.grado,
-        item.group,
-        item.city,
-        ...(item.incarichi || []),
+        ...item.incarichi.flatMap((i) => [i.nome, i.city, i.group]),
     ]
         .join(" ")
         .toLowerCase();
@@ -153,8 +183,11 @@ function _createPersonListItem(item) {
     const militare = sanitizeSoldier(item.militare);
     const isUnico = militare.abilitUniCo.toLowerCase() === "si";
     const initials = getInitials(militare.nome, militare.cognome);
-    const numIncarichi = item.incarichi?.length || 0;
+    const numIncarichi = item.incarichi.length;
     const incarichiLabel = numIncarichi === 1 ? "incarico" : "incarichi";
+
+    // Sottotitolo della card: primo gruppo trovato
+    const firstGroup = item.incarichi[0]?.group || "";
 
     card.innerHTML = `
         <div class="avatar-small">${initials}</div>
@@ -163,7 +196,7 @@ function _createPersonListItem(item) {
                 ${militare.nome} ${militare.cognome}
             </div>
             <div class="person-compact-role" style="font-size:0.8rem; color:var(--text-light); margin-top:2px;">
-                ${militare.grado} &mdash; ${item.group || ""}
+                ${militare.grado} &mdash; ${firstGroup}
             </div>
             <div class="operational-detail">
                 <span class="incarichi-count">${numIncarichi} ${incarichiLabel}</span>
@@ -175,14 +208,8 @@ function _createPersonListItem(item) {
         </div>
     `;
 
-    card.onclick = () =>
-        openModal(
-            militare,
-            item.role || "",
-            item.city || "",
-            item.group || "",
-            item.incarichi || [],
-        );
+    // Passa l'array di oggetti incarico alla modale
+    card.onclick = () => openModal(militare, item.incarichi);
 
     return card;
 }
