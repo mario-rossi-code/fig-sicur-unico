@@ -81,6 +81,8 @@ function render() {
 
     DOM.content.scrollTop = 0;
     saveState();
+
+    refreshSwipeDetection();
 }
 
 // ─── Builder condivisi ────────────────────────────────────────────────────────

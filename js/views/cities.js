@@ -116,6 +116,8 @@ function _renderCityGroups() {
         DOM.content.appendChild(_createGroupCard(group));
     });
 
+    refreshSwipeDetection();
+
     return hasResults;
 }
 
@@ -199,6 +201,8 @@ function _renderGroupPeople() {
             ),
         );
     });
+
+    refreshSwipeDetection();
 
     return hasResults;
 }
