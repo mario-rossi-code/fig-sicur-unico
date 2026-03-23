@@ -19,29 +19,18 @@
  * @returns {void}
  */
 function initNavigation() {
-    const navItems = document.querySelectorAll(".nav-item");
+    document.querySelectorAll(".bottom-nav .nav-item").forEach((item) => {
+        // Click
+        item.addEventListener("click", () => _switchView(item.dataset.view));
 
-    navItems.forEach((item) => {
-        item.addEventListener("click", (e) => {
-            const view = item.getAttribute("data-view");
-            if (view && view !== state.view) {
-                // Stato alla cronologia prima di cambiare vista
-                addToHistory(view);
-                changeView(view);
+        // Accessibilità tastiera (Enter / Space)
+        item.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                _switchView(item.dataset.view);
             }
         });
     });
-
-    // Gestisci il pulsante indietro del browser/swipe back
-    window.addEventListener("popstate", handlePopState);
-
-    // Salva lo stato iniziale nella cronologia
-    const initialState = {
-        view: state.view,
-        selectedCity: state.selectedCity?.nome || null,
-        selectedGroup: state.selectedGroup?.nome || null,
-    };
-    window.history.replaceState(initialState, "", window.location.pathname);
 }
 
 /**
@@ -70,146 +59,36 @@ function syncNavigationWithState() {
  *
  * @returns {void}
  */
-function handlePopState(event) {
-    // console.log("[Navigation] PopState rilevato", event.state);
+function handleProtocolUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const protocol = params.get("protocol");
+    if (!protocol) return;
 
-    if (event.state) {
-        // Ripristina lo stato precedente
-        const previousState = event.state;
+    const match = protocol.match(/^web\+figsicur:\/\/([^/]+)(?:\/(.+))?$/);
+    if (!match) return;
 
-        // Trova la città selezionata in base al nome
-        let selectedCity = null;
-        if (previousState.selectedCity) {
-            selectedCity = dbData.find(
-                (city) => city.nome === previousState.selectedCity,
+    const command = match[1];
+    const param = match[2] ? decodeURIComponent(match[2]) : null;
+
+    const VIEW_MAP = {
+        citta: "cities",
+        gruppi: "groups",
+        incarichi: "roles",
+        militari: "people",
+    };
+
+    if (VIEW_MAP[command]) {
+        state.view = VIEW_MAP[command];
+
+        if (command === "citta" && param) {
+            const city = dbData.find(
+                (c) => c.nome.toLowerCase() === param.toLowerCase(),
             );
+            if (city) state.selectedCity = city;
         }
 
-        // Trova il gruppo selezionato
-        let selectedGroup = null;
-        if (previousState.selectedGroup && selectedCity) {
-            selectedGroup = selectedCity.gruppi.find(
-                (g) => g.nome === previousState.selectedGroup,
-            );
-        }
-
-        // Aggiorna lo stato globale
-        state.view = previousState.view;
-        state.selectedCity = selectedCity;
-        state.selectedGroup = selectedGroup;
-
-        // Sincronizza la navbar
-        syncNavbarWithView(previousState.view);
-
-        // Renderizza la vista
         render();
-
-        // Traccia analytics
-        if (typeof trackEvent === "function") {
-            trackEvent("navigation_back", {
-                from: window.currentView,
-                to: previousState.view,
-                source: "popstate",
-            });
-        }
-
-        window.currentView = previousState.view;
-    } else {
-        // Nessuno stato nella cronologia, torna alla home
-        // console.log("[Navigation] Nessuno stato, navigazione alla home");
-        navigateToHome();
     }
-}
-
-/**
- * Aggiunge uno stato alla cronologia prima di navigare
- * @param {string} newView - Nuova vista
- * @param {Object} options - Opzioni aggiuntive (città, gruppo)
- */
-function addToHistory(newView, options = {}) {
-    const currentState = {
-        view: state.view,
-        selectedCity: state.selectedCity?.nome || null,
-        selectedGroup: state.selectedGroup?.nome || null,
-    };
-
-    const newState = {
-        view: newView,
-        selectedCity: options.city || null,
-        selectedGroup: options.group || null,
-    };
-
-    // Aggiungi il nuovo stato alla cronologia
-    window.history.pushState(newState, "", window.location.pathname);
-
-    // Mantieni anche lo stato precedente (opzionale)
-    console.log("[Navigation] Aggiunto stato alla cronologia:", newState);
-}
-
-/**
- * Cambia vista e aggiorna la cronologia
- * @param {string} newView - Nuova vista da attivare
- * @param {Object} options - Opzioni aggiuntive
- */
-function changeView(newView, options = {}) {
-    if (newView === state.view) return;
-
-    // Aggiungi alla cronologia prima di cambiare
-    addToHistory(newView, options);
-
-    // Aggiorna lo stato
-    state.view = newView;
-    if (options.city) state.selectedCity = options.city;
-    if (options.group) state.selectedGroup = options.group;
-
-    // Sincronizza navbar
-    syncNavbarWithView(newView);
-
-    // Rendi
-    render();
-
-    window.currentView = newView;
-}
-
-/**
- * Sincronizza la navbar con la vista corrente
- * @param {string} view - Vista corrente
- */
-function syncNavbarWithView(view) {
-    const navItems = document.querySelectorAll(".nav-item");
-    navItems.forEach((item) => {
-        item.classList.remove("active");
-        if (item.getAttribute("data-view") === view) {
-            item.classList.add("active");
-        }
-    });
-}
-
-/**
- * Naviga alla home (città)
- */
-function navigateToHome() {
-    const homeState = {
-        view: "cities",
-        selectedCity: null,
-        selectedGroup: null,
-    };
-
-    // Sostituisci lo stato corrente con la home
-    window.history.replaceState(homeState, "", window.location.pathname);
-
-    // Aggiorna lo stato
-    state.view = "cities";
-    state.selectedCity = null;
-    state.selectedGroup = null;
-
-    // Sincronizza navbar
-    syncNavbarWithView("cities");
-
-    // Rendi
-    render();
-
-    window.currentView = "cities";
 }
 
 // ─── Helper privati ───────────────────────────────────────────────────────────

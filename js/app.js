@@ -44,7 +44,7 @@ function initApp() {
     initNavigation();
     initConnectivityCheck();
 
-    // Inizializza Google Analytics (se abilitato in config)
+    // ✨ Inizializza Google Analytics (se abilitato in config)
     if (CONFIG.GOOGLE_ANALYTICS?.ENABLED) {
         initAnalytics(CONFIG.GOOGLE_ANALYTICS.MEASUREMENT_ID);
     } else {

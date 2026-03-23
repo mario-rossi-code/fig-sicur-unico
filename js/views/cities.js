@@ -74,18 +74,9 @@ function _createCityCard(city, index) {
     `;
 
     card.onclick = () => {
-        // Usa changeView per aggiungere alla cronologia
-        if (typeof changeView === "function") {
-            changeView("cities", {
-                city: city,
-                group: null,
-            });
-        } else {
-            // Fallback
-            state.selectedCity = city;
-            state.selectedGroup = null;
-            render();
-        }
+        state.selectedCity = city;
+        state.selectedGroup = null;
+        render();
     };
 
     return card;
@@ -106,15 +97,9 @@ function _renderCityGroups() {
         {
             text: "Tutte le Città",
             action: () => {
-                // Naviga indietro alla griglia città
-                if (typeof changeView === "function") {
-                    // Usa history.back() per tornare indietro nella cronologia
-                    window.history.back();
-                } else {
-                    state.selectedCity = null;
-                    resetSearch();
-                    render();
-                }
+                state.selectedCity = null;
+                resetSearch();
+                render();
             },
         },
         { text: state.selectedCity.nome, active: true },
@@ -154,16 +139,8 @@ function _createGroupCard(group) {
     `;
 
     el.onclick = () => {
-        // Usa changeView per aggiungere alla cronologia
-        if (typeof changeView === "function") {
-            changeView("cities", {
-                city: state.selectedCity,
-                group: group,
-            });
-        } else {
-            state.selectedGroup = group;
-            render();
-        }
+        state.selectedGroup = group;
+        render();
     };
 
     return el;
@@ -184,15 +161,17 @@ function _renderGroupPeople() {
         {
             text: "Tutte le Città",
             action: () => {
-                // Naviga indietro alla griglia città
-                window.history.back();
+                state.selectedCity = null;
+                state.selectedGroup = null;
+                resetSearch();
+                render();
             },
         },
         {
             text: state.selectedCity.nome,
             action: () => {
-                // Naviga indietro alla lista gruppi
-                window.history.back();
+                state.selectedGroup = null;
+                render();
             },
         },
         { text: state.selectedGroup.nome, active: true },
