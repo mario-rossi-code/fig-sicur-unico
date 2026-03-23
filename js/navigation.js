@@ -31,6 +31,20 @@ function initNavigation() {
             }
         });
     });
+
+    // Gestisce il tasto o la gesture indietro del browser
+    window.addEventListener("popstate", (event) => {
+        if (event.state) {
+            // Ripristina lo stato dalla history
+            restoreStateFromHistory(event.state);
+        } else {
+            // Se non c'è stato, torna alla vista iniziale
+            state.view = "cities";
+            state.selectedCity = null;
+            state.selectedGroup = null;
+            render();
+        }
+    });
 }
 
 /**
@@ -91,6 +105,94 @@ function handleProtocolUrl() {
     }
 }
 
+/**
+ * Aggiunge un nuovo stato alla history del browser
+ * @private
+ * @param {string} view - Vista corrente
+ * @param {Object} selectedCity - Città selezionata (opzionale)
+ * @param {Object} selectedGroup - Gruppo selezionato (opzionale)
+ * @returns {void}
+ */
+function pushHistoryState(view, selectedCity = null, selectedGroup = null) {
+    const state = {
+        view: view,
+        selectedCity: selectedCity
+            ? {
+                  nome: selectedCity.nome,
+                  // Salva solo i dati necessari per il ripristino
+                  id: selectedCity.id || selectedCity.nome,
+              }
+            : null,
+        selectedGroup: selectedGroup
+            ? {
+                  nome: selectedGroup.nome,
+                  // Salva solo i dati necessari per il ripristino
+                  id: selectedGroup.id || selectedGroup.nome,
+              }
+            : null,
+    };
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("view", view);
+    if (selectedCity) url.searchParams.set("city", selectedCity.nome);
+    if (selectedGroup) url.searchParams.set("group", selectedGroup.nome);
+
+    window.history.pushState(state, "", url);
+}
+
+/**
+ * Ripristina lo stato dalla history
+ * @private
+ * @param {Object} historyState - Stato salvato nella history
+ * @returns {void}
+ */
+function restoreStateFromHistory(historyState) {
+    if (!historyState) return;
+
+    // Ripristina la vista
+    if (historyState.view) {
+        state.view = historyState.view;
+    }
+
+    // Ripristina la città selezionata
+    if (historyState.selectedCity && historyState.selectedCity.nome) {
+        const city = dbData.find(
+            (c) => c.nome === historyState.selectedCity.nome,
+        );
+        if (city) {
+            state.selectedCity = city;
+        } else {
+            state.selectedCity = null;
+        }
+    } else {
+        state.selectedCity = null;
+    }
+
+    // Ripristina il gruppo selezionato
+    if (
+        historyState.selectedGroup &&
+        historyState.selectedGroup.nome &&
+        state.selectedCity
+    ) {
+        const group = state.selectedCity.gruppi.find(
+            (g) => g.nome === historyState.selectedGroup.nome,
+        );
+        if (group) {
+            state.selectedGroup = group;
+        } else {
+            state.selectedGroup = null;
+        }
+    } else {
+        state.selectedGroup = null;
+    }
+
+    // Aggiorna la navbar attiva
+    syncNavigationWithState();
+
+    // Rendi la vista
+    render();
+}
+
 // ─── Helper privati ───────────────────────────────────────────────────────────
 
 /**
@@ -134,4 +236,38 @@ function _switchView(view) {
 
     render();
     saveState();
+
+    // Aggiunge lo stato alla history
+    pushHistoryState(view, null, null);
+}
+
+/**
+ * Naviga alla lista dei gruppi di una città
+ * @param {Object} city - Città da selezionare
+ * @returns {void}
+ */
+function navigateToCityGroups(city) {
+    state.selectedCity = city;
+    state.selectedGroup = null;
+    render();
+    saveState();
+
+    // Aggiunge lo stato alla history
+    pushHistoryState("cities", city, null);
+}
+
+/**
+ * Naviga alla lista dei militari di un gruppo
+ * @param {Object} city - Città corrente
+ * @param {Object} group - Gruppo da selezionare
+ * @returns {void}
+ */
+function navigateToGroupPeople(city, group) {
+    state.selectedCity = city;
+    state.selectedGroup = group;
+    render();
+    saveState();
+
+    // Aggiunge lo stato alla history
+    pushHistoryState("cities", city, group);
 }

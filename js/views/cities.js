@@ -74,9 +74,7 @@ function _createCityCard(city, index) {
     `;
 
     card.onclick = () => {
-        state.selectedCity = city;
-        state.selectedGroup = null;
-        render();
+        navigateToCityGroups(city);
     };
 
     return card;
@@ -97,9 +95,15 @@ function _renderCityGroups() {
         {
             text: "Tutte le Città",
             action: () => {
+                // Torna alla lista delle città
                 state.selectedCity = null;
+                state.selectedGroup = null;
                 resetSearch();
                 render();
+                saveState();
+
+                // Aggiunge lo stato alla history
+                pushHistoryState("cities", null, null);
             },
         },
         { text: state.selectedCity.nome, active: true },
@@ -139,8 +143,7 @@ function _createGroupCard(group) {
     `;
 
     el.onclick = () => {
-        state.selectedGroup = group;
-        render();
+        navigateToGroupPeople(state.selectedCity, group);
     };
 
     return el;
@@ -161,17 +164,27 @@ function _renderGroupPeople() {
         {
             text: "Tutte le Città",
             action: () => {
+                // Torna alla lista delle città
                 state.selectedCity = null;
                 state.selectedGroup = null;
                 resetSearch();
                 render();
+                saveState();
+
+                // Aggiunge lo stato alla history
+                pushHistoryState("cities", null, null);
             },
         },
         {
             text: state.selectedCity.nome,
             action: () => {
+                // Torna alla lista dei gruppi della città
                 state.selectedGroup = null;
                 render();
+                saveState();
+
+                // Aggiunge lo stato alla history
+                pushHistoryState("cities", state.selectedCity, null);
             },
         },
         { text: state.selectedGroup.nome, active: true },
