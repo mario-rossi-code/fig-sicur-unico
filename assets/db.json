@@ -1029,12 +1029,12 @@
                         {
                             "nome": "Ufficiale Investigativo",
                             "militare": {
-                                "nome": "Maurizio",
-                                "cognome": "Costa",
-                                "grado": "Tenente",
-                                "abilitUniCo": "si",
-                                "telefono_cell": "+393332345628",
-                                "telefono_ufficio": "+390222345628"
+                                "nome": "Francesco",
+                                "cognome": "Ricci",
+                                "grado": "Appuntato",
+                                "abilitUniCo": "no",
+                                "telefono_cell": "393332345627",
+                                "telefono_ufficio": "390222345627"
                             }
                         }
                     ]

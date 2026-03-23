@@ -59,7 +59,7 @@ function initAnalytics(measurementId) {
         }
     });
 
-    console.log("[Analytics] Inizializzato - Modalità:", displayMode);
+    // console.log("[Analytics] Inizializzato - Modalità:", displayMode);
 }
 
 /**
@@ -188,7 +188,7 @@ async function _syncOfflineEvents() {
         });
     });
 
-    console.log("[Analytics] Sincronizzati", events.length, "eventi offline");
+    // console.log("[Analytics] Sincronizzati", events.length, "eventi offline");
 }
 
 // ─── Funzioni di utilità per tracciare eventi specifici dell'app ────────────
