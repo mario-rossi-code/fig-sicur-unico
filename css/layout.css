@@ -111,7 +111,6 @@
 
 .main {
     padding: 0 2rem;
-    padding-top: env(safe-area-inset-top, 0px);
     overflow: hidden;
 }
 
@@ -120,6 +119,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding-top: env(safe-area-inset-top, 0px);
 }
 
 /* ── View container ──────────────────────────────────────────────────────── */
