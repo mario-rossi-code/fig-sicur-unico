@@ -109,12 +109,10 @@ function _renderCityGroups() {
         { text: state.selectedCity.nome, active: true },
     ]);
 
-    const sorted = [...state.selectedCity.comandi].sort((a, b) =>
-        a.nome.localeCompare(b.nome),
-    );
+    const groups = state.selectedCity.comandi;
     let hasResults = false;
 
-    sorted.forEach((group) => {
+    groups.forEach((group) => {
         if (!matchesSearch(group.nome, group)) return;
         hasResults = true;
         DOM.content.appendChild(_createGroupCard(group));
