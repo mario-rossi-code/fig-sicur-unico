@@ -61,6 +61,13 @@
             "label": "Home screen dell'applicazione - tema scuro"
         },
         {
+            "src": "/assets/screenshots/login-light-theme.webp",
+            "sizes": "355x737",
+            "type": "image/webp",
+            "platform": "narrow",
+            "label": "Schermata di login"
+        },
+        {
             "src": "/assets/screenshots/groups-light-theme.webp",
             "sizes": "355x737",
             "type": "image/webp",
