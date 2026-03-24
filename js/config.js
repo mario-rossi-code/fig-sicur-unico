@@ -16,7 +16,7 @@ const CONFIG = {
     APP_VERSION: "1.0",
 
     /** Nome dell'applicazione. */
-    APP_NAME: "Figure di Sicurezza",
+    APP_NAME: "Figure di Sicurezza (DEMO)",
 
     /** Nome breve per PWA */
     APP_SHORT_NAME: "Fig. Sicurezza",
