@@ -21,16 +21,22 @@ const CONFIG = {
     /** Nome breve per PWA */
     APP_SHORT_NAME: "Fig. Sicurezza",
 
+    // ─── Autenticazione ───────────────────────────────────────────────────────
+    AUTH: {
+        /** Password richiesta per accedere all'applicazione. */
+        PASSWORD: "sicurezza1",
+    },
+
     // ─── Google Analytics ──────────────────────────────────────────────────
     GOOGLE_ANALYTICS: {
         /** Il tuo ID di misurazione GA4 */
         MEASUREMENT_ID: "G-3MCJ10R94P",
 
         /** Se true, abilita il tracciamento */
-        ENABLED: true,
+        ENABLED: false,
 
         /** Se true, mostra il bottone di installazione PWA personalizzato */
-        SHOW_INSTALL_BUTTON: true,
+        SHOW_INSTALL_BUTTON: false,
     },
 
     // ─── Chiavi localStorage ──────────────────────────────────────────────────

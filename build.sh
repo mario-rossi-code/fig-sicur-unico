@@ -28,6 +28,7 @@ CSS_MODULES="
   css/variables.css
   css/base.css
   css/layout.css
+  css/components/auth.css
   css/components/breadcrumb.css
   css/components/search.css
   css/components/cards.css

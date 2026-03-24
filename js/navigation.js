@@ -114,7 +114,7 @@ function handleProtocolUrl() {
  * @returns {void}
  */
 function pushHistoryState(view, selectedCity = null, selectedGroup = null) {
-    const state = {
+    const historyState = {
         view: view,
         selectedCity: selectedCity
             ? {
@@ -132,12 +132,10 @@ function pushHistoryState(view, selectedCity = null, selectedGroup = null) {
             : null,
     };
 
-    const url = new URL(window.location.href);
-    url.searchParams.set("view", view);
-    if (selectedCity) url.searchParams.set("city", selectedCity.nome);
-    if (selectedGroup) url.searchParams.set("group", selectedGroup.nome);
-
-    window.history.pushState(state, "", url);
+    // URL sempre pulito: nessun parametro visibile nella barra degli indirizzi.
+    // Lo stato di navigazione viene conservato nell'oggetto history.
+    const cleanUrl = window.location.pathname;
+    window.history.pushState(historyState, "", cleanUrl);
 }
 
 /**

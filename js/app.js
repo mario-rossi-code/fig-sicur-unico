@@ -3,6 +3,7 @@
  * @description Entry point dell'applicazione Figure di Sicurezza.
  *
  *              Responsabilità:
+ *              - Verificare l'autenticazione prima di avviare l'app.
  *              - Avviare tutti i sotto-sistemi nell'ordine corretto.
  *              - Caricare i dati dal database JSON.
  *              - Mostrare la versione nell'header.
@@ -15,11 +16,34 @@
 // Variabile globale per il prompt di installazione PWA
 let deferredPrompt = null;
 
+// ─── Bootstrap ────────────────────────────────────────────────────────────────
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", _bootstrap);
+} else {
+    _bootstrap();
+}
+
+/**
+ * Punto di ingresso reale: applica il tema subito (evita flash),
+ * poi richiede autenticazione e solo dopo avvia l'app.
+ * @private
+ */
+function _bootstrap() {
+    // Il tema va applicato prima di tutto per evitare il flash bianco
+    const savedTheme =
+        localStorage.getItem(CONFIG.STORAGE_KEYS.THEME) || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+
+    // Richiede autenticazione; initApp viene chiamato solo se la password è corretta
+    requireAuth(initApp);
+}
+
 // ─── Entry point ──────────────────────────────────────────────────────────────
 
 /**
  * Inizializza l'intera applicazione.
- * Viene chiamata automaticamente al termine del caricamento del DOM.
+ * Viene chiamata da requireAuth() dopo l'autenticazione riuscita.
  *
  * Ordine di inizializzazione:
  * 1. Fix altezza layout (prima del paint per evitare layout shift).
@@ -106,7 +130,7 @@ function syncNavigationWithState() {
  */
 function initPWATracking() {
     // Traccia quando l'app viene installata
-    window.addEventListener("appinstalled", (event) => {
+    window.addEventListener("appinstalled", () => {
         console.log("[App] PWA installata");
         if (typeof trackPWAInstall === "function") {
             trackPWAInstall("accepted");
@@ -214,7 +238,7 @@ window.currentView = "cities";
 /**
  * Effettua il fetch del database JSON e avvia il render dell'applicazione.
  * In caso di errore mostra un messaggio nel contenuto principale.
- *
+ * 
  * @private
  * @async
  * @returns {Promise<void>}
@@ -246,7 +270,7 @@ async function _loadData() {
 
         render();
         handleProtocolUrl();
-
+        
         // Gestisce i parametri URL dopo il render
         handleUrlParams();
     } catch (err) {
@@ -254,9 +278,7 @@ async function _loadData() {
 
         // Traccia errore caricamento
         if (typeof trackEvent === "function") {
-            trackEvent("data_load_error", {
-                error: err.message,
-            });
+            trackEvent("data_load_error", { error: err.message });
         }
 
         const content = document.getElementById("content");
@@ -282,11 +304,3 @@ async function _loadData() {
 //     const versionEl = document.querySelector(".version");
 //     if (versionEl) versionEl.textContent = `v${CONFIG.APP_VERSION}`;
 // }, 0);
-
-// ─── Bootstrap ────────────────────────────────────────────────────────────────
-
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initApp);
-} else {
-    initApp();
-}

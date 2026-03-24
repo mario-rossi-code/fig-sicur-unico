@@ -125,7 +125,8 @@ fig-sicur-unico/
 │ │ ├── search.css → .search-wrapper, .search-box, .city-filter, filtri
 │ │ ├── breadcrumb.css → .breadcrumb-container
 │ │ ├── banner.css → .offline-banner, .update-notification
-│ │ └── avatar.css → .avatar-small, .modal-avatar
+│ │ ├──avatar.css → auth-card
+│ │ └── auth.css → .avatar-small, .modal-avatar
 │ ├── views/
 │ │ ├── cities.css → .cities-grid
 │ │ └── groups.css → .group-expandable (parti specifiche)
@@ -144,6 +145,7 @@ fig-sicur-unico/
 ├── navigation.js ← Bottom nav + deep link
 ├── connectivity.js ← Banner online/offline
 ├── service-worker-manager.js ← Registrazione SW + modale aggiornamento
+├── auth.js ← Autenticazione
 ├── app.js ← Bootstrap e initApp()
 │
 └── views/
