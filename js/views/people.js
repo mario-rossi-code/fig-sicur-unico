@@ -199,7 +199,7 @@ function _createPersonListItem(item) {
                 ${militare.grado} &mdash; ${firstGroup}
             </div>
             <div class="operational-detail">
-                <span class="incarichi-count">${numIncarichi} ${incarichiLabel}</span>
+                <span class="assignements-count">${numIncarichi} ${incarichiLabel}</span>
                 <span class="divider">&mdash;</span>
                 <span class="unico-badge ${isUnico ? "si" : "no"}">
                     UniCo <i class="fa-solid ${isUnico ? "fa-check" : "fa-times"}" aria-hidden="true"></i>
