@@ -29,7 +29,7 @@
 .modal-content {
     width: 92%;
     max-width: 420px;
-    max-height: 88dvh;
+    max-height: 90dvh;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border-light);
@@ -187,10 +187,14 @@
 
 .modal-section {
     text-align: left;
-    margin-top: 1.3rem;
+}
+
+.modal-section:not(:last-child) {
+    margin-bottom: 2rem;
 }
 
 .modal-section-title {
+    text-align: left;
     margin-bottom: 0.5rem;
     font-size: 0.8rem;
     font-weight: 600;
@@ -208,6 +212,11 @@
 }
 
 /* ── Incarico item – layout con contesto (città/gruppo diversi) ──────────── */
+.assignements-section {
+    max-height: 185px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
 
 .modal-incarico-item--ctx {
     display: flex;

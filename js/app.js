@@ -119,7 +119,6 @@ function initPWATracking() {
         deferredPrompt = e;
 
         console.log("[App] Prompt installazione mostrato");
-        alert("[App] Prompt installazione mostrato");
         if (typeof trackInstallPromptShown === "function") {
             trackInstallPromptShown(e.platforms);
         }

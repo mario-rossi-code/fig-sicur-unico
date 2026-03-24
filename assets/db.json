@@ -28,8 +28,8 @@
                                 "cognome": "Ricci",
                                 "grado": "Appuntato",
                                 "abilitUniCo": "no",
-                                "telefono_cell": "",
-                                "telefono_ufficio": ""
+                                "telefono_cell": "+390222345602",
+                                "telefono_ufficio": "+390222345602"
                             }
                         },
                         {
@@ -259,11 +259,11 @@
                             "nome": "Ufficiale Investigativo",
                             "militare": {
                                 "nome": "Francesco",
-                                "cognome": "De Simone",
-                                "grado": "Tenente",
-                                "abilitUniCo": "si",
-                                "telefono_cell": "+393331234518",
-                                "telefono_ufficio": "+390212345618"
+                                "cognome": "Ricci",
+                                "grado": "Appuntato",
+                                "abilitUniCo": "no",
+                                "telefono_cell": "+390222345602",
+                                "telefono_ufficio": "+390222345602"
                             }
                         }
                     ]
@@ -502,23 +502,23 @@
                         {
                             "nome": "Comandante Nucleo",
                             "militare": {
-                                "nome": "Salvatore",
-                                "cognome": "Ferrara",
-                                "grado": "Maresciallo",
+                                "nome": "Francesco",
+                                "cognome": "Ricci",
+                                "grado": "Appuntato",
                                 "abilitUniCo": "no",
-                                "telefono_cell": "+393331234539",
-                                "telefono_ufficio": "+390212345639"
+                                "telefono_cell": "+390222345602",
+                                "telefono_ufficio": "+390222345602"
                             }
                         },
                         {
                             "nome": "Comandante Squadra",
                             "militare": {
-                                "nome": "Gennaro",
-                                "cognome": "Sorrentino",
-                                "grado": "Brigadiere",
-                                "abilitUniCo": "si",
-                                "telefono_cell": "+393331234541",
-                                "telefono_ufficio": "+390212345641"
+                                "nome": "Francesco",
+                                "cognome": "Ricci",
+                                "grado": "Appuntato",
+                                "abilitUniCo": "no",
+                                "telefono_cell": "+390222345602",
+                                "telefono_ufficio": "+390222345602"
                             }
                         },
                         {
@@ -801,12 +801,12 @@
                         {
                             "nome": "Addetto Logistica",
                             "militare": {
-                                "nome": "Claudio",
-                                "cognome": "Martini",
-                                "grado": "Maresciallo",
+                                "nome": "Francesco",
+                                "cognome": "Ricci",
+                                "grado": "Appuntato",
                                 "abilitUniCo": "no",
-                                "telefono_cell": "+393332345611",
-                                "telefono_ufficio": "+390222345611"
+                                "telefono_cell": "+390222345602",
+                                "telefono_ufficio": "+390222345602"
                             }
                         },
                         {
@@ -1033,8 +1033,8 @@
                                 "cognome": "Ricci",
                                 "grado": "Appuntato",
                                 "abilitUniCo": "no",
-                                "telefono_cell": "393332345627",
-                                "telefono_ufficio": "390222345627"
+                                "telefono_cell": "+390222345602",
+                                "telefono_ufficio": "+390222345602"
                             }
                         }
                     ]
@@ -1239,8 +1239,8 @@
                                 "cognome": "Ricci",
                                 "grado": "Appuntato",
                                 "abilitUniCo": "no",
-                                "telefono_cell": "393332345627",
-                                "telefono_ufficio": "390222345627"
+                                "telefono_cell": "+390222345602",
+                                "telefono_ufficio": "+390222345602"
                             }
                         },
                         {
@@ -1575,8 +1575,8 @@
                                 "cognome": "Ricci",
                                 "grado": "Appuntato",
                                 "abilitUniCo": "no",
-                                "telefono_cell": "393332345627",
-                                "telefono_ufficio": "390222345627"
+                                "telefono_cell": "+390222345602",
+                                "telefono_ufficio": "+390222345602"
                             }
                         },
                         {
@@ -1668,8 +1668,8 @@
                                 "cognome": "Ricci",
                                 "grado": "Maresciallo",
                                 "abilitUniCo": "no",
-                                "telefono_cell": "+393335678911",
-                                "telefono_ufficio": "+390252345611"
+                                "telefono_cell": "+390222345602",
+                                "telefono_ufficio": "+390222345602"
                             }
                         },
                         {

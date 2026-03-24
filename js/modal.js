@@ -87,6 +87,10 @@ function openModal(militare, incaricoOrIncarichi, citta, comando) {
                 i.city === incarichi[0].city && i.group === incarichi[0].group,
         );
 
+    // Determina se la sezione incarichi deve essere scrollabile
+    const hasManyIncarichi = incarichi.length > 2;
+    const scrollableClass = hasManyIncarichi ? "modal-section assignements-section" : "";
+
     _modalBody.innerHTML = `
         <div class="modal-simple">
 
@@ -119,8 +123,8 @@ function openModal(militare, incaricoOrIncarichi, citta, comando) {
                     : ""
             }
 
-            <div class="modal-section">
-                <div class="modal-section-title">Incarichi</div>
+            <div class="modal-section-title">Incarichi</div>
+            <div class="modal-section ${scrollableClass}">
                 ${_renderIncarichiList(incarichi, allSameContext)}
             </div>
 
