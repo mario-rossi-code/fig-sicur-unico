@@ -23,7 +23,7 @@ const _AUTH_TS_KEY = "fig_sicur_auth_ts";
 const _AUTH_PWD_KEY = "fig_sicur_auth_pwd";
 
 /** Durata della sessione: 2 settimane in millisecondi. */
-const _SESSION_DURATION_MS = 14 * 24 * 60 * 60 * 1000;
+// const _SESSION_DURATION_MS = 14 * 24 * 60 * 60 * 1000;
 
 // ─── API pubblica ─────────────────────────────────────────────────────────────
 
@@ -61,7 +61,7 @@ function _isSessionValid() {
         const pwd = localStorage.getItem(_AUTH_PWD_KEY);
         if (!ts || !pwd) return false;
 
-        const notExpired = Date.now() - parseInt(ts, 10) < _SESSION_DURATION_MS;
+        // const notExpired = Date.now() - parseInt(ts, 10) < _SESSION_DURATION_MS;
         const passwordMatch = pwd === _fingerprint(CONFIG.AUTH.PASSWORD);
 
         return notExpired && passwordMatch;
@@ -76,7 +76,7 @@ function _isSessionValid() {
  */
 function _saveSession() {
     try {
-        localStorage.setItem(_AUTH_TS_KEY, String(Date.now()));
+        // localStorage.setItem(_AUTH_TS_KEY, String(Date.now()));
         localStorage.setItem(_AUTH_PWD_KEY, _fingerprint(CONFIG.AUTH.PASSWORD));
     } catch {
         // localStorage non disponibile: non bloccante
