@@ -45,6 +45,16 @@ function requireAuth(onSuccess) {
 
 // ─── Helper privati ───────────────────────────────────────────────────────────
 
+/**
+ * Restituisce true se:
+ * 1. Esiste un timestamp di login non scaduto (< 2 settimane).
+ * 2. Il fingerprint salvato corrisponde alla password attuale in CONFIG.
+ *
+ * Se la password in config.js è stata cambiata, il fingerprint non coincide
+ * e la funzione restituisce false → viene richiesto un nuovo login.
+ *
+ * @private
+ */
 // function _isSessionValid() {
 //     try {
 //         const ts = localStorage.getItem(_AUTH_TS_KEY);
