@@ -24,7 +24,7 @@ const CONFIG = {
     // ─── Autenticazione ───────────────────────────────────────────────────────
     AUTH: {
         /** Password richiesta per accedere all'applicazione. */
-        PASSWORD: "sicurezza1",
+        PASSWORD: "sicurezza2",
     },
 
     // ─── Google Analytics ──────────────────────────────────────────────────
