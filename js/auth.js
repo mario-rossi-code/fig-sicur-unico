@@ -45,10 +45,25 @@ function requireAuth(onSuccess) {
 
 // ─── Helper privati ───────────────────────────────────────────────────────────
 
+// function _isSessionValid() {
+//     try {
+//         const ts = localStorage.getItem(_AUTH_TS_KEY);
+//         const pwd = localStorage.getItem(_AUTH_PWD_KEY);
+//         if (!ts || !pwd) return false;
+
+//         const notExpired = Date.now() - parseInt(ts, 10) < _SESSION_DURATION_MS;
+//         const passwordMatch = pwd === _fingerprint(CONFIG.AUTH.PASSWORD);
+
+//         return notExpired && passwordMatch;
+//     } catch {
+//         return false;
+//     }
+// }
+
 /**
  * Restituisce true se:
- * 1. Esiste un timestamp di login non scaduto (< 2 settimane).
- * 2. Il fingerprint salvato corrisponde alla password attuale in CONFIG.
+ * 1. Il fingerprint salvato corrisponde alla password attuale in CONFIG.
+ * 2. Nessuna scadenza temporale
  *
  * Se la password in config.js è stata cambiata, il fingerprint non coincide
  * e la funzione restituisce false → viene richiesto un nuovo login.
@@ -57,14 +72,12 @@ function requireAuth(onSuccess) {
  */
 function _isSessionValid() {
     try {
-        const ts = localStorage.getItem(_AUTH_TS_KEY);
         const pwd = localStorage.getItem(_AUTH_PWD_KEY);
-        if (!ts || !pwd) return false;
+        if (!pwd) return false;
 
-        // const notExpired = Date.now() - parseInt(ts, 10) < _SESSION_DURATION_MS;
         const passwordMatch = pwd === _fingerprint(CONFIG.AUTH.PASSWORD);
 
-        return notExpired && passwordMatch;
+        return passwordMatch;
     } catch {
         return false;
     }
