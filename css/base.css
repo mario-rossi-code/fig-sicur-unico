@@ -16,11 +16,8 @@ body {
     height: 100dvh;
     color: var(--text-main);
     background: var(--background);
-    transition:
-        background 0.3s ease,
-        color 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
     overflow: hidden;
-    padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* Previene interazioni quando il modale di aggiornamento è visibile */
