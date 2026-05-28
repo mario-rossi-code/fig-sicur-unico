@@ -11,7 +11,7 @@
     "start_url": "/index.html?source=pwa",
     "scope": "/",
 
-    "display": "fullscreen",
+    "display": "standalone",
     "display_override": ["standalone", "fullscreen", "minimal-ui"],
     "orientation": "portrait",
 
