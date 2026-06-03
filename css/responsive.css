@@ -30,7 +30,7 @@
     }
 
     .view-container {
-        padding-bottom: calc(var(--nav-height-desktop) + 1rem);
+        padding-bottom: calc(env(safe-area-inset-bottom) + var(--nav-height-mobile) + 1rem);
     }
 
     .bottom-nav {

@@ -1923,6 +1923,153 @@
                             }
                         }
                     ]
+                },
+                {
+                    "nome": "Comando Roan Melito",
+                    "incarichi": [
+                        {
+                            "nome": "Addetto Logistica",
+                            "militare": {
+                                "nome": "Marco",
+                                "cognome": "Lombardo",
+                                "grado": "Maresciallo",
+                                "abilitUniCo": "si",
+                                "telefono_cell": "+393336789024",
+                                "telefono_ufficio": "+390262345613"
+                            }
+                        },
+                        {
+                            "nome": "Comandante Squadra",
+                            "militare": {
+                                "nome": "Giuseppe",
+                                "cognome": "Morelli",
+                                "grado": "Brigadiere",
+                                "abilitUniCo": "no",
+                                "telefono_cell": "+393336789025",
+                                "telefono_ufficio": "+390262345614"
+                            }
+                        },
+                        {
+                            "nome": "Comandante Stazione",
+                            "militare": {
+                                "nome": "Luca",
+                                "cognome": "Silvestri",
+                                "grado": "Luogotenente",
+                                "abilitUniCo": "si",
+                                "telefono_cell": "+393336789022",
+                                "telefono_ufficio": "+390262345611"
+                            }
+                        },
+                        {
+                            "nome": "Ufficiale Amministrativo",
+                            "militare": {
+                                "nome": "Paolo",
+                                "cognome": "Rinaldi",
+                                "grado": "Capitano",
+                                "abilitUniCo": "no",
+                                "telefono_cell": "+393336789023",
+                                "telefono_ufficio": "+390262345612"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "nome": "Comando Roan Mugnano",
+                    "incarichi": [
+                        {
+                            "nome": "Addetto Logistica",
+                            "militare": {
+                                "nome": "Marco",
+                                "cognome": "Lombardo",
+                                "grado": "Maresciallo",
+                                "abilitUniCo": "si",
+                                "telefono_cell": "+393336789024",
+                                "telefono_ufficio": "+390262345613"
+                            }
+                        },
+                        {
+                            "nome": "Comandante Squadra",
+                            "militare": {
+                                "nome": "Giuseppe",
+                                "cognome": "Morelli",
+                                "grado": "Brigadiere",
+                                "abilitUniCo": "no",
+                                "telefono_cell": "+393336789025",
+                                "telefono_ufficio": "+390262345614"
+                            }
+                        },
+                        {
+                            "nome": "Comandante Stazione",
+                            "militare": {
+                                "nome": "Luca",
+                                "cognome": "Silvestri",
+                                "grado": "Luogotenente",
+                                "abilitUniCo": "si",
+                                "telefono_cell": "+393336789022",
+                                "telefono_ufficio": "+390262345611"
+                            }
+                        },
+                        {
+                            "nome": "Ufficiale Amministrativo",
+                            "militare": {
+                                "nome": "Paolo",
+                                "cognome": "Rinaldi",
+                                "grado": "Capitano",
+                                "abilitUniCo": "no",
+                                "telefono_cell": "+393336789023",
+                                "telefono_ufficio": "+390262345612"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "nome": "Comando Roan Benevento",
+                    "incarichi": [
+                        {
+                            "nome": "Addetto Logistica",
+                            "militare": {
+                                "nome": "Marco",
+                                "cognome": "Lombardo",
+                                "grado": "Maresciallo",
+                                "abilitUniCo": "si",
+                                "telefono_cell": "+393336789024",
+                                "telefono_ufficio": "+390262345613"
+                            }
+                        },
+                        {
+                            "nome": "Comandante Squadra",
+                            "militare": {
+                                "nome": "Giuseppe",
+                                "cognome": "Morelli",
+                                "grado": "Brigadiere",
+                                "abilitUniCo": "no",
+                                "telefono_cell": "+393336789025",
+                                "telefono_ufficio": "+390262345614"
+                            }
+                        },
+                        {
+                            "nome": "Comandante Stazione",
+                            "militare": {
+                                "nome": "Luca",
+                                "cognome": "Silvestri",
+                                "grado": "Luogotenente",
+                                "abilitUniCo": "si",
+                                "telefono_cell": "+393336789022",
+                                "telefono_ufficio": "+390262345611"
+                            }
+                        },
+                        {
+                            "nome": "Ufficiale Amministrativo",
+                            "militare": {
+                                "nome": "Paolo",
+                                "cognome": "Rinaldi",
+                                "grado": "Capitano",
+                                "abilitUniCo": "no",
+                                "telefono_cell": "+393336789023",
+                                "telefono_ufficio": "+390262345612"
+                            }
+                        }
+                    ]
                 }
             ]
         }
