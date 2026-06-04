@@ -157,7 +157,20 @@ function initLayoutFix() {
     } else {
         setTimeout(adjustMainHeight, 100);
     }
+
+    // Ricalcola al resize della finestra
     window.addEventListener("resize", adjustMainHeight);
+
+    // Ricalcola al cambio di orientamento (es. rotazione smartphone)
+    window.addEventListener("orientationchange", () => {
+        // Timeout per browser mobili che impiegano qualche istante per aggiornare window.innerHeight dopo la rotazione
+        setTimeout(() => {
+            adjustMainHeight();
+
+            // Rigenera gli elementi DOM mantenendo vista corrente e filtri applicati
+            render();
+        }, 150);
+    });
 }
 
 /**
