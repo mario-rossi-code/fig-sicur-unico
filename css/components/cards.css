@@ -41,6 +41,12 @@
     color: var(--text-light);
 }
 
+.list-bottom-safe-area {
+    height: 60px;
+    pointer-events: none;
+    flex-shrink: 0;
+}
+
 /* ── Person compact card ─────────────────────────────────────────────────── */
 
 .person-compact-card {

@@ -118,6 +118,11 @@ function _renderCityGroups() {
         DOM.content.appendChild(_createGroupCard(group));
     });
 
+    // Aggiunge spaziatore invisibile alla fine della lista
+    if (hasResults) {
+        DOM.content.appendChild(_createSpacerElement());
+    }
+
     return hasResults;
 }
 
@@ -211,5 +216,22 @@ function _renderGroupPeople() {
         );
     });
 
+    // Aggiunge spaziatore invisibile alla fine della lista
+    if (hasResults) {
+        DOM.content.appendChild(_createSpacerElement());
+    }
+
     return hasResults;
+}
+
+/**
+ * Crea un elemento spaziatore invisibile per migliorare lo scrolling.
+ *
+ * @private
+ * @returns {HTMLElement}
+ */
+function _createSpacerElement() {
+    const spacer = document.createElement("div");
+    spacer.className = "list-bottom-safe-area";
+    return spacer;
 }

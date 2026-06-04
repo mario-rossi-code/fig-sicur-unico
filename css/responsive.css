@@ -33,6 +33,12 @@
         padding-bottom: calc(var(--nav-height-desktop) + 1rem);
     }
 
+    .list-bottom-safe-area {
+        height: calc(var(--nav-height-desktop) + 1rem);
+        pointer-events: none;
+        flex-shrink: 0;
+    }
+
     .bottom-nav {
         bottom: 0;
         height: var(--nav-height-desktop);
@@ -135,6 +141,12 @@
 
     .view-container {
         padding-bottom: calc(var(--nav-height-mobile) + 1rem);
+    }
+
+    .list-bottom-safe-area {
+        height: calc(var(--nav-height-mobile) + 1rem);
+        pointer-events: none;
+        flex-shrink: 0;
     }
 
     /* Floating pill navbar */
